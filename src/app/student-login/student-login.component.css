@@ -44,6 +44,11 @@ form input
     color:white;
     font-size: 18px;
 }
+
+input[type="submit"].submit-button:hover {
+    background-color:rgb(114, 114, 114);
+    color:black;
+  }
 /************************************STYLING FOR THE BOTTOM TWO LINKS****************************************/
 .bottom-elements
 {
