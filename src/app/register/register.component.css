@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 .login-container
 {
     margin-bottom: 5%;
@@ -16,7 +14,7 @@
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     /* width: 100%; */
-    height: 54vw;
+    height: 53vw;
     object-fit: cover; 
 }
 
@@ -66,13 +64,3 @@ input[type="submit"].submit-button:hover {
 {
     padding:1px;
 }
-.foot
-{
-    background-color: rgb(213, 213, 216);
-    padding:30px;
-    margin-top:90px;
-    margin-left:-120px;
-    width:130%;
-
-}
->>>>>>> 1043551cc7471b0807e96044b16e788702864e0f
