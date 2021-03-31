@@ -9,7 +9,6 @@ import { RegisterComponent } from './register/register.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { StudentLoginComponent } from './student-login/student-login.component';
 import { AboutComponent } from './about/about.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AdminLoginComponent,
     StudentLoginComponent,
     AboutComponent,
-    ForgotPasswordComponent,
     
   ],
   imports: [

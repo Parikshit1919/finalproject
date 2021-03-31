@@ -5,15 +5,14 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegisterComponent } from './register/register.component';
 import { StudentLoginComponent } from './student-login/student-login.component';
-import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
   {path:'Register',component:RegisterComponent},
   {path:'Login/Admin',component:AdminLoginComponent},
   {path:'Login/Student', component:StudentLoginComponent},
-  {path:'About', component:AboutComponent},
-  {path:'ForgotPassword', component:ForgotPasswordComponent}
+  {path:'About', component:AboutComponent}
 ];
 
 @NgModule({
