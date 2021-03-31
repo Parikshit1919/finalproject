@@ -3,3 +3,10 @@ body{
     background-color:rgb(231, 231, 231);
     font-family: 'Poppins', sans-serif;
 }
+
+.footer-container
+{
+    background-color:rgb(189, 186, 186);
+    padding:1%;
+    border-radius: 2px;
+}

@@ -1,4 +1,8 @@
-
+.login-container
+{
+    margin-bottom: 5%;
+}
+/*********************************************************** CARD STYLING  ***********************************************/
 .card
 {
     margin-top: 5%;
@@ -11,6 +15,7 @@
     border-bottom-left-radius: 15px;
     
 }
+
 .card-title
 {
     font-size: 40px;
