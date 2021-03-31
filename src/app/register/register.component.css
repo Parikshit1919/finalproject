@@ -14,7 +14,7 @@
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     /* width: 100%; */
-    height: 53vw;
+    height: 54vw;
     object-fit: cover; 
 }
 
@@ -63,4 +63,13 @@ input[type="submit"].submit-button:hover {
 .bottom-elements .row
 {
     padding:1px;
+}
+.foot
+{
+    background-color: rgb(213, 213, 216);
+    padding:30px;
+    margin-top:90px;
+    margin-left:-120px;
+    width:130%;
+
 }

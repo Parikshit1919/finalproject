@@ -1,4 +1,31 @@
-.main-container
+.head
 {
-    background-color: antiquewhite;
+    background-color:rgb(151, 233, 183);
+    margin-left:40px;
+    margin-right:40px;
+    Padding-top:20px;
+    padding-bottom:20px;
+    font-family: Arial, Helvetica, sans-serif;;
+}
+.regilink
+{
+    margin-left:40px;
+    margin-right:1000px;
+    margin-top:20px;
+    Padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:rgb(224, 222, 222);
+}
+a
+{
+    text-decoration:none;
+ 
+}
+img{
+    height:544px;
+    width:956px;
+    position:relative;left: 520px;top:-544px;
+ 
 }
