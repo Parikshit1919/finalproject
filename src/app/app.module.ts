@@ -11,6 +11,8 @@ import { StudentLoginComponent } from './student-login/student-login.component';
 import { AboutComponent } from './about/about.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AboutComponent,
     ForgotPasswordComponent,
     NotFoundComponent,
+    StudentDashboardComponent,
+    AdminDashboardComponent,
     
   ],
   imports: [
