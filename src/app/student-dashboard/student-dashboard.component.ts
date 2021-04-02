@@ -7,7 +7,7 @@ import {TogglerService} from '../services/toggler.service';
   styleUrls: ['./student-dashboard.component.css']
 })
 export class StudentDashboardComponent implements OnInit {
-
+  public isCollapsed = true;
   constructor(public sideNavService: TogglerService) { }
 
   ngOnInit(): void {

@@ -1,31 +1,37 @@
 <div class="wrapper">
     <!-- Sidebar  -->
     <nav id="sidebar" [ngClass]="{'active': sideNavService.hideSideMenu }">
-        <div class="sidebar-header">
-            <h3>Welcome Student</h3>
+        <div class="sidebar-header text-center">
+            <img class="img-thumbnail" src="../../assets/login-person.png">
+            <h6>Welcome Student Name</h6>
         </div>
 
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
+            
+            <li>   
+                    <a class="dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+                      aria-controls="collapseExample">
+                      Toggle
+                    </a>
+                  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                  </div>
             </li>
             <li>
                 <a href="#">About</a>
             </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <a [routerLink]="['./']" fragment="pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
                         <a href="#">Page 1</a>
@@ -51,18 +57,17 @@
     <!-- Page Content  -->
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-
-                <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="sideNavService.toggleSideNav()">
-                    <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
-                </button>
-                
-                <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="sideNavService.toggleMenu()">
-                    <i class="fas fa-align-left"></i>
-                    <span> Toggle Menu</span>
-                </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               
             </div>
+                <ul class="nav navbar-nav" style="float: right">
+                    <button type="button" class="btn btn-info pl-4" (click)="sideNavService.toggleMenu()">
+                        <i class="fas fa-power-off"></i>
+                        <span> Logout</span>
+                    </button>
+                 </ul>
+                
         </nav>
     </div>
+
 </div>

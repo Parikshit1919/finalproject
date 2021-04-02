@@ -7,12 +7,18 @@ export class TogglerService {
   hideMenu : boolean = false;
   hideSideMenu : boolean = false;
   
-  toggleMenu():void {
+  toggleMenu():void 
+  {
   this.hideMenu = !this.hideMenu;  
   }
-  toggleSideNav(): void {
+
+  toggleSideNav(): void
+   {
     this.hideSideMenu = !this.hideSideMenu;
-   
+  }
+
+  toggleCollapse():void{
+
   }
   constructor() { }
 }
