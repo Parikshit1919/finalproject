@@ -7,7 +7,7 @@
 {
     margin-top: 5%;
     margin-left: 8%;
-    margin-right: 10%;
+    margin-right: 8%;
     border-radius: 15px;
 }
 .card img{
@@ -29,6 +29,7 @@
 form
 {
     margin-top:5%;
+   
 }
 form .row
 {
@@ -39,20 +40,22 @@ form .row
 form input
 {
     width:100%;
-    padding:3%;
-    
+    /* padding:3%; */
+     /* margin-left:-2%;  */
     
 }
+
 .submit-button
 {
     background-color:black;
     color:white;
-    font-size: 18px;
+    font-size: 17px;   
 }
 
 input[type="submit"].submit-button:hover {
     background-color:rgb(114, 114, 114);
     color:black;
+   
   }
 /************************************STYLING FOR THE BOTTOM TWO LINKS****************************************/
 .bottom-elements

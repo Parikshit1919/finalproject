@@ -7,14 +7,14 @@
 {
     margin-top: 5%;
     margin-left: 8%;
-    margin-right: 10%;
+    margin-right: 8%;
     border-radius: 15px;
     
 }
 .card img{
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    height: 37vw;
+    height: 30vw;
     object-fit: cover; 
 }
 
@@ -42,9 +42,7 @@ form .row
 form input
 {
     width:100%;
-    padding:3%;
-    
-    
+    /* margin-left: 2%; */
 }
 .submit-button
 {

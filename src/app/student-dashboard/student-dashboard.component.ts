@@ -7,7 +7,9 @@ import {TogglerService} from '../services/toggler.service';
   styleUrls: ['./student-dashboard.component.css']
 })
 export class StudentDashboardComponent implements OnInit {
+  // VARIABLE FOR SIDEBAR COLLAPSE LIST ng-bootstrap
   public isCollapsed = true;
+  
   constructor(public sideNavService: TogglerService) { 
     sideNavService.toggleMenu();
   }
