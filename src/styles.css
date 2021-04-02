@@ -6,7 +6,16 @@ body{
 
 .footer-container
 {
-    background-color:rgb(189, 186, 186);
-    padding:1%;
-    border-radius: 2px;
+    color: black;
+     /* background-color:rgb(179, 179, 179); */
+    /* padding:1%; */
+    padding: 1%;
+    border-radius: 3px;
+}
+
+.footer-container form button 
+{
+    color: black;
+    border: 1px solid black;
+    
 }

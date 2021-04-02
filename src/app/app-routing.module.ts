@@ -8,6 +8,7 @@ import { StudentLoginComponent } from './student-login/student-login.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {StudentDashboardComponent} from './student-dashboard/student-dashboard.component';
+import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'About', component:AboutComponent},
   {path:'ForgotPassword', component:ForgotPasswordComponent},
   {path:'Login/Student/Dashboard',component:StudentDashboardComponent},
+  {path:'Login/Admin/Dashboard',component:AdminDashboardComponent},
   {path:'**',component:NotFoundComponent}
 ];
 

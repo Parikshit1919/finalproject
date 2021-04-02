@@ -14,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LicencesComponent } from './licences/licences.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NotFoundComponent,
     StudentDashboardComponent,
     AdminDashboardComponent,
+    LicencesComponent,
     
   ],
   imports: [
