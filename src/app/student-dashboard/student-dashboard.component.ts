@@ -8,7 +8,9 @@ import {TogglerService} from '../services/toggler.service';
 })
 export class StudentDashboardComponent implements OnInit {
   public isCollapsed = true;
-  constructor(public sideNavService: TogglerService) { }
+  constructor(public sideNavService: TogglerService) { 
+    sideNavService.toggleMenu();
+  }
 
   ngOnInit(): void {
   }
