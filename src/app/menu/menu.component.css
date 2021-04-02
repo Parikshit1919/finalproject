@@ -1,7 +1,12 @@
 .navbar
 {
     border-radius: 10px;
+    transition: all 0.3s;
 }
+ .navbar.active
+{
+    margin-top:-85px;
+} 
 .navbar ul li a
 {
    color: black;
