@@ -26,7 +26,10 @@ a:focus {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-
+.dropdown ul li a:hover 
+{
+    background-color: grey;
+}
 .navbar-btn {
     box-shadow: none;
     outline: none !important;

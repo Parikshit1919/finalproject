@@ -7,67 +7,61 @@
         </div>
 
         <ul class="list-unstyled components">
-            
             <li>   
                     <a class="dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
                       aria-controls="collapseExample">
-                      Toggle
+                      <i class="fas fa-book"></i> All Exams
                     </a>
                   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="#">Exam 1</a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                            <a href="#">Exam 2</a>
                         </li>
                         <li>
-                            <a href="#">Page 3</a>
+                            <a href="#">Exam 3</a>
                         </li>
                     </ul>
                   </div>
             </li>
             <li>
-                <a href="#">About</a>
+                <a href="#"><i class="fas fa-trophy"></i> Results</a>
+            </li>
+            
+            <li>
+                <a href="#"><i class="fas fa-medal"></i> Ranking</a>
             </li>
             <li>
-                <a [routerLink]="['./']" fragment="pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+                <a href="#"><i class="far fa-comments"></i> Feedback</a>
             </li>
         </ul>
-
     </nav>
 
-    <!-- Page Content  -->
+    <!--------------------------------- Page Content  ------------------------------------------------>
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarNav">
-               
-            </div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!----------------------- DROPDOWN TOGGLE MENU  -------------------------------------->
+            <div class="dropdown">
+                <button class="btn btn-secondary " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-align-left"></i> Toggle Menus
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" type="button" (click)="sideNavService.toggleSideNav()" style="background-color:#fff;">Sidebar</a></li>
+                  <li><a class="dropdown-item" type="button" (click)="sideNavService.toggleMenu()" style="background-color:#fff;">Menu</a></li>
+                </ul>
+              </div>
+              <!--------------------------------------- LOGOUT BUTTON  ------------------------->
+            </ul>
                 <ul class="nav navbar-nav" style="float: right">
-                    <button type="button" class="btn btn-info pl-4" (click)="sideNavService.toggleMenu()">
-                        <i class="fas fa-power-off"></i>
-                        <span> Logout</span>
+                    <button type="button" class="btn btn-info pl-3 pr-3" (click)="sideNavService.toggleMenu()">
+                        <i class="fas fa-power-off"></i> Logout
                     </button>
                  </ul>
-                
         </nav>
+        hello
     </div>
-
+   
 </div>
