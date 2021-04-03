@@ -23,33 +23,66 @@ a
     text-decoration:none;
  
 }
-/* img{
-    height:544px;
-    width:956px;
-    position:relative;left: 520px;top:-544px;
- 
+
+
+#banner{
+    background-image:linear-gradient(to right,rgb(79, 142, 167),grey);
+    color:white;
+    padding-top: 5%;
+}
+.promo-title{
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 100px;
+}
+/* .start-btn{
+    width: 50px;
+    margin:20px;
 } */
-.btn--primary{
-background-color:rgb(79, 142, 167);
-
-color: #272a31;
+.bottom-img{
+    width: 100%;
+} 
+#services{
+    padding: 80px 0;
+}
+.service-img{
+    width: 100px;
+    margin-top: 20px;
+}
+.service{
+    padding: 20px;
+}
+.service h4{
+    padding: 5px;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+.title::before{
+    content: ' ';
+    background:rgb(79, 142, 167);
+    height: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(63px);
+}
+.title::after{
+    content: ' ';
+    background:rgb(79, 142, 167);
+    height: 10px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    transform: translateY(8px);
+}
+#services .btn-primary{
+    box-shadow: none;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 25px;
+    background-image:linear-gradient(to right,rgb(79, 142, 167),grey);
 }
 
-.banner_title{
-    color:rgb(79, 142, 167);
-    font:bold;
-    
-    
-}
-.title-line{
-    position: relative;
-    padding-bottom: 20px;
-}
-.card-img{
-  
-    height: 300px;
-    
-}
-.card bg-dark text-white{
-    width: 800px;
-}
