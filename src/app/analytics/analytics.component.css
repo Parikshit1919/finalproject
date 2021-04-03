@@ -28,3 +28,8 @@
     margin-top:1%;
     padding-bottom: 10%;
 }
+/* CARDS */
+.card
+{
+    border-radius: 15px;
+}
