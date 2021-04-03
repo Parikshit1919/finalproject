@@ -14,6 +14,9 @@ import {AnalyticsComponent} from './analytics/analytics.component';
 import {AdminFeedbackComponent} from './admin-feedback/admin-feedback.component';
 import {AdminExamResultComponent} from './admin-exam-result/admin-exam-result.component';
 import {AdminStudentResultComponent} from './admin-student-result/admin-student-result.component';
+import {StudentFeedbackComponent} from './student-feedback/student-feedback.component';
+import {StudentResultsComponent} from './student-results/student-results.component';
+import {StudentRankingComponent} from './student-ranking/student-ranking.component';
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
@@ -22,7 +25,14 @@ const routes: Routes = [
   {path:'Login/Student', component:StudentLoginComponent},
   {path:'About', component:AboutComponent},
   {path:'ForgotPassword', component:ForgotPasswordComponent},
-  {path:'Login/Student/Dashboard',component:StudentDashboardComponent},
+  {
+    path:'Login/Student/Dashboard',component:StudentDashboardComponent,
+    children:[
+      {path:'Feedback',component:StudentFeedbackComponent},
+      {path:'Results',component:StudentResultsComponent},
+      {path:'Ranking',component:StudentRankingComponent}
+    ]
+  },
   {
     path:'Login/Admin/Dashboard',component:AdminDashboardComponent,
     children:[

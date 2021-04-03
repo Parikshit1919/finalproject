@@ -20,6 +20,9 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
 import { AdminExamResultComponent } from './admin-exam-result/admin-exam-result.component';
 import { AdminStudentResultComponent } from './admin-student-result/admin-student-result.component';
+import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
+import { StudentRankingComponent } from './student-ranking/student-ranking.component';
+import { StudentResultsComponent } from './student-results/student-results.component';
 
 
 @NgModule({
@@ -41,6 +44,9 @@ import { AdminStudentResultComponent } from './admin-student-result/admin-studen
     AdminFeedbackComponent,
     AdminExamResultComponent,
     AdminStudentResultComponent,
+    StudentFeedbackComponent,
+    StudentRankingComponent,
+    StudentResultsComponent,
     
   ],
   imports: [

@@ -1,12 +1,13 @@
 <div class="wrapper">
-    <!-- Sidebar  -->
+    <!-------------------------- Sidebar  ----------------------------------------->
     <nav id="sidebar" [ngClass]="{'active': sideNavService.hideSideMenu }">
         <div class="sidebar-header text-center">
             <img class="img-thumbnail" src="../../assets/login-person-admin.png">
             <h6>Welcome Admin</h6>
         </div>
-
+        <!------------------------SIDEBAR LIST ITEMS  ----------------------------------------->
         <ul class="list-unstyled components">
+          <!----------------------------MANAGE EXAMS LIST ------------------------------------------>
             <li>   
                     <a class="dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
                       aria-controls="collapseExample">
@@ -23,6 +24,7 @@
                     </ul>
                   </div>
             </li>
+            <!----------------------------MANAGE COURSES LIST ------------------------------------------>
             <li>   
                 <a class="dropdown-toggle" data-toggle="collapse" (click)="courseToggler()" [attr.aria-expanded]="!isCollapsed"
                   aria-controls="collapseExample">
@@ -36,6 +38,7 @@
                 </ul>
               </div>
              </li>
+             <!----------------------------RESULTS LIST ------------------------------------------>
              <li>   
                 <a class="dropdown-toggle" data-toggle="collapse" (click)="resultsToggler()" [attr.aria-expanded]="!isCollapsed"
                   aria-controls="collapseExample">
@@ -52,16 +55,18 @@
                 </ul>
               </div>
              </li>
+             <!----------------------------FEEDBACK LINK ------------------------------------------>
             <li>
                 <a routerLink="Feedback" ><i class="far fa-comments"></i> Feedback</a>
             </li>
+            <!----------------------------ANALYTICS LINK ------------------------------------------>
             <li>
               <a routerLink="Analytics" ><i class="fas fa-chart-line"></i> Analytics</a>
           </li>
         </ul>
     </nav>
 
-    <!--------------------------------- Page Content  ------------------------------------------------>
+    <!--------------------------------- NAVBAR CONTENT  ------------------------------------------------>
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -83,6 +88,7 @@
                     </button>
                  </ul>
         </nav>
+        <!-------- CONTENT  ------->
         <router-outlet></router-outlet>
     </div>
    
