@@ -17,6 +17,7 @@ import {AdminStudentResultComponent} from './admin-student-result/admin-student-
 import {StudentFeedbackComponent} from './student-feedback/student-feedback.component';
 import {StudentResultsComponent} from './student-results/student-results.component';
 import {StudentRankingComponent} from './student-ranking/student-ranking.component';
+import {LicencesComponent} from './licences/licences.component';
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'Login/Student', component:StudentLoginComponent},
   {path:'About', component:AboutComponent},
   {path:'ForgotPassword', component:ForgotPasswordComponent},
+  {path:'Licences',component:LicencesComponent},
   {
     path:'Login/Student/Dashboard',component:StudentDashboardComponent,
     children:[
