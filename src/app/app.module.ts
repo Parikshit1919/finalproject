@@ -15,6 +15,11 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LicencesComponent } from './licences/licences.component';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
+import { AdminExamResultComponent } from './admin-exam-result/admin-exam-result.component';
+import { AdminStudentResultComponent } from './admin-student-result/admin-student-result.component';
 
 
 @NgModule({
@@ -31,6 +36,11 @@ import { LicencesComponent } from './licences/licences.component';
     StudentDashboardComponent,
     AdminDashboardComponent,
     LicencesComponent,
+    AddCourseComponent,
+    AnalyticsComponent,
+    AdminFeedbackComponent,
+    AdminExamResultComponent,
+    AdminStudentResultComponent,
     
   ],
   imports: [

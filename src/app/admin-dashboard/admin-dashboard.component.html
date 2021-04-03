@@ -31,7 +31,7 @@
               <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed1">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#">Add Courses</a>
+                        <a routerLink="AddCourses" >Add Courses</a>
                     </li>
                 </ul>
               </div>
@@ -44,17 +44,20 @@
               <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed2">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#">Filter By Exam</a>
+                        <a routerLink="ExamResults" >Filter By Exam</a>
                     </li>
                     <li>
-                        <a href="#">Filter By Student</a>
+                        <a routerLink="StudentResults">Filter By Student</a>
                     </li>
                 </ul>
               </div>
              </li>
             <li>
-                <a href="#"><i class="far fa-comments"></i> Feedback</a>
+                <a routerLink="Feedback" ><i class="far fa-comments"></i> Feedback</a>
             </li>
+            <li>
+              <a routerLink="Analytics" ><i class="fas fa-chart-line"></i> Analytics</a>
+          </li>
         </ul>
     </nav>
 
@@ -80,7 +83,7 @@
                     </button>
                  </ul>
         </nav>
-        hello
+        <router-outlet></router-outlet>
     </div>
    
 </div>

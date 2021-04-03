@@ -9,6 +9,11 @@ import {ForgotPasswordComponent} from './forgot-password/forgot-password.compone
 import {NotFoundComponent} from './not-found/not-found.component';
 import {StudentDashboardComponent} from './student-dashboard/student-dashboard.component';
 import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
+import {AddCourseComponent} from './add-course/add-course.component';
+import {AnalyticsComponent} from './analytics/analytics.component';
+import {AdminFeedbackComponent} from './admin-feedback/admin-feedback.component';
+import {AdminExamResultComponent} from './admin-exam-result/admin-exam-result.component';
+import {AdminStudentResultComponent} from './admin-student-result/admin-student-result.component';
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
@@ -18,7 +23,16 @@ const routes: Routes = [
   {path:'About', component:AboutComponent},
   {path:'ForgotPassword', component:ForgotPasswordComponent},
   {path:'Login/Student/Dashboard',component:StudentDashboardComponent},
-  {path:'Login/Admin/Dashboard',component:AdminDashboardComponent},
+  {
+    path:'Login/Admin/Dashboard',component:AdminDashboardComponent,
+    children:[
+      {path:'AddCourses',component:AddCourseComponent},
+      {path:'Analytics',component:AnalyticsComponent},
+      {path:'Feedback',component:AdminFeedbackComponent},
+      {path:'ExamResults',component:AdminExamResultComponent},
+      {path:'StudentResults',component:AdminStudentResultComponent}
+    ]
+  },
   {path:'**',component:NotFoundComponent}
 ];
 
