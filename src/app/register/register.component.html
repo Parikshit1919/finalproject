@@ -12,7 +12,7 @@
             <h2 class="card-title">Register</h2>
             <h4 class="card-subtitle">Create Your Account Today!</h4>
             <!--------------------------------- FROM BEGINS HERE ------------------------------------------->
-            <form id="registration-form">
+            <form id="registration-form" [formGroup]="RegisterFormGroup">
                 <!---------------------- NAME INPUT ------------------------->
                 <div class = "row">
                     <div class="col-md-3" style="padding-top:10px;">
@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <!-- captca -->
-                 <div class = "row">
+                  <div class = "row">
                     <div class="col-md-7">
                      <ngx-recaptcha2 [siteKey]="siteKey"></ngx-recaptcha2>
                     </div>
