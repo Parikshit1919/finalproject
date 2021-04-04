@@ -7,6 +7,10 @@
         </div>
         <!------------------------SIDEBAR LIST ITEMS  ----------------------------------------->
         <ul class="list-unstyled components">
+           <!----------------------------ANALYTICS LINK ------------------------------------------>
+            <li>
+            <a routerLink="Analytics" ><i class="fas fa-chart-line"></i> Analytics</a>
+            </li>
           <!----------------------------MANAGE EXAMS LIST ------------------------------------------>
             <li>   
                     <a class="dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
@@ -59,10 +63,6 @@
             <li>
                 <a routerLink="Feedback" ><i class="far fa-comments"></i> Feedback</a>
             </li>
-            <!----------------------------ANALYTICS LINK ------------------------------------------>
-            <li>
-              <a routerLink="Analytics" ><i class="fas fa-chart-line"></i> Analytics</a>
-          </li>
         </ul>
     </nav>
 

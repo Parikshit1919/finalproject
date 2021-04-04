@@ -75,7 +75,8 @@ a
 }
 .title::before{
     content: ' ';
-    background:rgb(79, 142, 167);
+     background:rgb(79, 142, 167); 
+    
     height: 5px;
     width: 200px;
     margin-left: auto;
@@ -85,7 +86,8 @@ a
 }
 .title::after{
     content: ' ';
-    background:rgb(79, 142, 167);
+     background:rgb(79, 142, 167); 
+   
     height: 10px;
     width: 50px;
     margin-left: auto;

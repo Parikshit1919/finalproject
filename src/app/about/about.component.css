@@ -1,7 +1,4 @@
-body {
-    padding-top: 10px;
-  
-  }
+
 
 .bottom-img{
     width: 100%;
@@ -12,7 +9,10 @@ body {
     margin-top:-90px;
     
   }
-
+.card img 
+{
+  height:35vh;
+}
   .card-deck .card{
     border-top-left-radius:50%;
     border-top-right-radius: 50%;
@@ -42,7 +42,6 @@ body {
   
   .how-section1{
       margin-top:-10%;
-      /* background-image:linear-gradient(to right,rgb(79, 142, 167),grey); */
       padding-left: 3%;
       padding-right: 5%;
     
@@ -50,7 +49,7 @@ body {
 
   .title::before{
     content: ' ';
-    /* background:rgb(79, 142, 167); */
+
     background: black;
     height: 5px;
     width: 200px;
@@ -61,7 +60,6 @@ body {
 }
 .title::after{
     content: ' ';
-    /* background:rgb(79, 142, 167); */
     background: black;
     height: 10px;
     width: 50px;
@@ -71,7 +69,6 @@ body {
     display: block;
     transform: translateY(8px);
 }
-
   .how-section1 h4{
       color: #ffa500;
       font-weight: bold;
@@ -86,7 +83,15 @@ body {
   {
       margin-top: 10%;
   }
-
+  /************************* HOW HACKATHON WORKS SECTION ********************************/
+  .works-list li img
+  {
+    height: 7vh;
+  }
+  .works-list li p
+  {
+    font-size: 17px;
+  }
   .how-img 
   {
       text-align: center;
