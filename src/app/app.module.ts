@@ -23,6 +23,7 @@ import { AdminStudentResultComponent } from './admin-student-result/admin-studen
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 import { StudentRankingComponent } from './student-ranking/student-ranking.component';
 import { StudentResultsComponent } from './student-results/student-results.component';
+import {NgxCaptchaModule} from 'ngx-captcha';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { StudentResultsComponent } from './student-results/student-results.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+     NgxCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
