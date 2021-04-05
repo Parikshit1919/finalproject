@@ -25,6 +25,8 @@ import { StudentRankingComponent } from './student-ranking/student-ranking.compo
 import { StudentResultsComponent } from './student-results/student-results.component';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import {ReactiveFormsModule} from '@angular/forms';
+import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
+import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-questions.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     StudentFeedbackComponent,
     StudentRankingComponent,
     StudentResultsComponent,
+    AdminAddExamComponent,
+    AdminAddQuestionsComponent,
     
   ],
   imports: [
