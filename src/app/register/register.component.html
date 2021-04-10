@@ -12,7 +12,7 @@
             <h2 class="card-title">Register</h2>
             <h4 class="card-subtitle">Create Your Account Today!</h4>
             <!--------------------------------- FROM BEGINS HERE ------------------------------------------->
-            <form id="registration-form" [formGroup]="RegisterFormGroup">
+            <form [formGroup]="studentForm" (ngSubmit)="onFormSubmit()">
                 <!---------------------- NAME INPUT ------------------------->
                 <div class = "row">
                     <div class="col-md-3" style="padding-top:10px;">
@@ -20,8 +20,16 @@
                     </div>
                     <div class="col-md-7">
                    
-                    <input type="text" class="form-control" id="name" placeholder="Ian Piper">
+                    <input type="text" class="form-control" id="name" placeholder="Ian Piper" formControlName="Fullname">
+                    <div
+                    *ngIf="!Fullname?.valid && (Fullname?.dirty ||Fullname?.touched)">
+                    <div [hidden]="!Fullname.errors.required" class="alert alert-danger">
+                      Name is required
                     </div>
+                   
+                    </div>
+                    </div>
+                    
                 </div>
                 <!---------------------- EMAIL INPUT ------------------------->
                 <div class = "row">
@@ -29,8 +37,18 @@
                         <label for="email" class="form-label">Email</label>
                     </div>
                     <div class="col-md-7">
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                    </div>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="Student_Email">
+                    <div *ngIf="!Student_Email.valid && (Student_Email.dirty ||Student_Email.touched)">
+                        <div [hidden]="!Student_Email.errors.required" class="alert alert-danger"> 
+                          email is required
+                        </div>
+                        <div [hidden]="!Student_Email.errors.email" class="alert alert-danger">
+                          invalid email id
+                        </div>
+                      </div>
+                     
+                    
+                </div>
                 </div>
                 <!---------------------- PASSWORD INPUT ------------------------->
                 <div class = "row">
@@ -39,7 +57,16 @@
                     </div>
                     <div class="col-md-7">
                     
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="Student_Password" >
+                    <div
+                    *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
+                    <div [hidden]="!Student_Password.errors.required" class="alert alert-danger">
+                      Password is required
+                    </div>
+                    <div [hidden]="!Student_Password.errors.pattern" class="alert alert-danger">
+                        Password Must be at least 8 Characters long and should have at least one uppercase, one lowercase, one digit and one special character.
+                      </div>
+                    </div>
                     </div>
                 </div>
                 <!---------------------- MOBILE NUMBER INPUT ------------------------->
@@ -49,7 +76,16 @@
                     </div>
                     <div class="col-md-7">
                     
-                    <input type="number" class="form-control" id="mobile" placeholder="Mobile No.">
+                    <input type="text" class="form-control" id="mobile" placeholder="Mobile No." formControlName="Mobile">
+                    <div
+                    *ngIf="!Mobile?.valid && (Mobile?.dirty ||Mobile?.touched)">
+                    <div [hidden]="!Mobile.errors.required" class="alert alert-danger" >
+                      Mobile no is required
+                    </div>
+                    <div [hidden]="!Mobile.errors.pattern" class="alert alert-danger">
+                       Mobile no must be 10 digits only.
+                      </div>
+                    </div>
                     </div>
                 </div>
                 <!---------------------- CITY INPUT ------------------------->
@@ -59,7 +95,13 @@
                     </div>
                     <div class="col-md-7">
                     
-                    <input type="text" class="form-control" id="city" placeholder="Eg. Mumbai">
+                    <input type="text" class="form-control" id="city" placeholder="Eg. Mumbai" formControlName="City">
+                    <div
+                    *ngIf="!City?.valid && (City?.dirty ||City?.touched)">
+                    <div [hidden]="!City.errors.required" class="alert alert-danger">
+                      City is required
+                    </div>
+                    </div>
                     </div>
                 </div>
                 <!---------------------- DATE OF BIRTH INPUT ------------------------->
@@ -69,7 +111,8 @@
                     </div>
                     <div class="col-md-7">
                     
-                    <input type="date" class="form-control" id="dob" placeholder="">
+                    <input type="date" class="form-control" id="dob" placeholder="" formControlName="DOB">
+                    
                     </div>
                 </div>
                 <!---------------------- STATE INPUT ------------------------->
@@ -78,7 +121,13 @@
                         <label for="state" class="form-label">State</label>
                     </div>
                     <div class="col-md-7"> 
-                    <input type="text" class="form-control" id="state" placeholder="Eg. Maharashtra">
+                    <input type="text" class="form-control" id="state" placeholder="Eg. Maharashtra" formControlName="State">
+                    <div
+                    *ngIf="!State?.valid && (State?.dirty ||State?.touched)">
+                    <div [hidden]="!State.errors.required" class="alert alert-danger">
+                      State is required
+                    </div>
+                    </div>
                     </div>
                 </div>
                 <!---------------------- QUALIFICATION INPUT ------------------------->
@@ -87,7 +136,13 @@
                         <label for="qualification" class="form-label">Qualification</label>
                     </div>
                     <div class="col-md-7">     
-                    <input type="text" class="form-control" id="qualification" placeholder="Eg. BTech">
+                    <input type="text" class="form-control" id="qualification" placeholder="Eg. BTech" formControlName="Qualification">
+                    <div
+                    *ngIf="!Qualification?.valid && (Qualification?.dirty ||Qualification?.touched)">
+                    <div [hidden]="!Qualification.errors.required" class="alert alert-danger">
+                      Qualification is required.
+                    </div>
+                    </div>
                     </div>
                 </div>
                 <!---------------------- GRADUATION INPUT ------------------------->
@@ -96,19 +151,25 @@
                         <label for="compleation" class="form-label">Graduation Year</label>
                     </div>
                     <div class="col-md-7">
-                    <input type="number" class="form-control" id="compleation" placeholder="Eg. 2020">
+                    <input type="number" class="form-control" id="compleation" placeholder="Eg. 2020" formControlName="Year_of_completion">
+                    <div
+                    *ngIf="!Year_of_completion?.valid && (Year_of_completion?.dirty ||Year_of_completion?.touched)">
+                    <div [hidden]="!Year_of_completion.errors.required" class="alert alert-danger">
+                      Graduation Year is required.
+                    </div>
+                    </div>
                     </div>
                 </div>
                 <!-- captca -->
                   <div class = "row">
                     <div class="col-md-7">
-                     <ngx-recaptcha2 [siteKey]="siteKey"></ngx-recaptcha2>
+                     <ngx-recaptcha2 [siteKey]="siteKey" formControlName="recaptcha"></ngx-recaptcha2>
                     </div>
                 </div>
                 <!---------------------------------------------------- SUBMIT BUTTON  --------------------------------------------->
                 <div class = "row">
                     <div class="col-md-10">
-                        <input type="submit" class="form-control submit-button" value="Register"> 
+                        <input type="submit" [disabled]="!studentForm.valid"class="form-control submit-button" value="Register"> 
                     </div>
                 </div>
                
@@ -119,8 +180,3 @@
     </div>
 </div>
 <!--------------------------------- SCRIPTS  ------------------------------------->
-<script>
-    function onSubmit(token) {
-      document.getElementById("registration-form").submit();
-    }
-  </script>
