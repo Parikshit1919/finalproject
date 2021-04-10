@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import {  Observable, throwError } from 'rxjs';
-import { Courses, LoginClass } from '../login-class';
+import { Courses, LoginClass } from '../Models/login-class';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +13,8 @@ export class AdminService {
     })
   }
   constructor(private httpClient: HttpClient) { }
+
+//METHOD TO LOGIN ADMIN
   login(login):Observable<LoginClass>
 {
   console.log("INSIDE SERVICE",login);

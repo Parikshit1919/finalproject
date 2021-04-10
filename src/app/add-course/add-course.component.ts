@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,  FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
-import { Courses } from '../login-class';
+import { Courses } from '../Models/login-class';
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',

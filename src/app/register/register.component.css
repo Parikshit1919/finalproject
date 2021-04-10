@@ -72,3 +72,18 @@ input[type="submit"].submit-button:hover {
 {
     padding:1px;
 }
+
+/********************************************* MODAL STYING *****************************/
+#successModal img {
+    height:10vh;
+}
+#successModal .modal-body {
+    font-size:18px;
+}
+
+#errorModal .modal-body {
+    font-size:18px;
+}
+#errorModal img {
+    height:8vh;
+}

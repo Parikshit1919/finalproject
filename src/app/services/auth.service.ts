@@ -3,13 +3,13 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Register } from './register';
+import { Register } from '../Models/register';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiServer = "http://localhost:55345/api";
+  private apiServer = "http://localhost:50471/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -18,6 +18,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
   create(register): Observable<Register> {
-    return this.httpClient.post<Register>(this.apiServer + '/registration/', JSON.stringify(register), this.httpOptions)
+    var req= this.httpClient.post<Register>(this.apiServer + '/Registration/', JSON.stringify(register), this.httpOptions);
+    return req;
 }
 }

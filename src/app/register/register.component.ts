@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Register} from '../register';   
+import {Register} from '../Models/register';   
 import { Router } from '@angular/router';
-
-import { AuthService } from '../auth.service';
+declare var $ : any;
+import { AuthService } from '../services/auth.service';
 
 
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';  
@@ -14,12 +14,14 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angula
 })
 export class RegisterComponent implements OnInit {
   data = false;    
+  //STATES DROPDOWN LIST
   states : string [] = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgar", "Goa", "Gujarat",
   "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
   "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana",
   "Tripura", "Uttarakhand", "Uttar Pradesh","West Bengal"];
 
   massage:string; 
+  //FORMS GROUP
   studentForm= new FormGroup({
     Fullname: new FormControl('',[Validators.required]),
     Student_Email: new FormControl('',[Validators.email,Validators.required]),
@@ -41,6 +43,7 @@ export class RegisterComponent implements OnInit {
   {
  
   }
+  //GET METHODS FOR DATA
   get Fullname()
   {
     return this.studentForm.get('Fullname');
@@ -82,20 +85,37 @@ export class RegisterComponent implements OnInit {
   {
     return this.studentForm.get('recaptcha');
   }
+
+  //MODAL POPUP FOR SUCESSFULL REGISTRATION
+  onSuccess()
+  {
+    $('#successModal').modal('show'); 
+  }
+
+  //MODAL POPUP FOR REGISTRATION ERROR
+  onError()
+  {
+    $('#errorModal').modal('show'); 
+  }
+
+  //CALL SERVICE ON BUTTON CLICK
   onFormSubmit()    
   {    
    console.log(this.studentForm.value); 
-  this.registration.create(this.studentForm.value).subscribe(res => {
-      
-      
-      this.router.navigateByUrl('/Login/Student');
-      
-      
+   this.registration.create(this.studentForm.value).subscribe(res => {
+    if(res.toString() == "added")
+    {
+        this.onSuccess();
+    }
+    else if(res.toString() == "exists")
+    {
+      this.onError();
+    }
+    console.log(res);
+      // this.router.navigateByUrl('/Login/Student');
     });
+  } 
   
-
- 
-  }    
 
 
 }

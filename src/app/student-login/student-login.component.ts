@@ -14,16 +14,16 @@ export class StudentLoginComponent implements OnInit {
     private router: Router,
     public loginService: LoginService) { }
   loginForm=new FormGroup({
-    email:new FormControl('',[Validators.required]),
-    password:new FormControl('',[Validators.required])
+    Student_Email:new FormControl('',[Validators.required]),
+    Student_Password:new FormControl('',[Validators.required])
   })
   ngOnInit(): void {
   }
-  get email(){
-    return this.loginForm.get('email');
+  get Student_Email(){
+    return this.loginForm.get('Student_Email');
   }
-  get password(){
-    return this.loginForm.get('password');
+  get Student_Password(){
+    return this.loginForm.get('Student_Password');
   }
   submitForm() {
     // console.log(this.loginForm.value);

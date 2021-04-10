@@ -1,6 +1,6 @@
 export class LoginClass {
-    email:string;
-    password:string;
+    Student_Email:string;
+    Student_Password:string;
 }
 
 export class Courses{
