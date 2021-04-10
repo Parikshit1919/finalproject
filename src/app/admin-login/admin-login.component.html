@@ -23,8 +23,8 @@
                     
                     <div
                          *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
-                        <div [hidden]="!email.errors.required"  class="alert alert-danger">
-                         Email is required
+                        <div [hidden]="!email.errors.required"  class="text-danger">
+                         *Email is required
                         </div>
                           </div>
                     </div>
@@ -39,8 +39,8 @@
                     
                     <div
                     *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
-                   <div [hidden]="!password.errors.required"  class="alert alert-danger">
-                       Password is required
+                   <div [hidden]="!password.errors.required"  class="text-danger">
+                       *Password is required
                      </div>
                     </div>
                </div>

@@ -43,6 +43,11 @@ form input
     width:100%;
    
 }
+/* CSS TO GREY OUT BUTTON ON INVALID FORM */
+input[type="submit"].submit-button[disabled] {
+    background-color:rgb(175, 175, 175);
+    color:black;
+  }
 
 .submit-button
 {
@@ -50,11 +55,6 @@ form input
     color:white;
     font-size: 18px;
 }
-/* CSS TO GREY OUT BUTTON ON INVALID FORM */
-input[type="submit"].submit-button[disabled] {
-    background-color:rgb(175, 175, 175);
-    color:black;
-  }
 
 input[type="submit"].submit-button:hover {
     background-color:rgb(175, 175, 175);

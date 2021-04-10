@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminService } from '../admin.service';
+import { AdminService } from '../services/admin.service';
 @Component({
   selector: 'app-admin-login',
   templateUrl: './admin-login.component.html',

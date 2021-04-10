@@ -14,7 +14,7 @@
 .card img{
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    height: 30vw;
+    height: 33vw;
     object-fit: cover; 
 }
 
@@ -44,15 +44,20 @@ form input
     width:100%;
     /* margin-left: 2%; */
 }
-.submit-button
+/******************* CSS TO GREY OUT BUTTON ON INVALID FORM **********************/
+.submit-button[disabled] {
+    background-color:rgb(182, 182, 182);
+    color:black;
+  }
+
+  .submit-button
 {
     background-color:black;
     color:white;
     font-size: 18px;
 }
-
-input[type="submit"].submit-button:hover {
-    background-color:rgb(114, 114, 114);
+.submit-button:hover {
+    background-color:rgb(175, 175, 175);
     color:black;
   }
 /************************************STYLING FOR THE BOTTOM TWO LINKS****************************************/
