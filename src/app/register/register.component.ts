@@ -87,8 +87,13 @@ export class RegisterComponent implements OnInit {
    console.log(this.studentForm.value); 
   this.registration.create(this.studentForm.value).subscribe(res => {
       
-      
-      this.router.navigateByUrl('/Login/Student');
+        if(res.toString()=="added"){
+      alert("Registration Successful");
+      this.router.navigateByUrl('/Login/Student')
+    }
+    else{
+      alert("User already Exists");
+    }
       
       
     });
