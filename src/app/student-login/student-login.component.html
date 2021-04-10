@@ -12,15 +12,21 @@
                 <h2 class="card-title">Student Login</h2>
                 <h4 class="card-subtitle">Sign Into Your Account</h4>
                 <!--------------------------------- FROM BEGINS HERE ------------------------------------------->
-                <form>
+                <form [formGroup]="loginForm" (ngSubmit)=" submitForm()" novalidate>
                     <div class = "row">
                         <div class="col-md-2" style="padding-top:10px;">
                             <label for="email" class="form-label">Email</label>
                         </div>
                         <div class="col-md-7">
                        
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
                         </div>
+                        <div
+                         *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
+                        <div [hidden]="!email.errors.required">
+                         Email is required
+                          </div>
+                    </div>
                     </div>
                     <div class = "row">
                         <div class="col-md-2" style="padding-top:10px;">
@@ -28,12 +34,18 @@
                         </div>
                         <div class="col-md-7">
                         <!--  -->
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
                         </div>
+                        <div
+                         *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+                        <div [hidden]="!password.errors.required">
+                            Password is required
+                          </div>
+                    </div>
                     </div>
                     <div class = "row">
                         <div class="col-md-9">
-                            <input type="submit" routerLink="Dashboard" class="form-control submit-button" value="Login"> 
+                            <button type="submit" [disabled]="!loginForm.valid" class="form-control submit-button" value="Login">Login</button> 
                         </div>
                     </div>
                     <!------------------------------------------- BOTTOM TWO LINKS  ---------------------------------------->

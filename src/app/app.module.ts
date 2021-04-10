@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -25,7 +25,7 @@ import { StudentRankingComponent } from './student-ranking/student-ranking.compo
 import { StudentResultsComponent } from './student-results/student-results.component';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import {ReactiveFormsModule} from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +55,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     NgxCaptchaModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
