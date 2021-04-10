@@ -20,7 +20,13 @@ export class AdminService {
   console.log(req);
   return(req);
 }
+GetCourse():Observable<Courses[]>{
+  return this.httpClient.get<Courses[]>(this.apiServer + '/course/')
+}
 AddCourse(course): Observable<Courses> {
   return this.httpClient.post<Courses>(this.apiServer + '/course/', JSON.stringify(course), this.httpOptions)
+}
+DeleteCourse(courseID):Observable<Courses>{
+  return this.httpClient.delete<Courses>(this.apiServer + '/course/' +courseID ,this.httpOptions)
 }
 }

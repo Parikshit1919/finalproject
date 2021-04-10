@@ -37,6 +37,10 @@ export class AdminLoginComponent implements OnInit {
        }
         });
   } 
+  DeleteCourse(courseID)
+  {
+    this.loginService.DeleteCourse(courseID).subscribe();
+  }
 }
 export class AdminLogin {
   email:string;

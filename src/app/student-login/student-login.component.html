@@ -20,27 +20,29 @@
                         <div class="col-md-7">
                        
                         <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
-                        </div>
+                       
                         <div
-                         *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
-                        <div [hidden]="!email.errors.required">
+                         *ngIf="!email?.valid && (email?.dirty ||email?.touched)"  >
+                        <div [hidden]="!email.errors.required" class="alert alert-danger">
                          Email is required
+                         </div>
                           </div>
-                    </div>
-                    </div>
-                    <div class = "row">
-                        <div class="col-md-2" style="padding-top:10px;">
+                          </div>
+                        </div>
+                          <div class="row">
+                              <div class="col-md-2" style="padding-top: 10px;">
                             <label for="password" class="form-label">Password</label>
                         </div>
                         <div class="col-md-7">
                         <!--  -->
                         <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
-                        </div>
+                        
                         <div
                          *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
-                        <div [hidden]="!password.errors.required">
+                        <div [hidden]="!password.errors.required"  class="alert alert-danger">
                             Password is required
                           </div>
+                        </div>
                     </div>
                     </div>
                     <div class = "row">

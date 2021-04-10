@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,  FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
+import { Courses } from '../login-class';
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent implements OnInit {
-
+  courses: Courses[] = [];
   constructor(
     public fb: FormBuilder,
     private router: Router,
@@ -20,7 +21,10 @@ export class AddCourseComponent implements OnInit {
     CourseName:new FormControl('')
   })
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this. AddCourseService.GetCourse().subscribe((data: Courses[])=>{
+      this.courses = data;
+  })
   }
   get  courseID(){
     return this.AddCourseForm.get('courseID');
