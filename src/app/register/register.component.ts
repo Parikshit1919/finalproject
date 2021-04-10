@@ -14,7 +14,11 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angula
 })
 export class RegisterComponent implements OnInit {
   data = false;    
-  
+  states : string [] = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgar", "Goa", "Gujarat",
+  "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
+  "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana",
+  "Tripura", "Uttarakhand", "Uttar Pradesh","West Bengal"];
+
   massage:string; 
   studentForm= new FormGroup({
     Fullname: new FormControl('',[Validators.required]),
@@ -25,7 +29,7 @@ export class RegisterComponent implements OnInit {
     DOB:new FormControl('',[Validators.required]),
     State:new FormControl('',[Validators.required]),
     Qualification:new FormControl('',[Validators.required]),
-    Year_of_completion:new FormControl('',[Validators.required]),
+    Year_of_completion:new FormControl('',[Validators.required,Validators.min(2010),Validators.max(2021)]),
     recaptcha:new FormControl('',[Validators.required])
    
 
@@ -80,7 +84,7 @@ export class RegisterComponent implements OnInit {
   }
   onFormSubmit()    
   {    
-    
+   console.log(this.studentForm.value); 
   this.registration.create(this.studentForm.value).subscribe(res => {
       
       

@@ -21,10 +21,11 @@
                     <div class="col-md-7">
                    
                     <input type="text" class="form-control" id="name" placeholder="Ian Piper" formControlName="Fullname">
+                    <!-- VALIDATION -->
                     <div
                     *ngIf="!Fullname?.valid && (Fullname?.dirty ||Fullname?.touched)">
-                    <div [hidden]="!Fullname.errors.required" class="alert alert-danger">
-                      Name is required
+                    <div [hidden]="!Fullname.errors.required" class="text-danger">
+                      *Name is required
                     </div>
                    
                     </div>
@@ -38,12 +39,13 @@
                     </div>
                     <div class="col-md-7">
                     <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="Student_Email">
+                    <!-- VALIDATION -->
                     <div *ngIf="!Student_Email.valid && (Student_Email.dirty ||Student_Email.touched)">
-                        <div [hidden]="!Student_Email.errors.required" class="alert alert-danger"> 
-                          email is required
+                        <div [hidden]="!Student_Email.errors.required" class="text-danger"> 
+                          *Email is required
                         </div>
-                        <div [hidden]="!Student_Email.errors.email" class="alert alert-danger">
-                          invalid email id
+                        <div [hidden]="!Student_Email.errors.email" class="text-danger">
+                          *Invalid email id
                         </div>
                       </div>
                      
@@ -58,13 +60,14 @@
                     <div class="col-md-7">
                     
                     <input type="password" class="form-control" id="password" placeholder="Password" formControlName="Student_Password" >
+                   <!-- VALIDATION -->
                     <div
                     *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
-                    <div [hidden]="!Student_Password.errors.required" class="alert alert-danger">
-                      Password is required
+                    <div [hidden]="!Student_Password.errors.required" class="text-danger">
+                      *Password is required
                     </div>
-                    <div [hidden]="!Student_Password.errors.pattern" class="alert alert-danger">
-                        Password Must be at least 8 Characters long and should have at least one uppercase, one lowercase, one digit and one special character.
+                    <div [hidden]="!Student_Password.errors.pattern" class="text-danger">
+                        *Password Must be at least 8 Characters long and should have at least one uppercase, one lowercase, one digit and one special character.
                       </div>
                     </div>
                     </div>
@@ -76,15 +79,16 @@
                     </div>
                     <div class="col-md-7">
                     
-                    <input type="text" class="form-control" id="mobile" placeholder="Mobile No." formControlName="Mobile">
+                    <input type="number" class="form-control" id="mobile" placeholder="Mobile No." formControlName="Mobile">
+                    <!-- VALIDATION -->
                     <div
                     *ngIf="!Mobile?.valid && (Mobile?.dirty ||Mobile?.touched)">
-                    <div [hidden]="!Mobile.errors.required" class="alert alert-danger" >
-                      Mobile no is required
+                    <div [hidden]="!Mobile.errors.required" class="text-danger" >
+                      *Mobile no is required
                     </div>
-                    <div [hidden]="!Mobile.errors.pattern" class="alert alert-danger">
-                       Mobile no must be 10 digits only.
-                      </div>
+                    <div [hidden]="!Mobile.errors.pattern" class="text-danger">
+                       *Mobile no must be 10 digits only.
+                    </div>
                     </div>
                     </div>
                 </div>
@@ -96,10 +100,11 @@
                     <div class="col-md-7">
                     
                     <input type="text" class="form-control" id="city" placeholder="Eg. Mumbai" formControlName="City">
+                     <!-- VALIDATION -->
                     <div
                     *ngIf="!City?.valid && (City?.dirty ||City?.touched)">
-                    <div [hidden]="!City.errors.required" class="alert alert-danger">
-                      City is required
+                    <div [hidden]="!City.errors.required" class="text-danger">
+                      *City is required
                     </div>
                     </div>
                     </div>
@@ -112,7 +117,12 @@
                     <div class="col-md-7">
                     
                     <input type="date" class="form-control" id="dob" placeholder="" formControlName="DOB">
-                    
+                    <div
+                    *ngIf="!DOB?.valid && (DOB?.dirty ||DOB?.touched)">
+                    <div [hidden]="!DOB.errors.required" class="text-danger">
+                      *DOB is required
+                    </div>
+                    </div>
                     </div>
                 </div>
                 <!---------------------- STATE INPUT ------------------------->
@@ -121,11 +131,16 @@
                         <label for="state" class="form-label">State</label>
                     </div>
                     <div class="col-md-7"> 
-                    <input type="text" class="form-control" id="state" placeholder="Eg. Maharashtra" formControlName="State">
+                    <!-- <input type="text" class="form-control" id="state" placeholder="Eg. Maharashtra" formControlName="State">  -->
+                    <select class="custom-select"  formControlName="State">
+                        <option value="" disabled>Choose your State</option>
+                        <option *ngFor="let state of states">{{state}}</option> 
+                     </select>
+                    <!-- VALIDATION -->
                     <div
                     *ngIf="!State?.valid && (State?.dirty ||State?.touched)">
-                    <div [hidden]="!State.errors.required" class="alert alert-danger">
-                      State is required
+                    <div [hidden]="!State.errors.required" class="text-danger">
+                     *State is required
                     </div>
                     </div>
                     </div>
@@ -137,10 +152,11 @@
                     </div>
                     <div class="col-md-7">     
                     <input type="text" class="form-control" id="qualification" placeholder="Eg. BTech" formControlName="Qualification">
+                     <!-- VALIDATION -->
                     <div
                     *ngIf="!Qualification?.valid && (Qualification?.dirty ||Qualification?.touched)">
-                    <div [hidden]="!Qualification.errors.required" class="alert alert-danger">
-                      Qualification is required.
+                    <div [hidden]="!Qualification.errors.required" class="text-danger">
+                      *Qualification is required.
                     </div>
                     </div>
                     </div>
@@ -152,11 +168,17 @@
                     </div>
                     <div class="col-md-7">
                     <input type="number" class="form-control" id="compleation" placeholder="Eg. 2020" formControlName="Year_of_completion">
-                    <div
-                    *ngIf="!Year_of_completion?.valid && (Year_of_completion?.dirty ||Year_of_completion?.touched)">
-                    <div [hidden]="!Year_of_completion.errors.required" class="alert alert-danger">
-                      Graduation Year is required.
-                    </div>
+                     <!-- VALIDATION -->
+                    <div *ngIf="!Year_of_completion?.valid && (Year_of_completion?.dirty ||Year_of_completion?.touched)">
+                        <div [hidden]="!Year_of_completion.errors.required" class="text-danger">
+                        *Graduation Year is required.
+                        </div>
+                        <div [hidden]="!Year_of_completion.errors.min" class="text-danger">
+                            *Graduation Year cannot be Less than 2010
+                        </div>
+                        <div [hidden]="!Year_of_completion.errors.max" class="text-danger">
+                            *Graduation Year cannot Greater than 2021
+                        </div>
                     </div>
                     </div>
                 </div>

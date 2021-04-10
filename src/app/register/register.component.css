@@ -14,7 +14,7 @@
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     /* width: 100%; */
-    height: 58vw;
+    height: 68vw;
     object-fit: cover; 
 }
 
@@ -50,11 +50,19 @@ form input
     color:white;
     font-size: 18px;
 }
-
-input[type="submit"].submit-button:hover {
-    background-color:rgb(114, 114, 114);
+/* CSS TO GREY OUT BUTTON ON INVALID FORM */
+input[type="submit"].submit-button[disabled] {
+    background-color:rgb(175, 175, 175);
     color:black;
   }
+
+input[type="submit"].submit-button:hover {
+    background-color:rgb(175, 175, 175);
+    color:black;
+  }
+  
+
+
 /************************************STYLING FOR THE BOTTOM TWO LINKS****************************************/
 .bottom-elements
 {
