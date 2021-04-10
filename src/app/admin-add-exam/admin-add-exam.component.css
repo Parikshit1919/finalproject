@@ -34,11 +34,11 @@
     border: 14px;
 }
 /* MODAL STYLING */
-#DeleteCourseModal img
+#DeleteExamModal img
 {
     height: 4vh;
 }
-#AddCourseModal img 
+#AddExamModal img 
 {
     height:5vh;
 }

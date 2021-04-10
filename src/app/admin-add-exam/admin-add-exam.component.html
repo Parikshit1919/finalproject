@@ -2,11 +2,11 @@
     <!--------------------- HEADING ROW  ---------------------->
     <div class="row heading-row shadow-sm bg-light">
         <div class="col-md-1 img-col">
-            <img src="../../assets/admin-dashboard-courses.png" >
+            <img src="../../assets/admin-dashboard-exams.png" >
         </div>
         <div class="col-md-6">
-            <h3>Courses Dashboard</h3>
-            <h6 class="text-muted ">Add And Remove Courses From Here</h6>
+            <h3>Exams Dashboard</h3>
+            <h6 class="text-muted ">Add And Remove Exams From Here</h6>
         </div>
     <!----------------------HORIZONTAL BREAK  ----------------->
     <div class="row">
@@ -17,13 +17,14 @@
     <!----------------------- CONTENT ROW  ------------------------->
     <div class="row">
         <div class="container-fluid content-container bg-light">
-            <h4>Course List</h4>
+            <h4>Exams List</h4>
             <!-- TABLE BEGIN -->
             <table class="table table-striped course-table">
                 <thead>
                   <tr>
                     <th scope="col">Course ID</th>
                     <th scope="col">Course Name</th>
+                    <th scope="col">Exam Level</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
@@ -31,58 +32,66 @@
                   <tr>
                     <td scope="row">1</td>
                     <td>Angular</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteCourseModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                    <td>1</td>
+                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
                   </tr>
                   <tr>
                     <td scope="row">2</td>
                     <td>C#</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteCourseModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                    <td>2</td>
+                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
                   </tr>
                 </tbody>
               </table>
               <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddCourseModal">
-                    <i class="fas fa-plus"></i> Add Course
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddExamModal">
+                    <i class="fas fa-plus"></i> Add Exam
                 </button>
             
               <!-------------------------ADD MODAL ------------------------------------->
               
-                <div class="modal fade" id="AddCourseModal" tabindex="-1" aria-labelledby="AddCourseModal" aria-hidden="true">
+                <div class="modal fade" id="AddExamModal" tabindex="-1" aria-labelledby="AddExamModal" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-add.png" class="img-fluid"> Add Courses</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-add.png" class="img-fluid"> Add Exams</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <!-------------------- MODAL BODY ----------------------->
                         <div class="modal-body">
-                            <form [formGroup]="AddCourseForm" (ngSubmit)="submitForm()">
+                            <form>
                                 <div class="mb-3">
-                                  <label for="courseID" class="form-label">Course ID</label>
-                                  <input type="text" class="form-control" id="courseID" formControlName="courseID" >
+                                  <label for="courseID" class="form-label">Select Course</label>
+                                  <input type="dropdown" class="form-control" id="courseID" placeholder="Select Course ID">
                                 </div>
                                 <div class="mb-3">
-                                  <label for="CourseName" class="form-label">Course Name</label>
-                                  <input type="text" class="form-control" id="CourseName" formControlName="CourseName">
+                                  <label for="ExamName" class="form-label">Exam Name</label>
+                                  <input type="text" class="form-control" id="ExamName" placeholder="Enter Exam Name">
                                 </div>
-                              
-                       
+                                <div class="mb-3">
+                                    <label for="ExamTime" class="form-label">Exam Time</label>
+                                    <input type="dropdown" class="form-control" id="ExamTime" placeholder="Select Exam Time">
+                                  </div>
+                                <div class="mb-3">
+                                    <label for="ExamLevel" class="form-label">Exam Level</label>
+                                    <input type="dropdown" class="form-control" id="ExamLevel" placeholder="Select Exam Level">
+                                </div>  
+                              </form>
+                        </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Save</button>
                         </div>
-                      </form>
-                    </div>
                     </div>
                     </div>
                 </div>
                 <!--------------------------------------- ARE YOU SURE MODAL -------------------------------------------->
                 
-                <div class="modal fade" id="DeleteCourseModal" tabindex="-1" aria-labelledby="DeleteCourseModal" aria-hidden="true">
+                <div class="modal fade" id="DeleteExamModal" tabindex="-1" aria-labelledby="DeleteCourseModal" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                       <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Delete Course</h5>
+                      <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Delete Exam</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <!-------------------- MODAL BODY ----------------------->

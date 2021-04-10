@@ -18,6 +18,8 @@ import {StudentFeedbackComponent} from './student-feedback/student-feedback.comp
 import {StudentResultsComponent} from './student-results/student-results.component';
 import {StudentRankingComponent} from './student-ranking/student-ranking.component';
 import {LicencesComponent} from './licences/licences.component';
+import {AdminAddExamComponent} from './admin-add-exam/admin-add-exam.component';
+import {AdminAddQuestionsComponent} from './admin-add-questions/admin-add-questions.component';
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
@@ -42,7 +44,9 @@ const routes: Routes = [
       {path:'Analytics',component:AnalyticsComponent},
       {path:'Feedback',component:AdminFeedbackComponent},
       {path:'ExamResults',component:AdminExamResultComponent},
-      {path:'StudentResults',component:AdminStudentResultComponent}
+      {path:'StudentResults',component:AdminStudentResultComponent},
+      {path:'AddExam',component:AdminAddExamComponent},
+      {path:'AddQuestions',component:AdminAddQuestionsComponent}
     ]
   },
   {path:'**',component:NotFoundComponent}

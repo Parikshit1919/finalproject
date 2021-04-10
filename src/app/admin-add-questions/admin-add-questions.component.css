@@ -28,17 +28,8 @@
     margin-top:1%;
     padding-bottom: 10%;
 }
-/* TABLE */
-.course-table
-{
-    border: 14px;
-}
 /* MODAL STYLING */
-#DeleteCourseModal img
-{
-    height: 4vh;
-}
-#AddCourseModal img 
+#AddQuestionsModal img 
 {
     height:5vh;
 }

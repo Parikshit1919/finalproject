@@ -26,6 +26,9 @@ import { StudentResultsComponent } from './student-results/student-results.compo
 import {NgxCaptchaModule} from 'ngx-captcha';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
+import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-questions.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +51,8 @@ import { HttpClientModule } from '@angular/common/http';
     StudentFeedbackComponent,
     StudentRankingComponent,
     StudentResultsComponent,
+    AdminAddExamComponent,
+    AdminAddQuestionsComponent,
     
   ],
   imports: [
