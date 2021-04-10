@@ -56,21 +56,23 @@
                         </div>
                         <!-------------------- MODAL BODY ----------------------->
                         <div class="modal-body">
-                            <form>
+                            <form [formGroup]="AddCourseForm" (ngSubmit)="submitForm()">
                                 <div class="mb-3">
                                   <label for="courseID" class="form-label">Course ID</label>
-                                  <input type="text" class="form-control" id="courseID" >
+                                  <input type="text" class="form-control" id="courseID" formControlName="courseID" >
                                 </div>
                                 <div class="mb-3">
                                   <label for="CourseName" class="form-label">Course Name</label>
-                                  <input type="text" class="form-control" id="CourseName">
+                                  <input type="text" class="form-control" id="CourseName" formControlName="CourseName">
                                 </div>
-                              </form>
-                        </div>
+                              
+                       
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Save</button>
                         </div>
+                      </form>
+                    </div>
                     </div>
                     </div>
                 </div>
@@ -89,7 +91,7 @@
                       </div>
                       <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                      <button type="button" class="btn btn-primary">Yes</button>
+                      <button type="button"  class="btn btn-primary">Yes</button>
                       </div>
                   </div>
                   </div>
