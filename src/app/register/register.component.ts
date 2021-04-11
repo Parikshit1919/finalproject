@@ -112,7 +112,7 @@ export class RegisterComponent implements OnInit {
       this.onError();
     }
     console.log(res);
-      // this.router.navigateByUrl('/Login/Student');
+      // 
     });
   } 
   

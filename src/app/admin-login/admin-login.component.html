@@ -15,15 +15,15 @@
             <form [formGroup]="adminLoginForm" (ngSubmit)="submitForm()" novalidate>
                 <div class = "row">
                     <div class="col-md-2" style="padding-top:10px;">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="Admin_Email" class="form-label">Email</label>
                     </div>
                     <div class="col-md-7">
                    
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+                    <input type="email" class="form-control" id="Admin_Email" placeholder="name@example.com" formControlName="Admin_Email">
                     
                     <div
-                         *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
-                        <div [hidden]="!email.errors.required"  class="text-danger">
+                         *ngIf="!Admin_Email?.valid && (Admin_Email?.dirty ||Admin_Email?.touched)">
+                        <div [hidden]="!Admin_Email.errors.required"  class="text-danger">
                          *Email is required
                         </div>
                           </div>
@@ -31,15 +31,15 @@
                 </div>
                 <div class = "row">
                     <div class="col-md-2" style="padding-top:10px;">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="Admin_Password" class="form-label">Password</label>
                     </div>
                     <div class="col-md-7">
                     <!--  -->
-                    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                    <input type="password" class="form-control" id="Admin_Password" placeholder="Password" formControlName="Admin_Password">
                     
                     <div
-                    *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
-                   <div [hidden]="!password.errors.required"  class="text-danger">
+                    *ngIf="!Admin_Password?.valid && (Admin_Password?.dirty ||Admin_Password?.touched)">
+                   <div [hidden]="!Admin_Password.errors.required"  class="text-danger">
                        *Password is required
                      </div>
                     </div>
@@ -63,3 +63,28 @@
         </div>
     </div>
 </div>
+
+<!------------------------------------------------- MODALS --------------------------------------------------->
+ <!-- ERROR MODAL -->
+ <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalTitle">Error!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="row">
+              <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Invalid Username Or Password
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>

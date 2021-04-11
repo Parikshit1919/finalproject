@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+declare var $ : any;
 @Component({
   selector: 'app-student-login',
   templateUrl: './student-login.component.html',
@@ -26,17 +27,17 @@ export class StudentLoginComponent implements OnInit {
     return this.loginForm.get('Student_Password');
   }
   submitForm() {
-    // console.log(this.loginForm.value);
-    // alert("Login Successful")
+
     this.loginService.login(this.loginForm.value).subscribe(res => {
      console.log(res)
-      if(res.toString()=="FOUND"){
-        console.log("Found");
+      if(res.toString()=="valid")
+      {
         this.router.navigateByUrl('/Login/Student/Dashboard')
       }
-      
-     
-      
+      else 
+      {
+        $('#errorModal').modal('show'); 
+      }
     });
   } 
   

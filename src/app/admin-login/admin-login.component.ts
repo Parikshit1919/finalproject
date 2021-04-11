@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
+declare var $ : any;
 @Component({
   selector: 'app-admin-login',
   templateUrl: './admin-login.component.html',
@@ -16,34 +17,31 @@ export class AdminLoginComponent implements OnInit {
 
   ) { }
   adminLoginForm=new FormGroup({
-    email:new FormControl('',[Validators.required]),
-    password:new FormControl('',[Validators.required])
+    Admin_Email:new FormControl('',[Validators.required]),
+    Admin_Password:new FormControl('',[Validators.required])
   })
   ngOnInit(): void {
   }
-  get email(){
-    return this.adminLoginForm.get('email');
+
+  get Admin_Email(){
+    return this.adminLoginForm.get('Admin_Email');
   }
-  get password(){
-    return this.adminLoginForm.get('password');
+  get Admin_Password(){
+    return this.adminLoginForm.get('Admin_Password');
   }
+
   submitForm() {
     this.loginService.login(this.adminLoginForm.value).subscribe(res => {
       console.log(res)
-       if(res.toString()=="FOUND"){
-         console.log("Found");
+       if(res.toString()=="valid"){
          
          this.router.navigateByUrl('/Login/Admin/Dashboard')
        }
+       else
+       {
+        $('#errorModal').modal('show'); 
+       }
         });
   } 
-  DeleteCourse(courseID)
-  {
-    this.loginService.DeleteCourse(courseID).subscribe();
-  }
+
 }
-export class AdminLogin {
-  email:string;
-  password:string;
-  
-} 

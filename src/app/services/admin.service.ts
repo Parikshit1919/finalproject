@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import {  Observable, throwError } from 'rxjs';
 import { Courses, LoginClass } from '../Models/login-class';
+import {AdminLogin} from '../Models/admin-login';
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  private apiServer = "http://localhost:56413/api";
+  private apiServer = "http://localhost:50471/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -15,10 +16,10 @@ export class AdminService {
   constructor(private httpClient: HttpClient) { }
 
 //METHOD TO LOGIN ADMIN
-  login(login):Observable<LoginClass>
+login(login):Observable<AdminLogin>
 {
   console.log("INSIDE SERVICE",login);
-  var req = this.httpClient.post<LoginClass>(this.apiServer + '/login/',JSON.stringify(login), this.httpOptions)
+  var req = this.httpClient.post<AdminLogin>(this.apiServer + '/AdminLogin/',JSON.stringify(login), this.httpOptions)
   console.log(req);
   return(req);
 }

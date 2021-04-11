@@ -72,3 +72,11 @@ form input
 {
     padding:1px;
 }
+
+/********************************************* MODAL STYING *****************************/
+#errorModal .modal-body {
+    font-size:18px;
+}
+#errorModal img {
+    height:8vh;
+}
