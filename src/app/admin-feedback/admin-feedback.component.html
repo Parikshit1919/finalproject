@@ -24,20 +24,22 @@
                   <tr>
                     <th scope="col">Student ID</th>
                     <th scope="col">Student Name</th>
+                    <th scope="col">Course ID</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Level</th>
                     <th scope="col">Feedback</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td scope="row">1</td>
-                    <td>Bhusna</td>
-                    <td>Too Hard</td>
+                  <tr *ngFor="let feedback of feedbacks">
+                    <td scope="row">{{feedback.s_id}}</td>
+                    <td>{{feedback.s_name}}</td>
+                    <td>{{feedback.c_id}}</td>
+                    <td>{{feedback.Course_name}}</td>
+                    <td>{{feedback.level}}</td>
+                    <td>{{feedback.Feedback}}</td>
                   </tr>
-                  <tr>
-                    <td scope="row">2</td>
-                    <td>Kevin</td>
-                    <td>Too Easy</td>
-                  </tr>
+              
                 </tbody>
               </table>
         </div>

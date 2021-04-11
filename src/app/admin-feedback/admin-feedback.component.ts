@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Feedback} from '../Models/feedback';
+import { AdminService } from '../services/admin.service';
 @Component({
   selector: 'app-admin-feedback',
   templateUrl: './admin-feedback.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminFeedbackComponent implements OnInit {
 
-  constructor() { }
+  feedbacks:Feedback[] = [];
+  constructor( public feedbackService: AdminService ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    this.feedbackService.GetFeedback().subscribe((data: Feedback[])=>
+    {
+      console.log("FEEDBACK",data);
+      this.feedbacks=data;
+    })  
   }
 
 }
