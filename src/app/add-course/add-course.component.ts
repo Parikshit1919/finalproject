@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl,  FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl,  FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
 import { Courses } from '../Models/courses';
 import { compileNgModule } from '@angular/compiler';
+declare var $ : any;
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
@@ -19,8 +20,7 @@ export class AddCourseComponent implements OnInit {
 
   ) { }
   AddCourseForm=new FormGroup({
-    courseID:new FormControl(''),
-    CourseName:new FormControl('')
+    Course_name:new FormControl('',Validators.required)
   })
 
   ngOnInit() {
@@ -30,31 +30,70 @@ export class AddCourseComponent implements OnInit {
   })
   }
   //GET COURSES DATA
-  get  courseID(){
-    return this.AddCourseForm.get('courseID');
+  get Course_name(){
+    return this.AddCourseForm.get('Course_name');
   }
-  get CourseName(){
-    return this.AddCourseForm.get('CourseName');
+  /********************************** MODAL FUNCTIONS ******************************************************/
+
+  //REFRESH PAGE METHOD
+  refresh()
+  {
+    location.reload();
+  }
+  //MODAL POPUP FOR SUCESSFULL REGISTRATION
+  onSuccess()
+  {
+
+    $('#AddCourseModal').modal('hide'); 
+    $('#DeleteCourseModal').modal('hide'); 
+    $('#successModal').modal('show'); 
+    
   }
 
+   //MODAL POPUP FOR REGISTRATION ERROR
+   onError()
+   {
+     $('#AddCourseModal').modal('hide'); 
+     $('#DeleteCourseModal').modal('hide');
+     $('#errorModal').modal('show'); 
+   }
+ /********************************** FORMS FUNCTIONS ******************************************************/
   //CALL SERVICE ON METHOD CALL
   submitForm() {
     this.CourseService.AddCourse(this.AddCourseForm.value).subscribe(res => {
-      console.log('Registered Successfully')
       console.log(res)
-      console.log(this.AddCourseForm.value)
+      if(res.toString() == "added")
+      {
+          this.onSuccess();
+      }
+      else if(res.toString() == "exists")
+      {
+        this.onError();
+      }
     });
   } 
 
+  //GET THE COURSE ID TO BE DELETED
   setDeleteCourse(id:number)
   {
     this.deleteCourseId=id;
     console.log(id);
   }
+
+
+  //CALL SERVICE TO DELETE THE COURSE 
   deleteCourse()
   {
     this.CourseService.DeleteCourse(this.deleteCourseId).subscribe(res => {
       console.log(res);
+      if(res.toString() == "removed")
+      {
+          this.onSuccess();
+      }
+      else if(res.toString() == "course_error")
+      {
+        this.onError();
+      }
     });
   }
 

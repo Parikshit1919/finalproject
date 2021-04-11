@@ -36,7 +36,7 @@ GetCourse():Observable<Courses[]>
 //METHOD TO ADD COURSES
 AddCourse(course): Observable<Courses> 
 {
-  return this.httpClient.post<Courses>(this.apiServer + '/course/', JSON.stringify(course), this.httpOptions);
+  return this.httpClient.post<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions);
 }
 //METHOD TO DELETE COURSES
 DeleteCourse(courseID):Observable<Courses> 
