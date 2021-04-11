@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import {  Observable, throwError } from 'rxjs';
-import { Courses, LoginClass } from '../Models/login-class';
 import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
+import {Courses} from '../Models/courses';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,20 +24,28 @@ login(login):Observable<AdminLogin>
   console.log(req);
   return(req);
 }
+
 //METHOD TO GET COURSES
 GetCourse():Observable<Courses[]>
 {
-  return this.httpClient.get<Courses[]>(this.apiServer + '/course/');
+  var req =  this.httpClient.get<Courses[]>(this.apiServer + '/Courses/');
+  console.log(req);
+  return req;
 }
+
 //METHOD TO ADD COURSES
 AddCourse(course): Observable<Courses> 
 {
   return this.httpClient.post<Courses>(this.apiServer + '/course/', JSON.stringify(course), this.httpOptions);
 }
 //METHOD TO DELETE COURSES
-DeleteCourse(courseID):Observable<Courses>
+DeleteCourse(courseID):Observable<Courses> 
 {
-  return this.httpClient.delete<Courses>(this.apiServer + '/course/' +courseID ,this.httpOptions);
+  console.log("INSIDE SERVICE",courseID);
+  console.log("INSIDE SERVEE URL",this.apiServer + '/Courses/' +courseID);
+  var req = this.httpClient.delete<Courses>(this.apiServer + '/Courses/' +courseID);
+  console.log(req);
+  return req;
 }
 
 //METHOD TO GET FEEDBACK

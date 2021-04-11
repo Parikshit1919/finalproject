@@ -28,16 +28,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td scope="row">1</td>
-                    <td>Angular</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteCourseModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                  <tr *ngFor="let course of courses">
+                    <td scope="row">{{course.course_id}}</td>
+                    <td>{{course.course_name}}</td>
+                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteCourseModal" (click)="setDeleteCourse(course.course_id)"><i class="fas fa-trash-alt"></i> Remove</button></td>
                   </tr>
-                  <tr>
-                    <td scope="row">2</td>
-                    <td>C#</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteCourseModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
-                  </tr>
+                  
                 </tbody>
               </table>
               <!-- Button trigger modal -->
@@ -91,7 +87,7 @@
                       </div>
                       <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                      <button type="button"  class="btn btn-primary">Yes</button>
+                      <button type="button"  class="btn btn-primary" (click)="deleteCourse()">Yes</button>
                       </div>
                   </div>
                   </div>

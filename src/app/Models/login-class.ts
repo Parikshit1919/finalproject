@@ -3,7 +3,3 @@ export class LoginClass {
     Student_Password:string;
 }
 
-export class Courses{
-    courseId:number;
-    CourseName:string;
-}
