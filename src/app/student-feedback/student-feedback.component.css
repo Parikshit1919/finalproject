@@ -26,5 +26,29 @@
 .content-container
 {
     margin-top:1%;
-    padding-bottom: 10%;
+    padding-bottom: 20%;
+}
+/****************************************** ADD FEEDBACK CARD STYLIGN **************************/
+.add-feedback-card img
+{
+    height:8vh;
+}
+.add-feedback-card 
+{
+    border-radius:15px;
+}
+
+/********************************************* MODAL STYING *****************************/
+#successModal img {
+    height:10vh;
+}
+#successModal .modal-body {
+    font-size:18px;
+}
+
+#errorModal .modal-body {
+    font-size:18px;
+}
+#errorModal img {
+    height:8vh;
 }

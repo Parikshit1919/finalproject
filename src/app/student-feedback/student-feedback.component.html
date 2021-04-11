@@ -17,8 +17,106 @@
     <!----------------------- CONTENT ROW  ------------------------->
     <div class="row">
         <div class="container-fluid content-container bg-light">
-            CONTENT
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card add-feedback-card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="../../assets/student-dashboad-add-feedback.png" class="img-fluid">
+                                </div>
+                                <div class="col mt-3 mr-5">
+                                    <h4>Write Your Feedback</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                          <!-- FROM BEGINS -->
+                          <form>
+                            <div class="mb-3">
+                              <label for="s_id" class="form-label">Student ID</label>
+                              <input type="number" class="form-control" id="s_id" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Student Name</label>
+                              <input type="text" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="courseid" class="form-label">Course ID</label>
+                                <input type="number" class="form-control" id="courseid">
+                              </div>
+                            <div class="mb-3">
+                                <label for="level" class="form-label">Level</label>
+                                <input type="number" class="form-control" id="level">
+                            </div>  
+                            <div class="mb-3">
+                                <label for="floatingTextarea2">Comments</label>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                            </div>  
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Submit</button>
+                          </form>
+                            <!-- FROM ENDS -->
+                        </div>
+                      </div>
+                </div>
+            </div>
         </div>
     </div>
     </div>
 </div>
+
+<!--------------------------------- MODAL  ------------------------------------->
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal">
+  Launch demo modal
+</button> -->
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalTitle">SUCCESS!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="row">
+              <div class="col">
+                  <img src="../../assets/register-success.png/" class="img-fluid"> Feedback Received!
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" routerLink="/Login/Student" ><i class="fas fa-user-friends"></i> Login!</button>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!-- ERROR MODAL -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalTitle">Error!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="row">
+              <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> You Have Already Registered!
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>
