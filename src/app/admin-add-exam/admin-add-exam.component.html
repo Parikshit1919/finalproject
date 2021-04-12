@@ -24,7 +24,9 @@
                   <tr>
                     <th scope="col">Course ID</th>
                     <th scope="col">Course Name</th>
+                    <th scope="col">Exam ID</th>
                     <th scope="col">Exam Level</th>
+                    <th scope="col">Exam Time</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
@@ -33,12 +35,8 @@
                     <td scope="row">1</td>
                     <td>Angular</td>
                     <td>1</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
-                  </tr>
-                  <tr>
-                    <td scope="row">2</td>
-                    <td>C#</td>
-                    <td>2</td>
+                    <td>1</td>
+                    <td>10</td>
                     <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
                   </tr>
                 </tbody>
@@ -63,10 +61,6 @@
                                 <div class="mb-3">
                                   <label for="courseID" class="form-label">Select Course</label>
                                   <input type="dropdown" class="form-control" id="courseID" placeholder="Select Course ID">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="ExamName" class="form-label">Exam Name</label>
-                                  <input type="text" class="form-control" id="ExamName" placeholder="Enter Exam Name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="ExamTime" class="form-label">Exam Time</label>
