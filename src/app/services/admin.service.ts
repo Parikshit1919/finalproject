@@ -8,7 +8,7 @@ import {Courses} from '../Models/courses';
   providedIn: 'root'
 })
 export class AdminService {
-  private apiServer = "http://localhost:50471/api";
+  private apiServer = "http://localhost:27104/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
