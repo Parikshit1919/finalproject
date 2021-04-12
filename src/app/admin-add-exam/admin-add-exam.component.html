@@ -31,13 +31,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td scope="row">1</td>
-                    <td>Angular</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>10</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                  <tr *ngFor="let e of exams">
+                    <td>{{e.Course_id}}</td>
+                    <td>{{e.Course_name}}</td>
+                    <td>{{e.Exam_id}}</td>
+                    <td>{{e.level}}</td>
+                    <td>{{e.time}} Mins</td>
+                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal" (click)="setDeleteExam(e.Exam_id)"><i class="fas fa-trash-alt"></i> Remove</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -81,7 +81,7 @@
                 </div>
                 <!--------------------------------------- ARE YOU SURE MODAL -------------------------------------------->
                 
-                <div class="modal fade" id="DeleteExamModal" tabindex="-1" aria-labelledby="DeleteCourseModal" aria-hidden="true">
+                <div class="modal fade" id="DeleteExamModal" tabindex="-1" aria-labelledby="DeleteExamModal" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                       <div class="modal-header">
@@ -94,11 +94,63 @@
                       </div>
                       <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                      <button type="button" class="btn btn-primary">Yes</button>
+                      <button type="button" class="btn btn-danger" (click)="deleteExam()">Yes</button>
                       </div>
                   </div>
                   </div>
               </div>
+
+              <!----------------------------------- SUCCESS MODAL ------------------------------------------------------------------->
+              <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="successModalTitle">SUCCESS!</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <!-- MODAL BODY -->
+                    <div class="modal-body">
+                      <div class="row">
+                          <div class="col">
+                              <img src="../../assets/register-success.png/" class="img-fluid"> Saved Successfully
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="refresh()">Close</button>
+                       
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+               <!--------------------------------- ERROR MODAL ------------------------------------------------------------->
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="errorModalTitle">Error!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <!-- MODAL BODY -->
+                      <div class="modal-body">
+                        <div class="row">
+                            <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Exam Could Not Be Deleted
+                            </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  (click)="refresh()">Close</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
         </div>
     </div>
     </div>

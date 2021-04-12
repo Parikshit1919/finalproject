@@ -57,36 +57,20 @@
                           </div>
                        
                             <div class="mb-3">
-                              <label for="c_id" class="form-label">Course Id</label>
-                              <select class="custom-select"  formControlName="c_id">
+                              <label for="e_id" class="form-label">Exam ID</label>
+                              <select class="custom-select"  formControlName="e_id">
 
-                                <option value="" disabled>Choose your Course</option>
-                                <option *ngFor="let C of courses" [value]="C.course_id">{{C.course_id}}-{{C.course_name}}</option> 
+                                <option value="" disabled>Choose your Exam</option>
+                                <option *ngFor="let e of exams" [value]="e.Exam_id">{{e.Exam_id}}-{{e.Course_name}}</option> 
                              </select>
                                 <div
-                                      *ngIf="!c_id?.valid && (c_id?.dirty ||c_id?.touched)">
-                                    <div [hidden]="!c_id.errors.required"  class="text-danger">
-                                        *Course ID is required
+                                      *ngIf="!e_id?.valid && (e_id?.dirty ||e_id?.touched)">
+                                    <div [hidden]="!e_id.errors.required"  class="text-danger">
+                                        *Exam ID is required
                                       </div>
                                       </div>
-
-                                      </div>
-                                      
+                            </div>
                             
-                            <div class="mb-3">
-                            <label for="level" class="form-label">Level</label>
-                            <select class="custom-select"  formControlName="level">
-                              <option value="" disabled>Choose your Level</option>
-                              <option *ngFor="let level of levels">{{level}}</option> 
-                           </select>
-                              <div
-                                    *ngIf="!level?.valid && (level?.dirty ||level?.touched)">
-                                  <div [hidden]="!level.errors.required"  class="text-danger">
-                                      *level is required
-                                    </div>
-                                    </div>
-
-                        </div> 
                           <div class="mb-3">
                               <label for="Feedback1">Comments</label>
                               <textarea class="form-control" placeholder="Add your comments here" id="Feedback1" formControlName="Feedback1" style="height: 100px"></textarea>
@@ -137,7 +121,6 @@ Launch demo modal
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" routerLink="/Login/Student" ><i class="fas fa-user-friends"></i> Login!</button>
         </div>
     </div>
   </div>
@@ -155,7 +138,7 @@ Launch demo modal
       <!-- MODAL BODY -->
       <div class="modal-body">
         <div class="row">
-            <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> You Have Already Submitted Feedback!
+            <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Wrong Student_id Entered
             </div>
         </div>
       </div>

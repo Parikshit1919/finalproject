@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { StudentService } from '../services/student.service';
 import { Feedback } from '../Models/feedback';
 import { Courses } from '../Models/courses';
-
+import {Exam} from '../Models/exam';
 import { AdminService } from '../services/admin.service';
 declare var $ : any;
 
@@ -16,8 +16,8 @@ declare var $ : any;
 })
 export class StudentFeedbackComponent implements OnInit {
 
-  levels : number [] = [1,2,3];
-    courses: Courses[] = [];
+    levels : number [] = [1,2,3];
+    exams: Exam[] = [];
  
    //feedback: Feedback[] = [];
   constructor(
@@ -30,16 +30,15 @@ export class StudentFeedbackComponent implements OnInit {
   AddFeedbackForm=new FormGroup({
     s_id:new FormControl('',Validators.required),
     s_name:new FormControl('',Validators.required),
-    c_id:new FormControl('',Validators.required),
-    level:new FormControl('',Validators.required),
+    e_id:new FormControl('',Validators.required),
     Feedback1:new FormControl('',Validators.required)
   })
 
   // ngOnInit() {}
 
   ngOnInit() {
-    this. CourseService.GetCourse().subscribe((data: Courses[])=>{
-      this.courses = data;
+    this. CourseService.GetExams().subscribe((data: Exam[])=>{
+      this.exams = data;
       console.log(data);
   })
   }
@@ -52,13 +51,9 @@ export class StudentFeedbackComponent implements OnInit {
   {
     return this.AddFeedbackForm.get('s_name');
   }
-  get c_id()
+  get e_id()
   {
-    return this.AddFeedbackForm.get('c_id');
-  }
-  get level()
-  {
-    return this.AddFeedbackForm.get('level');
+    return this.AddFeedbackForm.get('e_id');
   }
   get Feedback1()
   {
@@ -67,13 +62,7 @@ export class StudentFeedbackComponent implements OnInit {
   
   /********************************** MODAL FUNCTIONS ******************************************************/
 
-  //REFRESH PAGE METHOD
-  // refresh()
-  // {
-  //   location.reload();
-  // }
-
-  //MODAL POPUP FOR SUCESSFULL Feedback
+  
   onSuccess()
   {
     $('#successModal').modal('show'); 
@@ -88,6 +77,7 @@ export class StudentFeedbackComponent implements OnInit {
  /********************************** FORMS FUNCTIONS ******************************************************/
   //CALL SERVICE ON METHOD CALL
   submitForm() {
+    console.log(this.AddFeedbackForm.value);
     this.StudentService.SendFeedback(this.AddFeedbackForm.value).subscribe(res => {
       console.log(res)
      
@@ -95,7 +85,7 @@ export class StudentFeedbackComponent implements OnInit {
       {
           this.onSuccess();
       }
-      else if(res.toString() == "exists")
+      else if(res.toString() == "error")
       {
         this.onError();
       }
