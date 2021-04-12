@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import {  Observable, throwError } from 'rxjs';
-import { LoginClass } from '../Models/login-class';
+import {Feedback} from '../Models/feedback';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class StudentService {
   private apiServer = "http://localhost:27104/api";
   httpOptions = {
     headers: new HttpHeaders({
@@ -15,12 +15,10 @@ export class LoginService {
   }
   constructor(private httpClient: HttpClient) { }
 
-  //METHOD TO LOGIN STUDENT
-  login(login):Observable<LoginClass>
+
+ //METHOD TO ADD Feedback
+SendFeedback(feedback): Observable<Feedback> 
 {
-  console.log("INSIDE SERVICE",login);
-  var req = this.httpClient.post<LoginClass>(this.apiServer + '/Login/',JSON.stringify(login), this.httpOptions)
-  console.log(req);
-  return(req);
+  return this.httpClient.post<Feedback>(this.apiServer + '/Feedback/', JSON.stringify(feedback), this.httpOptions);
 }
 }
