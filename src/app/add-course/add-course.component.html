@@ -58,7 +58,7 @@
                                 
                                 <div class="mb-3">
                                   <label for="Course_name" class="form-label">Course Name</label>
-                                  <input type="text" class="form-control" id="Course_name" formControlName="Course_name" >
+                                  <input type="text" class="form-control" id="Course_name" placeholder="Enter Course Name" formControlName="Course_name" >
                                         <div *ngIf="!Course_name?.valid && (Course_name?.dirty ||Course_name?.touched)">
                                           <div [hidden]="!Course_name.errors.required"  class="text-danger">
                                           *Course Name is required
@@ -94,7 +94,7 @@
                      
                         <div class="mb-3">
                           <label for="course_name" class="form-label">Course Name</label>
-                          <input type="text" class="form-control" id="course_name" formControlName="course_name" >
+                          <input type="text" class="form-control" id="course_name" placeholder="Enter Course Name" formControlName="course_name" >
                               <div *ngIf="!course_name?.valid && (course_name?.dirty ||course_name?.touched)">
                                 <div [hidden]="!course_name.errors.required"  class="text-danger">
                                 *Course Name is required
