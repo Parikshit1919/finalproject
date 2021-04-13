@@ -14,7 +14,7 @@ export class StudentLoginComponent implements OnInit {
     public fb: FormBuilder,
     private router: Router,
     public loginService: LoginService) { }
-  loginForm=new FormGroup({
+    loginForm=new FormGroup({
     Student_Email:new FormControl('',[Validators.required]),
     Student_Password:new FormControl('',[Validators.required])
   })
