@@ -28,6 +28,7 @@
                     <th scope="col">Exam Level</th>
                     <th scope="col">Exam Time</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Modify</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@
                     <td>{{e.level}}</td>
                     <td>{{e.time}} Mins</td>
                     <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal" (click)="setDeleteExam(e.Exam_id)"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                    <td><button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#ModifyExamModal" (click)="GetExam(e.Exam_id)"><i class="fas fa-tools"></i> Modify</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -46,7 +48,7 @@
                     <i class="fas fa-plus"></i> Add Exam
                 </button>
             
-              <!-------------------------ADD MODAL ------------------------------------->
+              <!-------------------------ADD EXAM MODAL ------------------------------------->
               
                 <div class="modal fade" id="AddExamModal" tabindex="-1" aria-labelledby="AddExamModal" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -57,6 +59,7 @@
                         </div>
                         <!-------------------- MODAL BODY ----------------------->
                         <div class="modal-body">
+
                             <form [formGroup]="AddExamForm">
                                 <div class="mb-3">
                                   <label for="Course_id" class="form-label">Select Course</label>
@@ -115,6 +118,75 @@
                     </div>
                     </div>
                 </div>
+
+                <!------------------------------------------------- MODIFY MODAL ---------------------------------------------------------->
+                            
+              <div class="modal fade" id="ModifyExamModal" tabindex="-1" aria-labelledby="ModifyExamModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-modify.png" class="img-fluid"> Modify Courses</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-------------------- MODAL BODY ----------------------->
+                    <div class="modal-body">
+                      <form [formGroup]="ModifyExamForm">
+
+                                <div class="mb-3">
+                                  <label for="course_id" class="form-label">Course ID</label>
+
+                                 <input type="text" class="form-control" formControlName="course_id" disabled>
+
+                                </div>
+                                <div class="mb-3">
+                                  <label for="course_id" class="form-label">Exam ID</label>
+
+                                 <input type="text" class="form-control" formControlName="exam_id" disabled>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="time" class="form-label">Exam Time</label>
+                                    <input type="number" class="form-control" id="time" placeholder="Select Exam Time" formControlName="time">
+                                    
+                                    <!-- VALIDATION -->
+                                    <div *ngIf="!time?.valid && (time?.dirty ||time?.touched)">
+                                      <div [hidden]="!time.errors.required"  class="text-danger">
+                                          *Time is required
+                                        </div>
+                                        <div [hidden]="!time.errors.min"  class="text-danger">
+                                          *Time Cannot Be Less Than 10 Minutes
+                                        </div>
+                                        <div [hidden]="!time.errors.max"  class="text-danger">
+                                          *Time Cannot Be Greater Than 180 Minutes
+                                        </div>
+                                      </div> 
+
+                                  </div>
+                                <div class="mb-3">
+                                    <label for="ExamLevel" class="form-label">Exam Level</label>
+                                    <select class="custom-select" id ="ExamLevel" formControlName="level">
+                                      <option value="" disabled>Choose The Level</option>
+                                      <option *ngFor="let l of levels" [value]="l">{{l}}</option> 
+                                   </select>
+
+                                  <!-- VALIDATION -->
+                                    <div *ngIf="!level?.valid && (level?.dirty ||level?.touched)">
+                                      <div [hidden]="!level.errors.required"  class="text-danger">
+                                          *Level is required
+                                        </div>
+                                      </div> 
+
+                                </div>  
+                     
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)= "submitModified()">Save</button>
+                    </div>
+                  </form>
+                </div>
+                </div>
+                </div>
+              </div>
                 <!--------------------------------------- ARE YOU SURE MODAL -------------------------------------------->
                 
                 <div class="modal fade" id="DeleteExamModal" tabindex="-1" aria-labelledby="DeleteExamModal" aria-hidden="true">

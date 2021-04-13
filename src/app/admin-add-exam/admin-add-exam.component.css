@@ -57,3 +57,8 @@
 #errorModal img {
     height:8vh;
 }
+
+#ModifyExamModal img 
+{
+    height:5vh;
+}

@@ -76,7 +76,21 @@ GetExams():Observable<Exam[]>
     console.log(req);
     return req;
   }
-
+//METHOD TO GET EXAM BY ID
+GetExamByID(examID):Observable<Exam>
+{
+  let params = new HttpParams().set('id', examID);
+  var req = this.httpClient.get<Exam>(this.apiServer + '/ExamsByID/',{ params: params } );
+  console.log(req);
+  return req;
+}
+//METHOD TO MODIFY EXAM
+ModifyExam(exam):Observable<Exam>
+{
+  var req = this.httpClient.put<Exam>(this.apiServer + '/AdminExam/',JSON.stringify(exam), this.httpOptions );
+  console.log(req);
+  return req;
+}
 //METHOD TO DELETE EXAM
 DeleteExam(ExamID):Observable<Exam>
 {

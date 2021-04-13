@@ -21,14 +21,11 @@ export class AddCourseComponent implements OnInit {
     public CourseService: AdminService
 
   ) { }
+
+  /****************************************** ADD COURSE FORM ************************/
 //ADD COURSE FORM GORUP
   AddCourseForm=new FormGroup({
     Course_name:new FormControl('',Validators.required)
-  })
-//MODIFIED COURSE FORM GORUP
-   ModifyCourseForm=new FormGroup({
-    course_id:new FormControl('',Validators.required),
-    course_name:new FormControl('',Validators.required)
   })
 
 
@@ -38,22 +35,31 @@ export class AddCourseComponent implements OnInit {
       console.log(data);
   })
   }
-  //MODIFIED GET COURSES DATA
-  get course_id()
-  {
-      return this.ModifyCourseForm.get('course_id');
-  }
-  get course_name()
-  {
-      return this.ModifyCourseForm.get('course_name');
-  }
-
+ 
   //GET COURSES DATA
   get Course_name()
   {
     return this.AddCourseForm.get('Course_name');
     
   }
+
+  /****************************************** MODIFY EXAM FORM CONTROL **************************************/ 
+    //MODIFIED COURSE FORM GORUP
+    ModifyCourseForm=new FormGroup({
+      course_id:new FormControl('',Validators.required),
+      course_name:new FormControl('',Validators.required)
+    })
+    
+    //MODIFIED GET COURSES DATA
+    get course_id()
+    {
+        return this.ModifyCourseForm.get('course_id');
+    }
+    get course_name()
+    {
+        return this.ModifyCourseForm.get('course_name');
+    }
+
 
   /********************************** MODAL FUNCTIONS ******************************************************/
 

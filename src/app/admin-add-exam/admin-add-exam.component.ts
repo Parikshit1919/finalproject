@@ -16,10 +16,12 @@ export class AdminAddExamComponent implements OnInit
   levels:number[] = [1,2,3];
   exams: Exam[] = []; //TO STROE ALL AVAILABLE EXAMS
   courses : Courses[] = []; // TO STORE ALL AVAIALBLE COURSES
+
   constructor(
     public CourseService: AdminService,
     public fb: FormBuilder,
   ) { }
+
   ngOnInit(): void 
   {
     this. CourseService.GetExams().subscribe((data: Exam[])=>{
@@ -38,9 +40,8 @@ export class AdminAddExamComponent implements OnInit
     Level:new FormControl('',Validators.required),
     Time:new FormControl('',[Validators.required,Validators.min(10),Validators.max(180)])
   })
-  //GET FROM DATA
- 
 
+  //GET FROM DATA
   get Course_id()
   {
     return this.AddExamForm.get('Course_id');
@@ -54,6 +55,35 @@ export class AdminAddExamComponent implements OnInit
   get Time()
   {
     return this.AddExamForm.get('Time');
+  }
+
+  /****************************************** MODIFY EXAM FORM CONTROL **************************************/ 
+  ModifyExamForm=new FormGroup({
+    course_id:new FormControl('',Validators.required),
+    exam_id:new FormControl('',Validators.required),
+    level:new FormControl('',Validators.required),
+    time:new FormControl('',[Validators.required,Validators.min(10),Validators.max(180)])
+  })
+  
+  //GET FROM DATA
+  get course_id()
+  {
+    return this.ModifyExamForm.get('course_id');
+  }
+
+  get level()
+  {
+    return this.ModifyExamForm.get('level');
+  }
+
+  get time()
+  {
+    return this.ModifyExamForm.get('time');
+  }
+
+  get exam_id()
+  {
+    return this.ModifyExamForm.get('exam_id');
   }
  /********************************** FORMS FUNCTIONS ******************************************************/
   //CALL SERVICE ON METHOD CALL
@@ -85,6 +115,7 @@ export class AdminAddExamComponent implements OnInit
   {
 
     $('#AddExamModal').modal('hide'); 
+    $('#ModifyExamModal').modal('hide'); 
     $('#DeleteExamModal').modal('hide'); 
     $('#successModal').modal('show'); 
     
@@ -94,6 +125,7 @@ export class AdminAddExamComponent implements OnInit
    onError()
    {
      $('#AddExamModal').modal('hide'); 
+     $('#ModifyExamModal').modal('hide'); 
      $('#DeleteExamModal').modal('hide');
      $('#errorModal').modal('show'); 
    }
@@ -124,4 +156,34 @@ export class AdminAddExamComponent implements OnInit
   }
  
 
+   /************************************************** METHODS FOR MODIFY ****************************************/
+   GetExam(examID)
+   {
+     console.log(examID);
+     this.CourseService.GetExamByID(examID).subscribe(res => {
+      this.ModifyExamForm.controls['course_id'].setValue(res.Course_id);
+      this.ModifyExamForm.controls['exam_id'].setValue(res.Exam_id);
+      this.ModifyExamForm.controls['level'].setValue(res.level);
+      this.ModifyExamForm.controls['time'].setValue(res.time);
+      console.log(res);
+     
+    });
+   }
+
+   //METHOD TO SUBMIT MODIFIED COURSE DATA
+  submitModified()
+  {
+    console.log(this.ModifyExamForm.value)
+    this.CourseService.ModifyExam(this.ModifyExamForm.value).subscribe(res => {
+      console.log(res);
+      if(res.toString() == "changed")
+      {
+          this.onSuccess();
+      }
+      else if(res.toString() == "error")
+      {
+        this.onError();
+      }
+    });
+  }
 }
