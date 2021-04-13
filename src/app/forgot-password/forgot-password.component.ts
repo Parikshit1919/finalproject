@@ -12,7 +12,7 @@ declare var $ : any;
 export class ForgotPasswordComponent implements OnInit { constructor(
   public fb: FormBuilder,
   private router: Router,
-   public ForgotService: ForgotService
+  //  public ForgotService: ForgotService
   
 
 ) { }
@@ -41,8 +41,6 @@ get confirmpassword(){
 
 public isCollapsed1 = true;
 resetToggler():void{
-  // this.isCollapsed1 = !this.isCollapsed1;
-
   this.isCollapsed1 = false;
 }
 
