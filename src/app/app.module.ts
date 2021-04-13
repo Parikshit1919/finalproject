@@ -28,7 +28,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
 import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-questions.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +61,8 @@ import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-ques
     NgbModule,
     NgxCaptchaModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,6 +19,7 @@
         <div class="container-fluid content-container bg-light">
             <h4>Exams List</h4>
             <!-- TABLE BEGIN -->
+            
             <table class="table table-striped course-table">
                 <thead>
                   <tr>
@@ -39,10 +40,11 @@
                     <td scope="row">2</td>
                     <td>C#</td>
                     <td>2</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                    <td><button type="button" class="btn btn-danger"   data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
                   </tr>
                 </tbody>
               </table>
+           
               <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddExamModal">
                     <i class="fas fa-plus"></i> Add Exam
@@ -59,7 +61,7 @@
                         </div>
                         <!-------------------- MODAL BODY ----------------------->
                         <div class="modal-body">
-                            <form>
+                            <form >
                                 <div class="mb-3">
                                   <label for="courseID" class="form-label">Select Course</label>
                                   <input type="dropdown" class="form-control" id="courseID" placeholder="Select Course ID">
@@ -92,7 +94,7 @@
                   <div class="modal-content">
                       <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Delete Exam</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"  aria-label="Close"></button>
                       </div>
                       <!-------------------- MODAL BODY ----------------------->
                       <div class="modal-body">
@@ -100,7 +102,7 @@
                       </div>
                       <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                      <button type="button" class="btn btn-primary">Yes</button>
+                      <button type="button" class="btn btn-primary" (click)="DeleteExam()">Yes</button>
                       </div>
                   </div>
                   </div>

@@ -4,11 +4,12 @@ import {  Observable, throwError } from 'rxjs';
 import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
 import {Courses} from '../Models/courses';
+import {Exams} from '../Models/exams'
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  private apiServer = "http://localhost:50471/api";
+  private apiServer = "http://localhost:49910/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -52,6 +53,15 @@ DeleteCourse(courseID):Observable<Courses>
 GetFeedback():Observable<Feedback[]>
 {
   var req = this.httpClient.get<Feedback[]>(this.apiServer + '/FeedBack/');
+  console.log(req);
+  return req;
+}
+//METHOD TO DELETE EXAM
+DeleteExam(Exam_id):Observable<Exams> 
+{
+  console.log("INSIDE SERVICE",Exam_id);
+  console.log("INSIDE SERVEE URL",this.apiServer + '/AdminExam/' +Exam_id);
+  var req = this.httpClient.delete<Exams>(this.apiServer + '/AdminExam/' +Exam_id);
   console.log(req);
   return req;
 }
