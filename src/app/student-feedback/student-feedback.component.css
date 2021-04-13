@@ -52,3 +52,7 @@
 #errorModal img {
     height:8vh;
 }
+#errorModal .text-muted
+{
+    font-size: 12px;
+}
