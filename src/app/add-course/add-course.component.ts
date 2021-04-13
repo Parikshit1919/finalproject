@@ -13,15 +13,24 @@ declare var $ : any;
 export class AddCourseComponent implements OnInit {
   deleteCourseId:number;
   courses: Courses[] = [];
+  GetCourse:Courses;
+
   constructor(
     public fb: FormBuilder,
     private router: Router,
     public CourseService: AdminService
 
   ) { }
+//ADD COURSE FORM GORUP
   AddCourseForm=new FormGroup({
     Course_name:new FormControl('',Validators.required)
   })
+//MODIFIED COURSE FORM GORUP
+   ModifyCourseForm=new FormGroup({
+    course_id:new FormControl('',Validators.required),
+    course_name:new FormControl('',Validators.required)
+  })
+
 
   ngOnInit() {
     this. CourseService.GetCourse().subscribe((data: Courses[])=>{
@@ -29,10 +38,23 @@ export class AddCourseComponent implements OnInit {
       console.log(data);
   })
   }
-  //GET COURSES DATA
-  get Course_name(){
-    return this.AddCourseForm.get('Course_name');
+  //MODIFIED GET COURSES DATA
+  get course_id()
+  {
+      return this.ModifyCourseForm.get('course_id');
   }
+  get course_name()
+  {
+      return this.ModifyCourseForm.get('course_name');
+  }
+
+  //GET COURSES DATA
+  get Course_name()
+  {
+    return this.AddCourseForm.get('Course_name');
+    
+  }
+
   /********************************** MODAL FUNCTIONS ******************************************************/
 
   //REFRESH PAGE METHOD
@@ -45,6 +67,7 @@ export class AddCourseComponent implements OnInit {
   {
 
     $('#AddCourseModal').modal('hide'); 
+    $('#ModifyCourseModal').modal('hide'); 
     $('#DeleteCourseModal').modal('hide'); 
     $('#successModal').modal('show'); 
     
@@ -54,6 +77,7 @@ export class AddCourseComponent implements OnInit {
    onError()
    {
      $('#AddCourseModal').modal('hide'); 
+     $('#ModifyCourseModal').modal('hide'); 
      $('#DeleteCourseModal').modal('hide');
      $('#errorModal').modal('show'); 
    }
@@ -72,6 +96,22 @@ export class AddCourseComponent implements OnInit {
       }
     });
   } 
+//METHOD TO SUBMIT MODIFIED COURSE DATA
+  submitModified()
+  {
+    console.log(this.ModifyCourseForm.value)
+    this.CourseService.ModifyCourse(this.ModifyCourseForm.value).subscribe(res => {
+      console.log(res)
+      if(res.toString() == "changed")
+      {
+          this.onSuccess();
+      }
+      else if(res.toString() == "error")
+      {
+        this.onError();
+      }
+    });
+  }
 
   //GET THE COURSE ID TO BE DELETED
   setDeleteCourse(id:number)
@@ -80,7 +120,19 @@ export class AddCourseComponent implements OnInit {
     console.log(id);
   }
 
+  //CALL SERVICE TO GET COURSE BY ID
+  getCourse(courseId)
+  {
+    console.log(courseId)
+    this.CourseService.GetCourseByID(courseId).subscribe(res => {
+    this.ModifyCourseForm.controls['course_id'].setValue(res.course_id)
+    this.ModifyCourseForm.controls['course_name'].setValue(res.course_name)
+    console.log(res);
+    });    
+  }
+  
 
+  
   //CALL SERVICE TO DELETE THE COURSE 
   deleteCourse()
   {

@@ -27,7 +27,7 @@ import {NgxCaptchaModule} from 'ngx-captcha';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
 import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-questions.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,8 @@ import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-ques
     NgbModule,
     NgxCaptchaModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

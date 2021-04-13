@@ -25,6 +25,7 @@
                     <th scope="col">Course ID</th>
                     <th scope="col">Course Name</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Modify</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,7 @@
                     <td scope="row">{{course.course_id}}</td>
                     <td>{{course.course_name}}</td>
                     <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteCourseModal" (click)="setDeleteCourse(course.course_id)"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                    <td><button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#ModifyCourseModal" (click)="getCourse(course.course_id)"><i class="fas fa-tools"></i> Modify</button></td>
                   </tr>
                   
                 </tbody>
@@ -56,10 +58,9 @@
                                 
                                 <div class="mb-3">
                                   <label for="Course_name" class="form-label">Course Name</label>
-                                  <input type="text" class="form-control" id="Course_name" formControlName="Course_name">
-                                        <div
-                                        *ngIf="!Course_name?.valid && (Course_name?.dirty ||Course_name?.touched)">
-                                      <div [hidden]="!Course_name.errors.required"  class="text-danger">
+                                  <input type="text" class="form-control" id="Course_name" formControlName="Course_name" >
+                                        <div *ngIf="!Course_name?.valid && (Course_name?.dirty ||Course_name?.touched)">
+                                          <div [hidden]="!Course_name.errors.required"  class="text-danger">
                                           *Course Name is required
                                         </div>
                                         </div>
@@ -73,6 +74,43 @@
                     </div>
                     </div>
                 </div>
+                <!------------------------------------------------- MODIFY MODAL ---------------------------------------------------------->
+                            
+              <div class="modal fade" id="ModifyCourseModal" tabindex="-1" aria-labelledby="ModifyCourseModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-modify.png" class="img-fluid"> Modify Courses</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-------------------- MODAL BODY ----------------------->
+                    <div class="modal-body">
+                      <form [formGroup]="ModifyCourseForm">
+
+                        <div class="mb-3">
+                          <label for="course_id" class="form-label">Course ID</label>
+                          <input type="text" class="form-control" id="course_id" formControlName="course_id" disabled>
+                          </div>
+                     
+                        <div class="mb-3">
+                          <label for="course_name" class="form-label">Course Name</label>
+                          <input type="text" class="form-control" id="course_name" formControlName="course_name" >
+                              <div *ngIf="!course_name?.valid && (course_name?.dirty ||course_name?.touched)">
+                                <div [hidden]="!course_name.errors.required"  class="text-danger">
+                                *Course Name is required
+                              </div>
+                              </div>
+                          </div>
+                     
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" [disabled]="!ModifyCourseForm.valid" (click)="submitModified()">Save</button>
+                    </div>
+                  </form>
+                </div>
+                </div>
+                </div>
+              </div>
                 <!--------------------------------------- ARE YOU SURE MODAL -------------------------------------------->
                 
                 <div class="modal fade" id="DeleteCourseModal" tabindex="-1" aria-labelledby="DeleteCourseModal" aria-hidden="true">
@@ -93,7 +131,7 @@
                   </div>
                   </div>
               </div>
-
+              
               <!----------------------------------- SUCCESS MODAL ------------------------------------------------------------------->
               <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -133,7 +171,7 @@
                       <!-- MODAL BODY -->
                       <div class="modal-body">
                         <div class="row">
-                            <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Course Already Added
+                            <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Could Not Save Changes
                             </div>
                         </div>
                       </div>

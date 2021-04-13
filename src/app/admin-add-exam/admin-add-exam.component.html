@@ -57,24 +57,60 @@
                         </div>
                         <!-------------------- MODAL BODY ----------------------->
                         <div class="modal-body">
-                            <form>
+                            <form [formGroup]="AddExamForm">
                                 <div class="mb-3">
-                                  <label for="courseID" class="form-label">Select Course</label>
-                                  <input type="dropdown" class="form-control" id="courseID" placeholder="Select Course ID">
+                                  <label for="Course_id" class="form-label">Select Course</label>
+
+                                  <select class="custom-select"  formControlName="Course_id">
+                                    <option value="" disabled>Choose your Course</option>
+                                    <option *ngFor="let c of courses" [value]="c.course_id">{{c.course_id}}-{{c.course_name}}</option> 
+                                 </select>
+                                 <!-- VALIDATION -->
+                                 <div *ngIf="!Course_id?.valid && (Course_id?.dirty ||Course_id?.touched)">
+                                  <div [hidden]="!Course_id.errors.required"  class="text-danger">
+                                      *Course ID is required
+                                    </div>
+                                  </div>
+
                                 </div>
                                 <div class="mb-3">
-                                    <label for="ExamTime" class="form-label">Exam Time</label>
-                                    <input type="dropdown" class="form-control" id="ExamTime" placeholder="Select Exam Time">
+                                    <label for="Time" class="form-label">Exam Time</label>
+                                    <input type="number" class="form-control" id="Time" placeholder="Select Exam Time" formControlName="Time">
+                                    
+                                    <!-- VALIDATION -->
+                                    <div *ngIf="!Time?.valid && (Time?.dirty ||Time?.touched)">
+                                      <div [hidden]="!Time.errors.required"  class="text-danger">
+                                          *Time is required
+                                        </div>
+                                        <div [hidden]="!Time.errors.min"  class="text-danger">
+                                          *Time Cannot Be Less Than 10 Minutes
+                                        </div>
+                                        <div [hidden]="!Time.errors.max"  class="text-danger">
+                                          *Time Cannot Be Greater Than 180 Minutes
+                                        </div>
+                                      </div> 
+
                                   </div>
                                 <div class="mb-3">
                                     <label for="ExamLevel" class="form-label">Exam Level</label>
-                                    <input type="dropdown" class="form-control" id="ExamLevel" placeholder="Select Exam Level">
+                                    <select class="custom-select" id ="ExamLevel" formControlName="Level">
+                                      <option value="" disabled>Choose The Level</option>
+                                      <option *ngFor="let l of levels" [value]="l">{{l}}</option> 
+                                   </select>
+
+                                  <!-- VALIDATION -->
+                                    <div *ngIf="!Level?.valid && (Level?.dirty ||Level?.touched)">
+                                      <div [hidden]="!Level.errors.required"  class="text-danger">
+                                          *Level is required
+                                        </div>
+                                      </div> 
+
                                 </div>  
                               </form>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-primary" [disabled]="!AddExamForm.valid" (click)="submitForm()">Save</button>
                         </div>
                     </div>
                     </div>

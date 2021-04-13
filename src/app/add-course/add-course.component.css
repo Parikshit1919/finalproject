@@ -42,6 +42,10 @@
 {
     height:5vh;
 }
+#ModifyCourseModal img 
+{
+    height:5vh;
+}
 
 /********************************************* MODAL STYING *****************************/
 #successModal img {

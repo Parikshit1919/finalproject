@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
 import {  Observable, throwError } from 'rxjs';
 import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
@@ -25,11 +25,29 @@ login(login):Observable<AdminLogin>
   console.log(req);
   return(req);
 }
+/*************************************************** COURSES METHOD *************************************/
 
 //METHOD TO GET COURSES
 GetCourse():Observable<Courses[]>
 {
   var req =  this.httpClient.get<Courses[]>(this.apiServer + '/Courses/');
+  console.log(req);
+  return req;
+}
+//METHOD TO GET COURSE BY ID
+GetCourseByID(courseID):Observable<Courses>
+{
+  let params = new HttpParams().set('id', courseID);
+  var req = this.httpClient.get<Courses>(this.apiServer + '/CoursesByID/', { params: params });
+  console.log(req);
+  return req;
+}
+
+//METHOD TO MODIFT COURSES
+ModifyCourse(course):Observable<Courses>
+{
+  console.log(course);
+  var req = this.httpClient.put<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions);
   console.log(req);
   return req;
 }
@@ -39,6 +57,7 @@ AddCourse(course): Observable<Courses>
 {
   return this.httpClient.post<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions);
 }
+
 //METHOD TO DELETE COURSES
 DeleteCourse(courseID):Observable<Courses> 
 {
@@ -48,6 +67,8 @@ DeleteCourse(courseID):Observable<Courses>
   console.log(req);
   return req;
 }
+
+/*********************************************** EXAMS METHODS ************************************/
   //METHOD TO GET ADD AVAILABLE EXAMS
 GetExams():Observable<Exam[]>
   {
@@ -61,6 +82,13 @@ DeleteExam(ExamID):Observable<Exam>
 {
   console.log(this.apiServer + '/AdminExam/' +ExamID);
   var req = this.httpClient.delete<Exam>(this.apiServer + '/AdminExam/' +ExamID);
+  console.log(req);
+  return req;
+}
+//METHOD TO ADD EXAM
+AddExam(Exam):Observable<Exam>
+{
+  var req = this.httpClient.post<Exam>(this.apiServer + '/AdminExam/' ,JSON.stringify(Exam), this.httpOptions);
   console.log(req);
   return req;
 }

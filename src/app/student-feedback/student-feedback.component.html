@@ -37,13 +37,12 @@
                             <label for="s_id" class="form-label">Student ID</label>
                             <input type="number" class="form-control" id="s_id" formControlName="s_id" >
 
-                            <div
-                                        *ngIf="!s_id?.valid && (s_id?.dirty ||s_id?.touched)">
+                            <div *ngIf="!s_id?.valid && (s_id?.dirty ||s_id?.touched)">
                                     <div [hidden]="!s_id.errors.required"  class="text-danger">
                                         *s_id is required
                                       </div>
-                                      </div>
-                          </div>
+                              </div>
+                            </div>
                           
                           <div class="mb-3">
                             <label for="s_name" class="form-label">Student Name</label>
