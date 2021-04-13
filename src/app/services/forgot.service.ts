@@ -4,6 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ForgotService {
+  hidereset : boolean = false;
+  resetMenu():void{
+    if(this.hidereset === true)
+    {
+      this.hidereset=false;
+    }
+  }
 
   constructor() { }
 }
