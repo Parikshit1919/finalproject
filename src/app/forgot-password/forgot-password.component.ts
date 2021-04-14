@@ -20,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit { constructor(
     Email:new FormControl('',[Validators.required]),
     resetcode:new FormControl('',[Validators.required]),
     newpassword:new FormControl('',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]),
-    confirmpassword:new FormControl('',[Validators.required]),
+    confirmpassword:new FormControl('',[Validators.required,Validators.pattern("{{newpassword.value}}")]),
 })
 ngOnInit(): void {
 }
@@ -33,11 +33,14 @@ get resetcode(){
 }
 get newpassword(){
   return this.ForgotPasswordForm.get('newpassword');
+  
 }
 
 get confirmpassword(){
   return this.ForgotPasswordForm.get('confirmpassword');
 }
+
+
 
 public isCollapsed1 = true;
 resetToggler():void{
