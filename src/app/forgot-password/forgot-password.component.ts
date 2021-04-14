@@ -20,10 +20,17 @@ export class ForgotPasswordComponent implements OnInit { constructor(
     Email:new FormControl('',[Validators.required]),
     resetcode:new FormControl('',[Validators.required]),
     newpassword:new FormControl('',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]),
-    confirmpassword:new FormControl('',[Validators.required]),
-})
+    confirmpassword:new FormControl('',[Validators.required])
+},{validators: this.password.bind(this)})
+
+password(formGroup: FormGroup) {
+  const { value: password } = formGroup.get('newpassword');
+  const { value: confirmPassword } = formGroup.get('confirmpassword');
+  return password === confirmPassword ? null : { passwordNotMatch: true };
+}
 ngOnInit(): void {
 }
+//GET FORM DATA
 get Email(){
   return this.ForgotPasswordForm.get('Email');
 }
