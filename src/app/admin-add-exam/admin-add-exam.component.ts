@@ -1,31 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AdminService } from '../services/admin.service';
-declare var $ : any;
-=======
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Courses } from '../Models/courses';
 import {Exam} from '../Models/exam';
 import { AdminService } from '../services/admin.service';
 declare var $ : any;
 
->>>>>>> backup
 @Component({
   selector: 'app-admin-add-exam',
   templateUrl: './admin-add-exam.component.html',
   styleUrls: ['./admin-add-exam.component.css']
 })
-<<<<<<< HEAD
-export class AdminAddExamComponent implements OnInit {
-  deleteExam_id: number;
-
-  constructor(
-    public fb: FormBuilder,
-    private router: Router,
-    public CourseService: AdminService
-=======
 export class AdminAddExamComponent implements OnInit
  {
   deleteExamId:number;
@@ -36,7 +20,6 @@ export class AdminAddExamComponent implements OnInit
   constructor(
     public CourseService: AdminService,
     public fb: FormBuilder,
->>>>>>> backup
   ) { }
 
   ngOnInit(): void 
@@ -50,32 +33,6 @@ export class AdminAddExamComponent implements OnInit
       console.log(data);
     })
   }
-<<<<<<< HEAD
-  onSuccess()
-  {
-
-    //$('#AddCourseModal').modal('hide'); 
-    //$('#DeleteCourseModal').modal('hide'); 
-    //$('#successModal').modal('show'); 
-    
-  }
-
-   //MODAL POPUP FOR REGISTRATION ERROR
-   onError()
-   {
-    // $('#AddCourseModal').modal('hide'); 
-    // $('#DeleteCourseModal').modal('hide');
-     //$('#errorModal').modal('show'); 
-   }
-  setDeleteCourse(id:number)
-  {
-    this.deleteExam_id=id;
-    console.log(id);
-  }
-  DeleteExam()
-  {
-    this.CourseService.DeleteCourse(this.deleteExam_id).subscribe(res => {
-=======
 /****************************************** ADD EXAM FORM CONTROL **************************************/  
 
   AddExamForm=new FormGroup({
@@ -186,7 +143,6 @@ export class AdminAddExamComponent implements OnInit
   deleteExam()
   {
     this.CourseService.DeleteExam(this.deleteExamId).subscribe(res => {
->>>>>>> backup
       console.log(res);
       if(res.toString() == "removed")
       {
@@ -197,9 +153,6 @@ export class AdminAddExamComponent implements OnInit
         this.onError();
       }
     });
-<<<<<<< HEAD
-
-=======
   }
  
 
@@ -232,6 +185,5 @@ export class AdminAddExamComponent implements OnInit
         this.onError();
       }
     });
->>>>>>> backup
   }
 }

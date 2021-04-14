@@ -27,10 +27,7 @@ import {NgxCaptchaModule} from 'ngx-captcha';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
 import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-questions.component';
-<<<<<<< HEAD
-=======
 import { FormsModule } from '@angular/forms';
->>>>>>> backup
 
 @NgModule({
   declarations: [
@@ -66,11 +63,7 @@ import { FormsModule } from '@angular/forms';
     NgxCaptchaModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-   
-=======
     FormsModule
->>>>>>> backup
   ],
   providers: [],
   bootstrap: [AppComponent]

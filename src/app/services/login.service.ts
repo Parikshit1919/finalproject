@@ -7,11 +7,7 @@ import { LoginClass } from '../Models/login-class';
   providedIn: 'root'
 })
 export class LoginService {
-<<<<<<< HEAD
   private apiServer = "http://localhost:49910/api";
-=======
-  private apiServer = "http://localhost:27104/api";
->>>>>>> backup
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

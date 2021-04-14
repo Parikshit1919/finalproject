@@ -33,19 +33,6 @@
                   </tr>
                 </thead>
                 <tbody>
-<<<<<<< HEAD
-                  <tr>
-                    <td scope="row">1</td>
-                    <td>Angular</td>
-                    <td>1</td>
-                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
-                  </tr>
-                  <tr>
-                    <td scope="row">2</td>
-                    <td>C#</td>
-                    <td>2</td>
-                    <td><button type="button" class="btn btn-danger"   data-bs-toggle="modal" data-bs-target="#DeleteExamModal"><i class="fas fa-trash-alt"></i> Remove</button></td>
-=======
                   <tr *ngFor="let e of exams">
                     <td>{{e.Course_id}}</td>
                     <td>{{e.Course_name}}</td>
@@ -54,7 +41,6 @@
                     <td>{{e.time}} Mins</td>
                     <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteExamModal" (click)="setDeleteExam(e.Exam_id)"><i class="fas fa-trash-alt"></i> Remove</button></td>
                     <td><button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#ModifyExamModal" (click)="GetExam(e.Exam_id)"><i class="fas fa-tools"></i> Modify</button></td>
->>>>>>> backup
                   </tr>
                 </tbody>
               </table>
@@ -75,16 +61,8 @@
                         </div>
                         <!-------------------- MODAL BODY ----------------------->
                         <div class="modal-body">
-<<<<<<< HEAD
-                            <form >
-                                <div class="mb-3">
-                                  <label for="courseID" class="form-label">Select Course</label>
-                                  <input type="dropdown" class="form-control" id="courseID" placeholder="Select Course ID">
-                                </div>
-=======
 
                             <form [formGroup]="AddExamForm">
->>>>>>> backup
                                 <div class="mb-3">
                                   <label for="Course_id" class="form-label">Select Course</label>
 
@@ -226,11 +204,7 @@
                       </div>
                       <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-<<<<<<< HEAD
-                      <button type="button" class="btn btn-primary" (click)="DeleteExam()">Yes</button>
-=======
                       <button type="button" class="btn btn-danger" (click)="deleteExam()">Yes</button>
->>>>>>> backup
                       </div>
                   </div>
                   </div>
