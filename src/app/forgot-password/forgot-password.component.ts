@@ -12,7 +12,7 @@ declare var $ : any;
 export class ForgotPasswordComponent implements OnInit { constructor(
   public fb: FormBuilder,
   private router: Router,
-  //  public ForgotService: ForgotService
+  public forgotService: ForgotService
   
 
 ) { }
@@ -23,6 +23,7 @@ export class ForgotPasswordComponent implements OnInit { constructor(
     confirmpassword:new FormControl('',[Validators.required])
 },{validators: this.password.bind(this)})
 
+//PASSWORD MATCHING
 password(formGroup: FormGroup) {
   const { value: password } = formGroup.get('newpassword');
   const { value: confirmPassword } = formGroup.get('confirmpassword');
@@ -54,19 +55,22 @@ resetToggler():void{
   this.isCollapsed1 = false;
 }
 
+//THIS METHOD CALLS THE API TO SEND RESET KEY
+sendEmail()
+{
+  console.log(this.ForgotPasswordForm.get('Email').value);
+  var res =this.forgotService.SendEmail(this.ForgotPasswordForm.get('Email').value).subscribe(res => {
+    console.log(res);
+  });
+  console.log(res);
+}
 submitForm() {
   console.log(this.ForgotPasswordForm.value);
-  // this.loginService.login(this.ForgotPasswordForm.value).subscribe(res => {
-  //   console.log(res)
-  //    if(res.toString()=="valid"){
-       
-  //      this.router.navigateByUrl('/Login/Admin/Dashboard')
-  //    }
-  //    else
-  //    {
-  //     $('#errorModal').modal('show'); 
-  //    }
-  //     });
+  console.log(this.ForgotPasswordForm.get('Email').value);
+  var res =this.forgotService.changePassword(this.ForgotPasswordForm.value).subscribe(res => {
+    console.log(res);
+  });
+  console.log(res);
 } 
 
 }

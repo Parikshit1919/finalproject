@@ -9,7 +9,7 @@ import { Register } from '../Models/register';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiServer = "http://localhost:27104/api";
+  private apiServer = "http://localhost:50471/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
