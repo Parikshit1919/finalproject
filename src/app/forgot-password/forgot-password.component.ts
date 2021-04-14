@@ -40,11 +40,14 @@ get resetcode(){
 }
 get newpassword(){
   return this.ForgotPasswordForm.get('newpassword');
+  
 }
 
 get confirmpassword(){
   return this.ForgotPasswordForm.get('confirmpassword');
 }
+
+
 
 public isCollapsed1 = true;
 resetToggler():void{
