@@ -45,6 +45,7 @@ resetToggler():void{
 }
 
 submitForm() {
+  console.log(this.ForgotPasswordForm.value);
   // this.loginService.login(this.ForgotPasswordForm.value).subscribe(res => {
   //   console.log(res)
   //    if(res.toString()=="valid"){
