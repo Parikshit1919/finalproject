@@ -24,7 +24,7 @@
                   <tr>
                     <th scope="col">Student ID</th>
                     <th scope="col">Student Name</th>
-                    <th scope="col">Course ID</th>
+                    <th scope="col">Exam ID</th>
                     <th scope="col">Course Name</th>
                     <th scope="col">Level</th>
                     <th scope="col">Feedback</th>
@@ -34,10 +34,10 @@
                   <tr *ngFor="let feedback of feedbacks">
                     <td scope="row">{{feedback.s_id}}</td>
                     <td>{{feedback.s_name}}</td>
-                    <td>{{feedback.c_id}}</td>
+                    <td>{{feedback.e_id}}</td>
                     <td>{{feedback.Course_name}}</td>
                     <td>{{feedback.level}}</td>
-                    <td>{{feedback.Feedback}}</td>
+                    <td>{{feedback.feedback}}</td>
                   </tr>
               
                 </tbody>

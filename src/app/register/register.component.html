@@ -38,13 +38,13 @@
                         <label for="email" class="form-label">Email</label>
                     </div>
                     <div class="col-md-7">
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="Student_Email">
+                    <input type="text" class="form-control" id="email" placeholder="name@example.com" formControlName="Student_Email">
                     <!-- VALIDATION -->
                     <div *ngIf="!Student_Email.valid && (Student_Email.dirty ||Student_Email.touched)">
                         <div [hidden]="!Student_Email.errors.required" class="text-danger"> 
                           *Email is required
                         </div>
-                        <div [hidden]="!Student_Email.errors.email" class="text-danger">
+                        <div [hidden]="!Student_Email.errors.pattern" class="text-danger">
                           *Invalid email id
                         </div>
                       </div>
@@ -228,7 +228,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" routerLink="/Login/Student" ><i class="fas fa-user-friends"></i> Login!</button>
+            <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" routerLink="/Login/Student" ><i class="fas fa-user-friends"></i> Login!</button>
           </div>
       </div>
     </div>

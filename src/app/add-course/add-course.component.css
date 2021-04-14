@@ -33,15 +33,7 @@
 {
     border: 14px;
 }
-/* MODAL STYLING */
-#DeleteCourseModal img
-{
-    height: 4vh;
-}
-#AddCourseModal img 
-{
-    height:5vh;
-}
+
 
 /********************************************* MODAL STYING *****************************/
 #successModal img {
@@ -56,4 +48,17 @@
 }
 #errorModal img {
     height:8vh;
+}
+
+#DeleteCourseModal img
+{
+    height: 4vh;
+}
+#AddCourseModal img 
+{
+    height:5vh;
+}
+#ModifyCourseModal img 
+{
+    height:5vh;
 }

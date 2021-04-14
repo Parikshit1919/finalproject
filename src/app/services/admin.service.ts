@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
 import {  Observable, throwError } from 'rxjs';
 import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
 import {Courses} from '../Models/courses';
+<<<<<<< HEAD
 import {Exams} from '../Models/exams'
+=======
+import {Exam} from '../Models/exam';
+>>>>>>> backup
 @Injectable({
   providedIn: 'root'
 })
@@ -25,11 +29,29 @@ login(login):Observable<AdminLogin>
   console.log(req);
   return(req);
 }
+/*************************************************** COURSES METHOD *************************************/
 
 //METHOD TO GET COURSES
 GetCourse():Observable<Courses[]>
 {
   var req =  this.httpClient.get<Courses[]>(this.apiServer + '/Courses/');
+  console.log(req);
+  return req;
+}
+//METHOD TO GET COURSE BY ID
+GetCourseByID(courseID):Observable<Courses>
+{
+  let params = new HttpParams().set('id', courseID);
+  var req = this.httpClient.get<Courses>(this.apiServer + '/CoursesByID/', { params: params });
+  console.log(req);
+  return req;
+}
+
+//METHOD TO MODIFT COURSES
+ModifyCourse(course):Observable<Courses>
+{
+  console.log(course);
+  var req = this.httpClient.put<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions);
   console.log(req);
   return req;
 }
@@ -39,12 +61,52 @@ AddCourse(course): Observable<Courses>
 {
   return this.httpClient.post<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions);
 }
+
 //METHOD TO DELETE COURSES
 DeleteCourse(courseID):Observable<Courses> 
 {
   console.log("INSIDE SERVICE",courseID);
   console.log("INSIDE SERVEE URL",this.apiServer + '/Courses/' +courseID);
   var req = this.httpClient.delete<Courses>(this.apiServer + '/Courses/' +courseID);
+  console.log(req);
+  return req;
+}
+
+/*********************************************** EXAMS METHODS ************************************/
+  //METHOD TO GET ADD AVAILABLE EXAMS
+GetExams():Observable<Exam[]>
+  {
+    var req = this.httpClient.get<Exam[]>(this.apiServer + '/AdminExam/');
+    console.log(req);
+    return req;
+  }
+//METHOD TO GET EXAM BY ID
+GetExamByID(examID):Observable<Exam>
+{
+  let params = new HttpParams().set('id', examID);
+  var req = this.httpClient.get<Exam>(this.apiServer + '/ExamsByID/',{ params: params } );
+  console.log(req);
+  return req;
+}
+//METHOD TO MODIFY EXAM
+ModifyExam(exam):Observable<Exam>
+{
+  var req = this.httpClient.put<Exam>(this.apiServer + '/AdminExam/',JSON.stringify(exam), this.httpOptions );
+  console.log(req);
+  return req;
+}
+//METHOD TO DELETE EXAM
+DeleteExam(ExamID):Observable<Exam>
+{
+  console.log(this.apiServer + '/AdminExam/' +ExamID);
+  var req = this.httpClient.delete<Exam>(this.apiServer + '/AdminExam/' +ExamID);
+  console.log(req);
+  return req;
+}
+//METHOD TO ADD EXAM
+AddExam(Exam):Observable<Exam>
+{
+  var req = this.httpClient.post<Exam>(this.apiServer + '/AdminExam/' ,JSON.stringify(Exam), this.httpOptions);
   console.log(req);
   return req;
 }

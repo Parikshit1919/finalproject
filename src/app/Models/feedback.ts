@@ -2,8 +2,8 @@ export class Feedback
 {
     s_id:number;
     s_name: string;
-    c_id: number;
+    e_id: number;
     level: number;
-    Feedback: string;
+    feedback: string;
     Course_name: string;
 }

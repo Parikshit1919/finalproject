@@ -42,3 +42,23 @@
 {
     height:5vh;
 }
+
+/********************************************* MODAL STYING *****************************/
+#successModal img {
+    height:10vh;
+}
+#successModal .modal-body {
+    font-size:18px;
+}
+
+#errorModal .modal-body {
+    font-size:18px;
+}
+#errorModal img {
+    height:8vh;
+}
+
+#ModifyExamModal img 
+{
+    height:5vh;
+}
