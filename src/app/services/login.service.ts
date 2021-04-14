@@ -23,4 +23,10 @@ export class LoginService {
   console.log(req);
   return(req);
 }
+//LOGOUT
+logout() :void {    
+  localStorage.setItem('isLoggedIn','false');    
+  localStorage.removeItem('token');  
+    
+  } 
 }

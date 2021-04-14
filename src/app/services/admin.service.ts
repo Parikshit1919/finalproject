@@ -128,5 +128,11 @@ GetResult(e_id):Observable<Results[]>
   console.log(req);
   return req;
 }
-
+//LOGOUT
+logout() :void {    
+  localStorage.setItem('isLoggedIn','false');    
+  localStorage.removeItem('token');  
+    
+  } 
+  
 }

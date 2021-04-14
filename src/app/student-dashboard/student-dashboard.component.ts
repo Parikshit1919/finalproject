@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 import {TogglerService} from '../services/toggler.service';
 
 @Component({
@@ -10,11 +12,15 @@ export class StudentDashboardComponent implements OnInit {
   // VARIABLE FOR SIDEBAR COLLAPSE LIST ng-bootstrap
   public isCollapsed = true;
   
-  constructor(public sideNavService: TogglerService) { 
+  constructor(public sideNavService: TogglerService,public login:LoginService, private router:Router) { 
     sideNavService.toggleMenu();
   }
 
   ngOnInit(): void {
   }
-
+  logout() {  
+    console.log('logout');  
+    this.login.logout();  
+    this.router.navigateByUrl('/Home');  
+  }  
 }

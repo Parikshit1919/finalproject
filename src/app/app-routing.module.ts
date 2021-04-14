@@ -20,6 +20,8 @@ import {StudentRankingComponent} from './student-ranking/student-ranking.compone
 import {LicencesComponent} from './licences/licences.component';
 import {AdminAddExamComponent} from './admin-add-exam/admin-add-exam.component';
 import {AdminAddQuestionsComponent} from './admin-add-questions/admin-add-questions.component';
+import { AuthGuard } from './Guards/auth.guard';
+import{StudentauthGuard} from './Guards/studentauth.guard';
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
@@ -35,7 +37,8 @@ const routes: Routes = [
       {path:'Feedback',component:StudentFeedbackComponent},
       {path:'Results',component:StudentResultsComponent},
       {path:'Ranking',component:StudentRankingComponent}
-    ]
+    ],
+    canActivate : [StudentauthGuard]
   },
   {
     path:'Login/Admin/Dashboard',component:AdminDashboardComponent,
@@ -47,7 +50,8 @@ const routes: Routes = [
       {path:'StudentResults',component:AdminStudentResultComponent},
       {path:'AddExam',component:AdminAddExamComponent},
       {path:'AddQuestions',component:AdminAddQuestionsComponent}
-    ]
+    ],
+    canActivate : [AuthGuard]
   },
   {path:'**',component:NotFoundComponent}
 ];

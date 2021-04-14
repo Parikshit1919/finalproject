@@ -28,7 +28,7 @@
                             <div class="mr-3">
                              <select class="form-select pl-3" aria-label="Default select example" formControlName="e_id"  >
                                 <option value="" disabled>Select Exam</option>
-                                 <option *ngFor="let e of results" [value]='e.e_id'>{{e.e_id}}-{{e.Course_name}}</option>
+                                 <option *ngFor="let e of distinct_exams" [value]='e.e_id'>{{e.e_id}}-{{e.Course_name}}</option>
                                </select>
                             </div>
                           
