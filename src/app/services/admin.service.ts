@@ -5,6 +5,7 @@ import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
 import {Courses} from '../Models/courses';
 import {Exam} from '../Models/exam';
+import {Results} from '../Models/results'
 @Injectable({
   providedIn: 'root'
 })
@@ -106,11 +107,24 @@ AddExam(Exam):Observable<Exam>
   console.log(req);
   return req;
 }
-
+/*********************************************** FEEDBACK METHODS ************************************/
 //METHOD TO GET FEEDBACK
 GetFeedback():Observable<Feedback[]>
 {
   var req = this.httpClient.get<Feedback[]>(this.apiServer + '/FeedBack/');
+  console.log(req);
+  return req;
+}
+/*********************************************** RESULTS METHODS ************************************/
+GetAllResults():Observable<Results[]>
+{
+  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ViewAll');
+  console.log(req);
+  return req;
+}
+GetResult(e_id):Observable<Results[]>
+{
+  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/'+e_id);
   console.log(req);
   return req;
 }
