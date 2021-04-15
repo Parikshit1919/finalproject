@@ -8,6 +8,7 @@ import {Exam} from '../Models/exam';
 import {Results} from '../Models/results';
 import {Analytics} from '../Models/analytics';
 import { Question } from '../Models/questions';
+import { Students } from '../Models/students';
 @Injectable({
   providedIn: 'root'
 })
@@ -138,6 +139,22 @@ GetResult(e_id):Observable<Results[]>
   return req;
 }
 
+
+GetResultsadminstudent():Observable<Results[]>
+{
+  var req=this.httpClient.get<Results[]>(this.apiServer+'/AdminExamResult/ViewAll/');
+  console.log(req);
+  return req;
+}
+
+GetResultsbystudent(id):Observable<Results[]>
+{
+  
+  let params = new HttpParams().set('id', id);
+  var req=this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ByStudent/',{ params: params });
+  console.log(req);
+  return req;
+}
 /*********************************************** ANALYTICS METHODS ************************************/
 GetAnalytics():Observable<Analytics>
 {
