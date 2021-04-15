@@ -121,7 +121,7 @@
                 <tbody>
                   <tr *ngFor="let q of questions">
                     <td>{{q.Q_no}}</td>
-                    <td>{{q.Question1}}</td>
+                    <td>{{q.Question}}</td>
                     <td>{{q.Option1}}</td>
                     <td>{{q.Option2}}</td>
                     <td>{{q.Option3}}</td>
@@ -212,8 +212,8 @@
                               </div>
                             </div>
                             <div class="mb-3">
-                                <label for="e_id" class="form-label">Exam ID</label>
-                            <input type="text" class="form-control" formControlName="e_id" id="e_id">
+                                <label for="e_id" class="form-label" >Exam ID</label>
+                            <input type="text" class="form-control" formControlName="e_id" id="e_id" disabled>
                             </div>
                         </form>
                         </div>
@@ -309,8 +309,13 @@
 
                                   <div class="mb-3">
                                     <label for="e_id1" class="form-label">Exam id</label>
-                                    <input type="text" class="form-control" id="e_id1"  formControlName="e_id1">
-                                    </div>
+                                    <input type="text" class="form-control" id="E_id"  formControlName="E_id" disabled>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="q_no" class="form-label">Question ID</label>
+                                    <input type="text" class="form-control" id="q_no"  formControlName="q_no" disabled>
+                                  </div>
+
 
                               
                     <div class="modal-footer">

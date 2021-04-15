@@ -1,7 +1,7 @@
 export class Question
 {
     Q_no:number;
-    Question1: string;
+    Question: string;
     Option1:string;
     Option2:string;
     Option3:string;

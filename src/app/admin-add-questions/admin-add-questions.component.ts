@@ -15,7 +15,9 @@ declare var $ : any;
 export class AdminAddQuestionsComponent implements OnInit {
   deleteQuestionId:number;
   exams: Exam[] = [];
+  exam_id:number;
   questions: Question[] = [];
+  modifiy_question:Question;
  
    //feedback: Feedback[] = [];
   constructor(
@@ -104,7 +106,8 @@ export class AdminAddQuestionsComponent implements OnInit {
     option3:new FormControl('',Validators.required),
     option4:new FormControl('',Validators.required),
     correct_ans:new FormControl('',Validators.required),
-    e_id1:new FormControl('',Validators.required)
+    E_id:new FormControl('',Validators.required),
+    q_no:new FormControl('',Validators.required),
    
   })
   
@@ -136,16 +139,24 @@ export class AdminAddQuestionsComponent implements OnInit {
   {
     return this.ModifyQuestionForm.get('correct_ans');
   }
-  get e_id1()
+  get E_id()
   {
-    return this.ModifyQuestionForm.get('e_id1');
+    return this.ModifyQuestionForm.get('E_id');
+  }
+  get q_no()
+  {
+    return this.ModifyQuestionForm.get('q_no');
   }
 
   /********************************** MODAL FUNCTIONS ******************************************************/
 
-  refresh()
+  refresh()//REFRESH THE TABLE
   {
-    location.reload();
+    // location.reload();
+    this. CourseService.GetQuestionByID(this.exam_id).subscribe((data: Question[])=>{
+      this.questions = data;
+      console.log(data);
+  })
   }
 
   onSuccess()
@@ -169,6 +180,7 @@ export class AdminAddQuestionsComponent implements OnInit {
  Search(Exam_id)
  {   
      console.log(Exam_id);
+     this.exam_id=Exam_id;
       this.CourseService.GetExamByID(Exam_id).subscribe(res => {
       this.SearchExamForm.controls['courseName'].setValue(res.Course_name);
       this.SearchExamForm.controls['time'].setValue(res.time);
@@ -241,24 +253,23 @@ export class AdminAddQuestionsComponent implements OnInit {
  /************************************************** METHODS FOR Moodify ******************/
  GetQuestion(Q_no)
  {
-  this. CourseService.GetQuestionByQno(Q_no).subscribe((data: Question[])=>{
-    this.questions = data;
-    console.log(data);
-  })
-    console.log(Q_no);
-   this.CourseService.GetQuestionByQno(Q_no).subscribe(res => {
-  //   this.ModifyQuestionForm.controls['question1'].setValue(res.Question);
-  //   this.ModifyQuestionForm.controls['option1'].setValue(res.Option1);
-  //   this.ModifyQuestionForm.controls['option2'].setValue(res.Option2);
-  //   this.ModifyQuestionForm.controls['option3'].setValue(res.Option3);
-  //   this.ModifyQuestionForm.controls['option4'].setValue(res.Option4);
-  //   this.ModifyQuestionForm.controls['correct_ans'].setValue(res.Correct_ans);
-  //   this.ModifyQuestionForm.controls['e_id1'].setValue(res.e_id);
-  console.log(res);
-   });
+   console.log(Q_no);
+  this. CourseService.GetQuestionByQno(Q_no).subscribe((data: Question)=>{
+       this.modifiy_question=data;
+       console.log(this.modifiy_question);
+       this.ModifyQuestionForm.controls['question1'].setValue(this.modifiy_question.Question);
+        this.ModifyQuestionForm.controls['option1'].setValue(this.modifiy_question.Option1);
+       this.ModifyQuestionForm.controls['option2'].setValue(this.modifiy_question.Option2);
+      this.ModifyQuestionForm.controls['option3'].setValue(this.modifiy_question.Option3);
+      this.ModifyQuestionForm.controls['option4'].setValue(this.modifiy_question.Option4);
+       this.ModifyQuestionForm.controls['correct_ans'].setValue(this.modifiy_question.Correct_ans);
+      this.ModifyQuestionForm.controls['E_id'].setValue(this.modifiy_question.e_id);
+      this.ModifyQuestionForm.controls['q_no'].setValue(this.modifiy_question.Q_no);
+  });
+    
  }
  
-
+//METHOD TO SUBMIT MODIFIED QUESTION
  submitModified()
   {
     console.log(this.ModifyQuestionForm.value)

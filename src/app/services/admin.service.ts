@@ -12,7 +12,7 @@ import { Question } from '../Models/questions';
   providedIn: 'root'
 })
 export class AdminService {
-  private apiServer = "http://localhost:27104/api";
+  private apiServer = "http://localhost:50471/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -169,10 +169,10 @@ GetQuestionByID(Exam_id):Observable<Question[]>
 }
 //View By Question no
 
-GetQuestionByQno(Q_no):Observable<Question[]>
+GetQuestionByQno(Q_no):Observable<Question>
 {
   let params = new HttpParams().set('id', Q_no);
-  var req = this.httpClient.get<Question[]>(this.apiServer + '/Questions/ByQuestionID?id='+ Q_no, { params: params });
+  var req = this.httpClient.get<Question>(this.apiServer + '/Questions/ByQuestionID', { params: params });
   console.log(req);
   return req;
 }
