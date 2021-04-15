@@ -23,39 +23,69 @@
                     <div class="card  mb-3">
                         <div class="card-header"><h5>Find Exam</h5></div>
                         <div class="card-body">
-                            <form>
+
+
+                            <form [formGroup]="SearchExamForm">
+                                
                                 <div class="mb-3">
-                                  <label for="examID" class="form-label">Exam ID</label>
+                                  <label for="Exam_id" class="form-label" >Exam ID</label>
                                   
-                                  <select class="custom-select">
+                                  <select class="custom-select" formControlName="Exam_id">
                                     <option value="" disabled>Choose your Exam</option>
+                                    <option *ngFor="let e of exams"  [value]="e.Exam_id">{{e.Exam_id}}-{{e.Course_name}}-{{e.level}}</option> 
                                  </select>
                                 </div>
+
+
                                 <div class="mb-3">
                                     <label for="courseName" class="form-label">Course Name</label>
-                                     <input type="text" class="form-control" id="courseName" disabled placeholder="DATA SHOULD COME AUTOMATICALY">
+                                     <input type="text" class="form-control" formControlName="courseName" id="courseName" disabled placeholder="Course Name"  >
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="time" class="form-label">Time</label>
-                                     <input type="text" class="form-control" id="time" disabled placeholder="DATA SHOULD COME AUTOMATICALY">
+                                     <input type="text" class="form-control" id="time" formControlName="time" disabled placeholder="Time">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="level" class="form-label">Level</label>
-                                     <input type="text" class="form-control" id="level" disabled placeholder="DATA SHOULD COME AUTOMATICALY">
+                                     <input type="text" class="form-control" id="level"  formControlName="level" disabled placeholder="Level">
                                 </div>
 
-                                <button type="button" class="btn btn-primary"  >
-                                    <i class="fas fa-search"></i> Search
-                                </button>
+                               <button type="button" class="btn btn-primary" (click)="Search(Exam_id.value)" >Search</button>
+                        
                               </form>
                           
                         </div>
                     </div>
                 </div>
+
+                  <!------------------------------------ Excel QUESTIONS CARD ------------------------------------------->
+
+                
+                  <!-- <div class="col-md-6">
+                    <div class="card  mb-3">
+                        <div class="card-header">
+                            <h5>Add Questions Using Excel</h5>
+                        </div>
+                        
+                        <input class="form-control" type="file" #fileInput />
+                        
+                        <button class="btn btn-primary" (click)="uploadFile();">Upload</button>
+                    </div>
+                        </div> -->
+
+                                        
+                   <!----------------------HORIZONTAL BREAK  ----------------->
+                        <div class="row">
+                            <div class="col">
+                                <hr>
+                            </div>
+                        </div>
+                    
+
                 <!------------------------------------ DISPLAY QUESTIONS CARD ------------------------------------------->
-                <div class="col-md-6">
+                <!-- <div class="col-md-12">
                     <div class="card  mb-3">
                         <div class="card-header">
                             <h5>Add Questions</h5>
@@ -66,10 +96,49 @@
                             <i class="fas fa-plus"></i> Add Questions
                             </button>
                         </div>
-                       
                     </div>
-                </div>
-            </div>
+                </div> -->
+             <!----------------------- CONTENT ROW  ------------------------->
+    <div class="row">
+        <div class="container-fluid content-container bg-light">
+            <h4>Questions List</h4>
+            <!-- TABLE BEGIN -->
+            <table class="table table-striped course-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Question no</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Option 1</th>
+                    <th scope="col">Option 2</th>
+                    <th scope="col">Option 3</th>
+                    <th scope="col">Option 4</th>
+                    <th scope="col">Correct option</th>
+                    <th scope="col">Exam ID</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Modify</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let q of questions">
+                    <td>{{q.Q_no}}</td>
+                    <td>{{q.Question1}}</td>
+                    <td>{{q.Option1}}</td>
+                    <td>{{q.Option2}}</td>
+                    <td>{{q.Option3}}</td>
+                    <td>{{q.Option4}}</td>
+                    <td>{{q.Correct_ans}}</td>
+                    <td>{{q.e_id}}</td>
+                    <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#DeleteQuestionModal" (click)="setDeleteQuestion(q.Q_no)"><i class="fas fa-trash-alt"></i> </button></td>
+                    <td><button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#ModifyQuestionModal" (click)="GetQuestion(q.Q_no)"><i class="fas fa-tools"></i> </button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddQuestionsModal">
+                    <i class="fas fa-plus" ></i> Add Question
+                </button>
+            
+   
              <!-------------------------ADD QUESTIONS MODAL ------------------------------------->
               
              <div class="modal fade" id="AddQuestionsModal" tabindex="-1" aria-labelledby="AddQuestionsModal" aria-hidden="true">
@@ -81,42 +150,258 @@
                     </div>
                     <!-------------------- MODAL BODY ----------------------->
                     <div class="modal-body">
-                        <form>
+                        <form [formGroup]="AddQuestionForm">
                             <div class="mb-3">
-                              <label for="Question" class="form-label">Question</label>
-                              <input type="text" class="form-control" id="Question" placeholder="Enter Question">
+                              <label for="Question1" class="form-label">Question</label>
+                              <input type="text" class="form-control" id="Question1" placeholder="Enter Question" formControlName="Question1">
+                              <div *ngIf="!Question1?.valid && (Question1?.dirty ||Question1?.touched)">
+                                <div [hidden]="!Question.errors.required"  class="text-danger">
+                                    *Question is required
+                                  </div>
+                          </div>
                             </div>
+
+
                             <div class="mb-3">
-                              <label for="ChoiceA" class="form-label">Choice A</label>
-                              <input type="text" class="form-control" id="ChoiceA" placeholder="Enter Choice A">
+                              <label for="Option1" class="form-label">Choice A</label>
+                              <input type="text" class="form-control" id="Option1" placeholder="Enter Choice A" formControlName="Option1">
+                              <div *ngIf="!Option1?.valid && (Option1?.dirty ||Option1?.touched)">
+                                <div [hidden]="!Option1.errors.required"  class="text-danger">
+                                    *Choice A is required
+                                  </div>
+                          </div>
                             </div>
+
                             <div class="mb-3">
-                                <label for="ChoiceB" class="form-label">Choice B</label>
-                                <input type="text" class="form-control" id="ChoiceB" placeholder="Enter Choice B">
+                                <label for="Option2" class="form-label">Choice B</label>
+                                <input type="text" class="form-control" id="Option2" placeholder="Enter Choice B" formControlName="Option2">
+                                <div *ngIf="!Option2?.valid && (Option2?.dirty ||Option2?.touched)">
+                                    <div [hidden]="!Option2.errors.required"  class="text-danger">
+                                        *Choice B is required
+                                      </div>
+                              </div>
                             </div>
+
                             <div class="mb-3">
-                                <label for="ChoiceC" class="form-label">Choice C</label>
-                                <input type="text" class="form-control" id="ChoiceC" placeholder="Enter Choice C">
+                                <label for="Option3" class="form-label">Choice C</label>
+                                <input type="text" class="form-control" id="Option1" placeholder="Enter Choice C" formControlName="Option3">
+                                <div *ngIf="!Option3?.valid && (Option3?.dirty ||Option3?.touched)">
+                                    <div [hidden]="!Option3.errors.required"  class="text-danger">
+                                        *Choice C is required
+                                      </div>
+                              </div>
                             </div>
+
                               <div class="mb-3">
-                                <label for="ChoiceD" class="form-label">Choice D</label>
-                                <input type="text" class="form-control" id="ChoiceD" placeholder="Enter Choice D">
+                                <label for="Option4" class="form-label">Choice D</label>
+                                <input type="text" class="form-control" id="Option4" placeholder="Enter Choice D" formControlName="Option4">
+                                <div *ngIf="!Option4?.valid && (Option4?.dirty ||Option4?.touched)">
+                                    <div [hidden]="!ChoiceD.errors.required"  class="text-danger">
+                                        *Choice D is required
+                                      </div>
+                              </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Correct_ans" class="form-label">Correct Choice</label>
+                                <input type="text" class="form-control" id="Correct_ans" placeholder="Enter Correct Choice" formControlName="Correct_ans">
+                                <div *ngIf="!Correct_ans?.valid && (Correct_ans?.dirty ||Correct_ans?.touched)">
+                                    <div [hidden]="!Correct_ans.errors.required"  class="text-danger">
+                                        *CorrectChoice is required
+                                      </div>
+                              </div>
                             </div>
                             <div class="mb-3">
-                                <label for="CorrectChoice" class="form-label">Correct Choice</label>
-                                <input type="text" class="form-control" id="CorrectChoice" placeholder="Enter Correct Choice">
+                                <label for="e_id" class="form-label">Exam ID</label>
+                            <input type="text" class="form-control" formControlName="e_id" id="e_id">
                             </div>
                         </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-primary" [disabled]="!AddQuestionForm.valid" (click)="AddQuestion()" >Save</button>
                         </div>
-                    </div>
-                    
+                    </div>                    
                  </div>
                 </div>
-            </div>
+                 <!------------------------------------------------- MODIFY MODAL ---------------------------------------------------------->
+                            
+              <div class="modal fade" id="ModifyQuestionModal" tabindex="-1" aria-labelledby="ModifyQuestionModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-modify.png" class="img-fluid"> Modify Question</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-------------------- MODAL BODY ----------------------->
+                    <div class="modal-body">
+                      <form [formGroup]="ModifyQuestionForm">
+
+                                <div class="mb-3">
+                                  <label for="question1" class="form-label">Question</label>
+                                 <input type="text" class="form-control" formControlName="question1" >
+                                   <!-- VALIDATION -->
+                                   <div *ngIf="!question1?.valid && (question1?.dirty ||question1?.touched)">
+                                    <div [hidden]="!question1.errors.required"  class="text-danger">
+                                        *Question is required
+                                      </div>
+                                    </div> 
+                                </div>
+
+                                <div class="mb-3">
+                                  <label for="option1" class="form-label">Option 1</label>
+                                 <input type="text" class="form-control" formControlName="option1">
+                                   <!-- VALIDATION -->
+                                   <div *ngIf="!option1?.valid && (option1?.dirty ||option1?.touched)">
+                                    <div [hidden]="!option1.errors.required"  class="text-danger">
+                                        *Option 1 is required
+                                      </div>
+                                    </div> 
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="option2" class="form-label">Option 2</label>
+                                    <input type="text" class="form-control" id="option2" placeholder="Option 2" formControlName="option2">
+                                    
+                                    <!-- VALIDATION -->
+                                    <div *ngIf="!option2?.valid && (option2?.dirty ||option2?.touched)">
+                                      <div [hidden]="!option2.errors.required"  class="text-danger">
+                                          *Option 2 is required
+                                        </div>
+                                      </div> 
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label for="option3" class="form-label">Option 3</label>
+                                    <input type="text" class="form-control" id="option3" placeholder="Option 3" formControlName="option3">
+                                    
+                                    <!-- VALIDATION -->
+                                    <div *ngIf="!option3?.valid && (option3?.dirty ||option3?.touched)">
+                                      <div [hidden]="!option3.errors.required"  class="text-danger">
+                                          *Option 3 is required
+                                        </div>
+                                      </div> 
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label for="option4" class="form-label">Option 4</label>
+                                    <input type="text" class="form-control" id="option4" placeholder="Option 4" formControlName="option4">
+                                    
+                                    <!-- VALIDATION -->
+                                    <div *ngIf="!option4?.valid && (option4?.dirty ||option4?.touched)">
+                                      <div [hidden]="!option4.errors.required"  class="text-danger">
+                                          *Option 4 is required
+                                        </div>
+                                      </div> 
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label for="correct_ans" class="form-label">Correct Answer</label>
+                                    <input type="text" class="form-control" id="correct_ans" placeholder="Correct Answer" formControlName="correct_ans">
+                                    
+                                    <!-- VALIDATION -->
+                                    <div *ngIf="!correct_ans?.valid && (correct_ans?.dirty ||correct_ans?.touched)">
+                                      <div [hidden]="!correct_ans.errors.required"  class="text-danger">
+                                          *Correct Answer is required
+                                        </div>
+                                      </div> 
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label for="e_id1" class="form-label">Exam id</label>
+                                    <input type="text" class="form-control" id="e_id1"  formControlName="e_id1">
+                                    </div>
+
+                              
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)= "submitModified()">Save</button>
+                    </div>
+                  </form>
+                </div>
+                </div>
+                </div>
+              </div>
+               
+
+ <!--------------------------------------- ARE YOU SURE MODAL (delete modal)-------------------------------------------->
+                
+ <div class="modal fade" id="DeleteQuestionModal" tabindex="-1" aria-labelledby="DeleteQuestionModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Delete Question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-------------------- MODAL BODY ----------------------->
+        <div class="modal-body">
+          <h5> Are You Sure?</h5>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" (click)="deleteQuestion()">Yes</button>
         </div>
     </div>
+    </div>
 </div>
+
+                  <!----------------------------------- SUCCESS MODAL ------------------------------------------------------------------->
+              <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="successModalTitle">SUCCESS!</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <!-- MODAL BODY -->
+                    <div class="modal-body">
+                      <div class="row">
+                          <div class="col">
+                              <img src="../../assets/register-success.png/" class="img-fluid"> Saved Successfully
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="refresh()" >Close</button>
+                       
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+               <!--------------------------------- ERROR MODAL ------------------------------------------------------------->
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="errorModalTitle">Error!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <!-- MODAL BODY -->
+                      <div class="modal-body">
+                        <div class="row">
+                            <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Questions Could Not Be Added
+                            </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="refresh()" >Close</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+        </div>
+    </div>
+    </div>
+</div>
+
+            <!-- </div>
+        </div>
+    </div>
+</div> -->
