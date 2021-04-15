@@ -7,6 +7,8 @@ import {Courses} from '../Models/courses';
 import {Exam} from '../Models/exam';
 import {Results} from '../Models/results';
 import {Analytics} from '../Models/analytics';
+import { Question } from '../Models/questions';
+import { Students } from '../Models/students';
 @Injectable({
   providedIn: 'root'
 })
@@ -69,6 +71,7 @@ DeleteCourse(courseID):Observable<Courses>
   console.log(req);
   return req;
 }
+/*************************************************** COURSES METHOD Ends*************************************/
 
 /*********************************************** EXAMS METHODS ************************************/
 
@@ -109,6 +112,7 @@ AddExam(Exam):Observable<Exam>
   console.log(req);
   return req;
 }
+/*********************************************** EXAMS METHODS  Ends ************************************/
 
 /*********************************************** FEEDBACK METHODS ************************************/
 
@@ -135,6 +139,22 @@ GetResult(e_id):Observable<Results[]>
   return req;
 }
 
+
+GetResultsadminstudent():Observable<Results[]>
+{
+  var req=this.httpClient.get<Results[]>(this.apiServer+'/AdminExamResult/ViewAll/');
+  console.log(req);
+  return req;
+}
+
+GetResultsbystudent(id):Observable<Results[]>
+{
+  
+  let params = new HttpParams().set('id', id);
+  var req=this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ByStudent/',{ params: params });
+  console.log(req);
+  return req;
+}
 /*********************************************** ANALYTICS METHODS ************************************/
 GetAnalytics():Observable<Analytics>
 {
@@ -150,4 +170,55 @@ logout() :void {
     
   } 
   
+/*********************************************** Questions METHODS ************************************/
+
+AddQuestion(question): Observable<Question> 
+{
+  return this.httpClient.post<Question>(this.apiServer + '/Questions/', JSON.stringify(question), this.httpOptions);
+}
+//View By Exam ID
+GetQuestionByID(Exam_id):Observable<Question[]>
+{
+  let params = new HttpParams().set('id', Exam_id);
+  var req = this.httpClient.get<Question[]>(this.apiServer + '/Questions/'+ Exam_id, { params: params });
+  console.log(req);
+  return req;
+}
+//View By Question no
+
+GetQuestionByQno(Q_no):Observable<Question>
+{
+  let params = new HttpParams().set('id', Q_no);
+  var req = this.httpClient.get<Question>(this.apiServer + '/Questions/ByQuestionID', { params: params });
+  console.log(req);
+  return req;
+}
+//METHOD TO DELETE Questions
+DeleteQuestion(Q_no):Observable<Question> 
+{
+  console.log("INSIDE SERVICE",Q_no);
+  console.log("INSIDE SERVEE URL",this.apiServer + '/Questions/' +Q_no);
+  var req = this.httpClient.delete<Question>(this.apiServer + '/Questions/' +Q_no);
+  console.log(req);
+  return req;
+}
+//METHOD TO Update Questions
+ModifyQuestion(Q_no):Observable<Question>
+{
+  var req = this.httpClient.put<Question>(this.apiServer + '/Questions/',JSON.stringify(Q_no), this.httpOptions );
+  console.log(req);
+  return req;
+}
+
+// UploadExcel(formData: FormData) {
+
+//   var req = this.httpClient.post<Question>(this.apiServer + '/UploadExcel/' ,JSON.stringify(Question), this.httpOptions);
+//   console.log(req);
+//   return req;
+
+// }
+/*********************************************** Questions METHODS Ends ************************************/
+
+
+
 }
