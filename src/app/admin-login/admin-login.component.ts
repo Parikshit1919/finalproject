@@ -33,9 +33,11 @@ export class AdminLoginComponent implements OnInit {
   submitForm() {
     this.loginService.login(this.adminLoginForm.value).subscribe(res => {
       console.log(res)
+      
        if(res.toString()=="valid"){
-         
-         this.router.navigateByUrl('/Login/Admin/Dashboard')
+        localStorage.setItem('isLoggedIn', "true"); 
+        localStorage.setItem('token', this.adminLoginForm.value.Admin_Email);
+        this.router.navigateByUrl('/Login/Admin/Dashboard')
        }
        else
        {

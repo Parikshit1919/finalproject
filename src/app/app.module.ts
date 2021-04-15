@@ -31,6 +31,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatTableModule} from '@angular/material/table';
 import{MatSortModule} from '@angular/material/sort';
+import {AuthGuard} from './Guards/auth.guard';
+import {StudentauthGuard} from './Guards/studentauth.guard';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import{MatSortModule} from '@angular/material/sort';
     AdminAddQuestionsComponent,
     
     
+    
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,7 @@ import{MatSortModule} from '@angular/material/sort';
     MatSortModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuard,StudentauthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

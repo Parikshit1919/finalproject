@@ -32,6 +32,8 @@ export class StudentLoginComponent implements OnInit {
      console.log(res)
       if(res.toString()=="valid")
       {
+        localStorage.setItem('isLoggedIn', "true"); 
+        localStorage.setItem('token', this.loginForm.value.Student_Email);
         this.router.navigateByUrl('/Login/Student/Dashboard')
       }
       else 

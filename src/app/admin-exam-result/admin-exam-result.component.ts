@@ -22,9 +22,11 @@ export class AdminExamResultComponent implements OnInit {
   displayedColumns=['e_id','Course_name','level','s_id','Result','Fullname'];
   results:Results[]=[];
   exams:Exam[]=[];
-  exam_id:number;
+  distinct_exams:Results[]=[]; // STORE DISTINCT EXAM IDS FOR SEARCH
+  exam_ids:number[]=[];        // STORE EXAM IDS FOR SEARCH
+  exam_id:number;             // TO GET BY EXAM
   dataSource;
-
+  
   constructor(public adminService:AdminService, public fb: FormBuilder) { }
 
   //SEARCH FORM
@@ -35,24 +37,38 @@ export class AdminExamResultComponent implements OnInit {
   {
     return this.SearchExamForm.get('e_id');
   }
-
+ 
   ngOnInit(): void
    {
+
      //GET ALL THE RESULTS
-    this.adminService.GetAllResults().subscribe((data: Results[])=>{
+      this.adminService.GetAllResults().subscribe((data: Results[])=>{
       this.results=data;
+    //REMOVE DUPLICATE EXAM IDS FOR SEARCH
+        this.results.forEach((item)=>{
+          if(!this.exam_ids.includes(item.e_id))
+          {
+            this.exam_ids.push(item.e_id);
+            this.distinct_exams.push(item);
+          }
+          
+        })
+      console.log(this.distinct_exams)
       console.log(this.results);
+      //FILL TABLE
       this.dataSource=new MatTableDataSource(data);
       this.dataSource.sort=this.sort;
 
   });
+ 
   //GET AVAILABLE EXAMS
   this.adminService.GetExams().subscribe((data: Exam[])=>{
     this.exams=data;
     console.log(data);
 
-});
-}
+    });
+    
+  }
 
 submitForm()
 {
