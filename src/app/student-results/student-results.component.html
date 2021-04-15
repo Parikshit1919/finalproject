@@ -17,8 +17,37 @@
     <!----------------------- CONTENT ROW  ------------------------->
     <div class="row">
         <div class="container-fluid content-container bg-light">
-            CONTENT
-        </div>
-    </div>
+            <!-- TABLE ROW -->
+            <div class="row mt-4">
+                <div class="container-fluid content-container bg-light">
+                    <h4>Exam Result List</h4>
+                    <hr>
+                    <!-- TABLE BEGIN -->
+                    <table class="table table-striped course-table">
+                        <thead>
+                            <tr>
+                               <th>Exam Id</th>
+                               <th>Course Name</th>
+                                <th>Name</th>
+                                <th>StudentId</th>
+                                <th>Level</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr *ngFor="let result of results">
+                                <td scope="row">{{result.e_id}}</td>
+                                <td>{{result.Course_name}}</td>
+                                <td>{{result.Name}}</td>
+                                <td>{{result.s_id}}</td>
+                                <td>{{result.level}}</td>
+                                <td>{{result.Result}}</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                        
+                </div>
+                   
+            </div>
     </div>
 </div>

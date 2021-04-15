@@ -5,11 +5,7 @@ import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
 import {Courses} from '../Models/courses';
 import {Exam} from '../Models/exam';
-<<<<<<< HEAD
-import { Exams } from '../Models/exams';
-=======
 import {Results} from '../Models/results'
->>>>>>> backup
 @Injectable({
   providedIn: 'root'
 })
