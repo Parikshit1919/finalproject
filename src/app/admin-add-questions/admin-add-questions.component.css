@@ -28,7 +28,11 @@
     margin-top:1%;
     padding-bottom: 10%;
 }
-/* MODAL STYLING */
+.search-exam-card img 
+{
+    height:5vh;
+}
+/*************************************************************** MODAL STYLING ****************************************/
 #AddQuestionsModal img 
 {
     height:5vh;
