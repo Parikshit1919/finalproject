@@ -5,13 +5,9 @@ import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
 import {Courses} from '../Models/courses';
 import {Exam} from '../Models/exam';
-<<<<<<< HEAD
 import {Results} from '../Models/results';
 import {Analytics} from '../Models/analytics';
 import { Question } from '../Models/questions';
-=======
-import { Question } from '../Models/questions';
->>>>>>> origin/bhoomi
 @Injectable({
   providedIn: 'root'
 })
