@@ -11,12 +11,15 @@ import {TogglerService} from '../services/toggler.service';
 export class StudentDashboardComponent implements OnInit {
   // VARIABLE FOR SIDEBAR COLLAPSE LIST ng-bootstrap
   public isCollapsed = true;
-  
+  public student_email:string;
   constructor(public sideNavService: TogglerService,public login:LoginService, private router:Router) { 
     sideNavService.toggleMenu();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    this.student_email=localStorage.getItem('token');
+    
   }
   logout() {  
     console.log('logout');  

@@ -5,7 +5,8 @@ import {AdminLogin} from '../Models/admin-login';
 import {Feedback} from '../Models/feedback';
 import {Courses} from '../Models/courses';
 import {Exam} from '../Models/exam';
-import {Results} from '../Models/results'
+import {Results} from '../Models/results';
+import {Analytics} from '../Models/analytics';
 @Injectable({
   providedIn: 'root'
 })
@@ -70,6 +71,7 @@ DeleteCourse(courseID):Observable<Courses>
 }
 
 /*********************************************** EXAMS METHODS ************************************/
+
   //METHOD TO GET ADD AVAILABLE EXAMS
 GetExams():Observable<Exam[]>
   {
@@ -107,7 +109,9 @@ AddExam(Exam):Observable<Exam>
   console.log(req);
   return req;
 }
+
 /*********************************************** FEEDBACK METHODS ************************************/
+
 //METHOD TO GET FEEDBACK
 GetFeedback():Observable<Feedback[]>
 {
@@ -115,7 +119,9 @@ GetFeedback():Observable<Feedback[]>
   console.log(req);
   return req;
 }
+
 /*********************************************** RESULTS METHODS ************************************/
+
 GetAllResults():Observable<Results[]>
 {
   var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ViewAll');
@@ -128,6 +134,15 @@ GetResult(e_id):Observable<Results[]>
   console.log(req);
   return req;
 }
+
+/*********************************************** ANALYTICS METHODS ************************************/
+GetAnalytics():Observable<Analytics>
+{
+  var req = this.httpClient.get<Analytics>(this.apiServer + '/Analytics/');
+  console.log(req);
+  return req;
+}
+
 //LOGOUT
 logout() :void {    
   localStorage.setItem('isLoggedIn','false');    
