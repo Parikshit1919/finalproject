@@ -54,7 +54,31 @@ public isCollapsed1 = true;
 resetToggler():void{
   this.isCollapsed1 = false;
 }
+//
+ //REFRESH PAGE METHOD
+ refresh()
+ {
+   location.reload();
+ }
+ //MODAL POPUP FOR SUCESSFULL REGISTRATION
+ onSuccess()
+ {
 
+   $('#AddExamModal').modal('hide'); 
+   $('#ModifyExamModal').modal('hide'); 
+   $('#DeleteExamModal').modal('hide'); 
+   $('#successModal').modal('show'); 
+   
+ }
+
+  //MODAL POPUP FOR REGISTRATION ERROR
+  onError()
+  {
+    $('#AddExamModal').modal('hide'); 
+    $('#ModifyExamModal').modal('hide'); 
+    $('#DeleteExamModal').modal('hide');
+    $('#errorModal').modal('show'); 
+  }
 //THIS METHOD CALLS THE API TO SEND RESET KEY
 sendEmail()
 {
@@ -69,8 +93,16 @@ submitForm() {
   console.log(this.ForgotPasswordForm.get('Email').value);
   var res =this.forgotService.changePassword(this.ForgotPasswordForm.value).subscribe(res => {
     console.log(res);
+    if(res.toString() == "changed")
+    {
+        this.onSuccess();
+    }
+    else if(res.toString() == "error")
+    {
+      this.onError();
+    }
   });
-  console.log(res);
+
 } 
 
 }

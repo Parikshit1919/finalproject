@@ -28,6 +28,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
 import { AdminAddQuestionsComponent } from './admin-add-questions/admin-add-questions.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import{MatTableModule} from '@angular/material/table';
+import{MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { FormsModule } from '@angular/forms';
     NgxCaptchaModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatSortModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
