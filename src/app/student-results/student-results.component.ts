@@ -10,18 +10,24 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./student-results.component.css']
 })
 export class StudentResultsComponent implements OnInit {
- 
+ Student_email;
+ results;
 
   constructor(public studentService:StudentService, public fb: FormBuilder) { }
 
   ngOnInit(): void {
-    // this.studentService.GetResultById(s_id).subscribe((data: Results)=>
-    // {
+    this.Student_email=localStorage.getItem('token');
+    this.studentService.GetResult(Student_Email).subscribe((data: Results[])=>
+    {
       
-    //   this.results=data;
-    // })  
+      this.results=data;
+    })  
   }
 
 }
 
+
+function Student_Email(Student_Email: any) {
+  throw new Error('Function not implemented.');
+}
 

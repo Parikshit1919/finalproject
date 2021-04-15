@@ -29,8 +29,8 @@ GetAllResults():Observable<Results[]>{
   console.log(req);
   return req;
 }
-GetResultById(s_id):Observable<Results[]>{
-  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/'+s_id);
+GetResult(Student_Email):Observable<Results[]>{
+  var req = this.httpClient.get<Results[]>(this.apiServer + '/StudentExamResult/'+Student_Email);
   console.log(req);
   return req;
 }
