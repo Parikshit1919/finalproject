@@ -21,7 +21,7 @@ export class AdminStudentResultComponent implements OnInit {
 
   @ViewChild(MatSort) sort:MatSort;
 
-  displayedColumns=['e_id','Course_name','level','s_id','Result','Fullname'];
+  displayedColumns=['s_id','Fullname','e_id','Course_name','level','Result'];
   results1:Results[]=[];
   dataSource;
   students1:Students[]=[]
