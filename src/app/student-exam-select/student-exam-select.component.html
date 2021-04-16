@@ -1,0 +1,69 @@
+<div class="container-fluid ">
+    <!--------------------- HEADING ROW  ---------------------->
+    <div class="row heading-row shadow-sm bg-light">
+        <div class="col-md-1 img-col">
+            <img src="../../assets/admin-dashboard-exams.png" >
+        </div>
+        <div class="col-md-6">
+            <h3>Select Exam Board</h3>
+            <!-- <h6 class="text-muted ">Select Exam</h6> -->
+        </div>
+    <!----------------------HORIZONTAL BREAK  ----------------->
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <!----------------------- CONTENT ROW  ------------------------->
+    <!-- <div class="row">
+        <div class="container-fluid content-container bg-light">
+            CONTENT
+        </div>
+    </div>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="container-fluid content-container bg-light">
+        <div class="row">
+            <!-- FIND EXAM CARD -->
+            <div class="col-md-6">
+                <div class="card  mb-3 search-exam-card">
+                    <div class="card-header"><h5><img src="../../assets/admin-dashboard-questions-search.png" class="img-fluid"> Search Exam</h5></div>
+                    <div class="card-body">
+
+
+                        <form [formGroup]="SearchExamForm" (ngSubmit)="submitForm()" >
+                            <div class="mb-3">
+                                <label for="selectexam" class="form-label" >Select Exam </label>
+                                <select class="custom-select" formControlName="Exam_id" (change)="Select(Exam_id.value)">
+                                  <option value="" disabled>Select Exam</option>
+                                  <option *ngFor="let e of exams"  [value]="e.Exam_id">{{e.Course_name}} Level: {{e.level}}</option> 
+                               </select>
+                              </div>
+
+                            <div class="mb-3">
+                                <label for="time" class="form-label">Time</label>
+                                 <input type="text" class="form-control" id="time" formControlName="time" disabled placeholder="Time">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="level" class="form-label">Level</label>
+                                 <input type="text" class="form-control" id="level"  formControlName="level" disabled placeholder="Level">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="courseName" class="form-label">Course Name</label>
+                                 <input type="text" class="form-control" formControlName="courseName" id="courseName" disabled placeholder="Course Name"  >
+                            </div>
+
+                           <button type="button" class="btn btn-primary" (click)="submitForm()"[disabled]="!SearchExamForm.valid">start Exam
+                            <!-- <a routerLink="Exam" style="color:white">Start Exam
+                                </a> -->
+                            </button>
+                    
+                          </form>
+                      
+                    </div>
+                </div>
+            </div>
