@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Exam } from '../Models/exam';
 import { Results } from '../Models/results';
 import { StudentService } from '../services/student.service';
 
@@ -10,24 +13,30 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./student-results.component.css']
 })
 export class StudentResultsComponent implements OnInit {
- Student_email;
- results;
-
+  @ViewChild(MatSort) sort:MatSort;
+  displayedColumns=['e_id','Course_name','level','s_id','Result','Fullname'];
+  results:Results[]=[];
+  exams:Exam[]=[];
+  exam_id:number;
+ public Student_email:string;
+ 
+  dataSource: any;
+  
+ 
   constructor(public studentService:StudentService, public fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.Student_email=localStorage.getItem('token');
-    this.studentService.GetResult(Student_Email).subscribe((data: Results[])=>
-    {
-      
+    this.studentService.GetResult(this.Student_email).subscribe((data:Results[])=>{
       this.results=data;
-    })  
+      console.log(this.results);
+      this.dataSource=new MatTableDataSource(data);
+      this.dataSource.sort=this.sort;
+    });
   }
 
 }
 
 
-function Student_Email(Student_Email: any) {
-  throw new Error('Function not implemented.');
-}
+ 
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
 import {  Observable, throwError } from 'rxjs';
 import {Feedback} from '../Models/feedback';
 import {Exam} from '../Models/exam';
@@ -8,7 +8,7 @@ import { Results } from '../Models/results';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiServer = "http://localhost:27104/api";
+  private apiServer = "http://localhost:49910/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -29,8 +29,11 @@ GetAllResults():Observable<Results[]>{
   console.log(req);
   return req;
 }
+//METHOD TO GET REUSLT BYT EMAIL
 GetResult(Student_Email):Observable<Results[]>{
-  var req = this.httpClient.get<Results[]>(this.apiServer + '/StudentExamResult/'+Student_Email);
+  
+  let params = new HttpParams().set('email', Student_Email);
+  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ByEmail/',{ params: params });
   console.log(req);
   return req;
 }
