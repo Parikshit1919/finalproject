@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl,  FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from '../services/student.service';
@@ -13,12 +13,12 @@ declare var $ : any;
   styleUrls: ['./admin-add-questions.component.css']
 })
 export class AdminAddQuestionsComponent implements OnInit {
-  deleteQuestionId:number;
-  exams: Exam[] = [];
-  exam_id:number;
-  questions: Question[] = [];
-  modifiy_question:Question;
- 
+  deleteQuestionId:number;       //QUESION ID TO BE DELETED
+  exams: Exam[] = [];            // STORE EXAMS ARRAY
+  exam_id:number;                //EXAM ID 
+  questions: Question[] = [];    //QUESTIONS ARRAY TO STORE ALL AVAIALABLE QUESTIONS
+  modifiy_question:Question;    // QUESION OBJECT TO BE MODIFIED
+  @ViewChild('fileInput') fileInput;  // FOR EXCEL
    //feedback: Feedback[] = [];
   constructor(
     public fb: FormBuilder,
@@ -46,7 +46,7 @@ export class AdminAddQuestionsComponent implements OnInit {
     Correct_ans:new FormControl('',Validators.required),
     e_id:new FormControl()
   })
-
+  //GET FORM DATA
   get Question1()
   {
     return this.AddQuestionForm.get('Question1');
@@ -76,7 +76,7 @@ export class AdminAddQuestionsComponent implements OnInit {
     return this.AddQuestionForm.get('e_id');
   }
 
- /****************************************** Searcn Exam FORM CONTROL **************************************/  
+ /****************************************** SEARCG EXAM FORM CONTROL **************************************/  
   SearchExamForm=new FormGroup({
     Exam_id:new FormControl('',Validators.required),
     courseName:new FormControl('',Validators.required),
@@ -84,7 +84,7 @@ export class AdminAddQuestionsComponent implements OnInit {
     level:new FormControl('',Validators.required),
    
   })
-
+  // GET FORM DATA
   get Exam_id()
   {
     return this.SearchExamForm.get('Exam_id');
@@ -98,7 +98,7 @@ export class AdminAddQuestionsComponent implements OnInit {
     return this.SearchExamForm.get('courseName');
   }
 
-    /****************************************** MODIFY EXAM FORM CONTROL **************************************/ 
+  /****************************************** MODIFY EXAM FORM CONTROL **************************************/ 
   ModifyQuestionForm=new FormGroup({
     question1:new FormControl('',Validators.required),
     option1:new FormControl('',Validators.required),
@@ -159,6 +159,7 @@ export class AdminAddQuestionsComponent implements OnInit {
   })
   }
 
+  // METHOD TO TOGGLE SUCCESS MODAL
   onSuccess()
   {
     $('#DeleteQuestionModal').modal('hide');
@@ -167,7 +168,7 @@ export class AdminAddQuestionsComponent implements OnInit {
     $('#successModal').modal('show'); 
   }
 
-   //MODAL POPUP FOR Feedback ERROR
+  // POPUP FOR  ERROR MODAL
    onError()
    {
     $('#ModifyQuestionModal').modal('hide');
@@ -177,6 +178,7 @@ export class AdminAddQuestionsComponent implements OnInit {
    }
  /********************************** FORMS FUNCTIONS ******************************************************/
  
+ //METHOD TO SEARCH BY EXAM ID
  Search(Exam_id)
  {   
      console.log(Exam_id);
@@ -210,6 +212,7 @@ export class AdminAddQuestionsComponent implements OnInit {
  
  //CALL SERVICE ON METHOD CALL
 
+ //METHOD TO ADD QUESTIONS
  AddQuestion() {
   console.log(this.AddQuestionForm.value);
 
@@ -226,7 +229,8 @@ export class AdminAddQuestionsComponent implements OnInit {
     }
   });
 } 
- /************************************************** METHODS FOR DELETE ******************/
+ /************************************************** METHODS FOR DELETE *******************************/
+
    //GET THE COURSE ID TO BE DELETED
    setDeleteQuestion(id:number)
    {
@@ -251,6 +255,8 @@ export class AdminAddQuestionsComponent implements OnInit {
     });
   }
  /************************************************** METHODS FOR Moodify ******************/
+
+ //GET QUESTION BY QUESTION ID
  GetQuestion(Q_no)
  {
    console.log(Q_no);
