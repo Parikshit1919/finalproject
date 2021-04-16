@@ -23,13 +23,15 @@ SendFeedback(feedback): Observable<Feedback>
 {
   return this.httpClient.post<Feedback>(this.apiServer + '/Feedback/', JSON.stringify(feedback), this.httpOptions);
 }
+
+
 //METHOD TO VIEW RESULT
 GetAllResults():Observable<Results[]>{
   var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ViewAll');
   console.log(req);
   return req;
 }
-//METHOD TO GET REUSLT BYT EMAIL
+//METHOD TO GET REUSLT BY EMAIL
 GetResult(Student_Email):Observable<Results[]>{
   
   let params = new HttpParams().set('email', Student_Email);
