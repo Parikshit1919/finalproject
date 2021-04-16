@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl,  FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from '../services/student.service';
@@ -18,7 +18,7 @@ export class AdminAddQuestionsComponent implements OnInit {
   exam_id:number;
   questions: Question[] = [];
   modifiy_question:Question;
- 
+  @ViewChild('fileInput') fileInput;
    //feedback: Feedback[] = [];
   constructor(
     public fb: FormBuilder,
@@ -76,7 +76,7 @@ export class AdminAddQuestionsComponent implements OnInit {
     return this.AddQuestionForm.get('e_id');
   }
 
- /****************************************** Searcn Exam FORM CONTROL **************************************/  
+ /****************************************** SEARCG EXAM FORM CONTROL **************************************/  
   SearchExamForm=new FormGroup({
     Exam_id:new FormControl('',Validators.required),
     courseName:new FormControl('',Validators.required),
