@@ -12,8 +12,8 @@ declare var $ : any;
 })
 export class AdminAddExamComponent implements OnInit
  {
-  deleteExamId:number;
-  levels:number[] = [1,2,3];
+  deleteExamId:number; //EXAM ID TO BE DLETED
+  levels:number[] = [1,2,3]; // PREDEFINED LEVELS
   exams: Exam[] = []; //TO STROE ALL AVAILABLE EXAMS
   courses : Courses[] = []; // TO STORE ALL AVAIALBLE COURSES
 
@@ -24,10 +24,12 @@ export class AdminAddExamComponent implements OnInit
 
   ngOnInit(): void 
   {
+    //GET ALL AVAIALBLE EXAMS
     this. CourseService.GetExams().subscribe((data: Exam[])=>{
       this.exams = data;
       console.log(data);
     })
+    //GET ALL AVAILABLE COURSES
     this. CourseService.GetCourse().subscribe((data: Courses[])=>{
       this.courses = data;
       console.log(data);
