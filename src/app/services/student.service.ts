@@ -8,7 +8,7 @@ import { Results } from '../Models/results';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiServer = "http://localhost:50471/api";
+  private apiServer = "http://localhost:49910/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
