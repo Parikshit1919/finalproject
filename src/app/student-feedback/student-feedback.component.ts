@@ -8,6 +8,7 @@ import { Courses } from '../Models/courses';
 import {Exam} from '../Models/exam';
 import { AdminService } from '../services/admin.service';
 import { Results } from '../Models/results';
+import {Students} from '../Models/students'
 declare var $ : any;
 
 @Component({
@@ -62,10 +63,9 @@ export class StudentFeedbackComponent implements OnInit {
   })
 
   this.Student_email=localStorage.getItem('token');
-  this.StudentService.GetResult(this.Student_email).subscribe((res:Results[])=>{
-  this.AddFeedbackForm.controls['s_id'].setValue(res[0].s_id);
-  this.AddFeedbackForm.controls['s_name'].setValue(res[0].Fullname);
-  console.log(res[0]);
+  this.StudentService.GetStudent(this.Student_email).subscribe((data:Students)=>{
+  this.AddFeedbackForm.controls['s_id'].setValue(data.Student_id);
+  this.AddFeedbackForm.controls['s_name'].setValue(data.Fullname);
   })
   }
   

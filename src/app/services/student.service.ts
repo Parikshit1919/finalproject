@@ -4,11 +4,12 @@ import {  Observable, throwError } from 'rxjs';
 import {Feedback} from '../Models/feedback';
 import {Exam} from '../Models/exam';
 import { Results } from '../Models/results';
+import {Students} from '../Models/students'
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
-  private apiServer = "http://localhost:49910/api";
+  private apiServer = "http://localhost:50471/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -18,6 +19,16 @@ export class StudentService {
 
 
 
+/*************************************************** STUDENT METHOD *************************************/
+GetStudent(Student_Email):Observable<Students>
+{
+  
+  let params = new HttpParams().set('email', Student_Email);
+  var req = this.httpClient.get<Students>(this.apiServer + '/Student/GetByEmail',{ params: params });
+  console.log(req);
+  return req;
+}
+/*************************************************** FEEDBACK METHODS *************************************/
  //METHOD TO ADD Feedback
 SendFeedback(feedback): Observable<Feedback> 
 {
@@ -25,6 +36,7 @@ SendFeedback(feedback): Observable<Feedback>
 }
 
 
+/*************************************************** RESULTS METHODS *************************************/
 //METHOD TO VIEW RESULT
 GetAllResults():Observable<Results[]>{
   var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ViewAll');
