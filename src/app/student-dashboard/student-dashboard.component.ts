@@ -27,6 +27,7 @@ export class StudentDashboardComponent implements OnInit {
     this.student_email=localStorage.getItem('token');
     this.studentService.GetStudent(this.student_email).subscribe((data:Students)=>{
       this.student=data;
+      localStorage.setItem('s_id',this.student.Student_id.toString());
       console.log(this.student);
       console.log(this.student.Fullname);
       this.student_name=this.student.Fullname;
@@ -36,6 +37,10 @@ export class StudentDashboardComponent implements OnInit {
   //METHOD TO LOGOUT STUDENT
   logout() {  
     console.log('logout');  
+    // localStorage.setItem('s_id',"");
+    // localStorage.setItem('exam_id',"");
+    localStorage.clear();
+    localStorage
     this.login.logout();  
     this.router.navigateByUrl('/Home');  
   }  

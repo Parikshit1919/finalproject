@@ -65,16 +65,16 @@ export class StudentExamSelectComponent implements OnInit {
       this.SearchExamForm.controls['courseName'].setValue(res.Course_name);
       this.SearchExamForm.controls['time'].setValue(res.time+' Mins');
       this.SearchExamForm.controls['level'].setValue(res.level);
+      localStorage.setItem('course_id',res.Course_id);
       console.log(res);
     });
   }
 
   submitForm(){
-    console.log("INSIDE SUBMIT");
-    this.router.navigateByUrl('/Login/Student/Dashboard/Exam')
+    console.log("INSIDE SUBMIT",this.selected_exam);
+    console.log("INSIDE SIBMIT",this.SearchExamForm.value)
+    localStorage.setItem("exam_id",this.selected_exam.toString());
+    // this.router.navigateByUrl('/Login/Student/Dashboard/Exam')
   }
-  // startexam(){
-  //   console.log('startexam');   
-  //   this.router.navigateByUrl('/Login/Student/Dashboard/SelectExam/Exam');  
-  // }
+ 
 }

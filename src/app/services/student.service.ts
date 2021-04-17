@@ -5,6 +5,7 @@ import {Feedback} from '../Models/feedback';
 import {Exam} from '../Models/exam';
 import { Results } from '../Models/results';
 import {Students} from '../Models/students'
+import { Answers } from '../Models/answers';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,5 +52,13 @@ GetResult(Student_Email):Observable<Results[]>{
   console.log(req);
   return req;
 }
-
+/*************************************************** EXAM METHODS *************************************/
+ submitExam(answers):Observable<Answers[]>{
+  
+ 
+   console.log(answers);
+   var req = this.httpClient.post<Answers[]>(this.apiServer + '/Results/GetResults/',JSON.stringify(answers),this.httpOptions);
+   console.log(req);
+   return req;
+ }
 }
