@@ -22,6 +22,8 @@ import {AdminAddExamComponent} from './admin-add-exam/admin-add-exam.component';
 import {AdminAddQuestionsComponent} from './admin-add-questions/admin-add-questions.component';
 import { AuthGuard } from './Guards/auth.guard';
 import{StudentauthGuard} from './Guards/studentauth.guard';
+import { StudentExamSelectComponent } from './student-exam-select/student-exam-select.component';
+import { StudentExamComponent } from './student-exam/student-exam.component';
 const routes: Routes = [
   {path:'' ,component:HomepageComponent},
   {path:'Home',component:HomepageComponent},
@@ -34,6 +36,8 @@ const routes: Routes = [
   {
     path:'Login/Student/Dashboard',component:StudentDashboardComponent,
     children:[
+      {path:'SelectExam',component:StudentExamSelectComponent},
+      {path:'Exam',component:StudentExamComponent},
       {path:'Feedback',component:StudentFeedbackComponent},
       {path:'Results',component:StudentResultsComponent},
       {path:'Ranking',component:StudentRankingComponent}
