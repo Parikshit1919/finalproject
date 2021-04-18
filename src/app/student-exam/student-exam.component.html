@@ -11,7 +11,7 @@
                     <h6 *ngIf="this.exam">Level:{{exam.level}}</h6>
                 </div>
                 <div class="col-md-3">
-                    <h6>Time Left:   <countdown class="timer" [config]="{leftTime: 10}" (event)="onTimerFinished($event)">$!m!:$!s!</countdown></h6>
+                    <h6>Time Left:   <countdown class="timer" [config]="{leftTime: 100000}" (event)="onTimerFinished($event)">$!m!:$!s!</countdown></h6>
                 </div> 
                 <div class="col-md-3">
                     <h6 *ngIf="this.questions">Total Question:{{questions.length}}</h6>
@@ -64,9 +64,18 @@
                                                         <input type="radio" name="option4"  [(ngModel)]="optionSelected"  value="d">&nbsp;  {{question.Option4}}                                          
                                                      </label>
                                                        </div> 
-
-                                                       <div class="modal-footer text-muted mb-3"><button class="btn btn-lg btn-primary " (click)="submitQuestion()">{{buttonText}} 
-                                                        <i class="fas fa-angle-right"></i></button></div>
+                                                   
+                                                       <div class="modal-footer text-muted mb-3">
+                                                        <!-- PREVIOUS QUESIONT BUTTON -->
+                                                        <button class="btn btn-lg btn-primary " *ngIf="i>0" (click)="previousQuestion()">Previous Question
+                                                            <i class="fas fa-angle-left"></i></button>
+                                                        <!-- NEXT QUESTION BUTTON -->
+                                                        <button class="btn btn-lg btn-primary " (click)="nextQuestion()">{{buttonText}} 
+                                                        <i class="fas fa-angle-right"></i></button>
+                                                            
+                                                       
+                                                    </div>
+                                                 
                                         </form>
                                         
                                     </div>

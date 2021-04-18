@@ -52,7 +52,7 @@ export class StudentExamComponent implements OnInit {
     });
   }
 
-  submitQuestion()
+  nextQuestion()
   {
     console.log(this.question.Q_no+this.optionSelected);
     let answer =new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')))  
@@ -65,7 +65,7 @@ export class StudentExamComponent implements OnInit {
       this.i+=1;
       console.log(this.i);
       this.question=this.questions[this.i];
-
+      
       //CHANGE BUTTON TEXT FOR THE LAST QUESITON
       if(this.i==this.noOfQuestions)
       {
@@ -83,6 +83,15 @@ export class StudentExamComponent implements OnInit {
        });
 
     }
+  }
+  //METHOD TO GO TO PREVIOUS QUESTION
+  previousQuestion()
+  {
+    this.i-=1;
+    console.log(this.i);
+    this.question=this.questions[this.i];
+    console.log(this.answers)
+    this.answers.pop();
   }
   //AUTO SUBMIT TEST
   onTimerFinished(e:Event){
