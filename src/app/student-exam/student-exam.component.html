@@ -11,7 +11,7 @@
                     <h6 *ngIf="this.exam">Level:{{exam.level}}</h6>
                 </div>
                 <div class="col-md-3">
-                    <h6>Time Left:   <countdown class="timer" [config]="{leftTime: 100000}" (event)="onTimerFinished($event)">$!m!:$!s!</countdown></h6>
+                    <h6>Time Left:   <countdown class="timer" [config]="{leftTime: 10000}" (event)="onTimerFinished($event)">$!m!:$!s!</countdown></h6>
                 </div> 
                 <div class="col-md-3">
                     <h6 *ngIf="this.questions">Total Question:{{questions.length}}</h6>
@@ -41,20 +41,20 @@
                                         <div class="mb-3">
                                             <label class=" btn btn-lg btn-muted btn-block">
                                                 <span class="btn-label" ></span>A
-                                                <input type="radio" name="option1"  [(ngModel)]="optionSelected" value="a"> &nbsp; {{question.Option1}}
+                                                <input type="radio" name="option1"  [(ngModel)]="optionSelected"  value="a"> &nbsp; {{question.Option1}}
                                               </label>
                                         </div>
                                        <div class="mb-3">
                                                 <label class=" btn btn-lg btn-muted btn-block">
                                                     <span class="btn-label"></span>B
-                                                    <input type="radio" name="option2"  [(ngModel)]="optionSelected"  value="b"> &nbsp;  {{question.Option2}}
+                                                    <input type="radio" name="option2"  [(ngModel)]="optionSelected"   value="b"> &nbsp;  {{question.Option2}}
                                                  </label>
                                              </div>
 
                                              <div class="mb-3">
                                                 <label class=" btn btn-lg btn-muted btn-block">
                                                     <span class="btn-label"></span>C
-                                                    <input type="radio" name="option3"  [(ngModel)]="optionSelected"  value="c"> &nbsp;  {{question.Option3}}
+                                                    <input type="radio" name="option3"  [(ngModel)]="optionSelected"   value="c"> &nbsp;  {{question.Option3}}
                                                  </label>
                                                  </div>
 
