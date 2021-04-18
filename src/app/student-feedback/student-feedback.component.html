@@ -1,0 +1,148 @@
+<div class="container-fluid ">
+  <!--------------------- HEADING ROW  ---------------------->
+  <div class="row heading-row shadow-sm bg-light">
+      <div class="col-md-1 img-col">
+          <img src="../../assets/admin-dashboard-feedback.png" >
+      </div>
+      <div class="col-md-6">
+          <h3>Feeback Dashboard</h3>
+          <h6 class="text-muted ">Write A Feeback</h6>
+      </div>
+  <!----------------------HORIZONTAL BREAK  ----------------->
+  <div class="row">
+      <div class="col">
+          <hr>
+      </div>
+  </div>
+  <!----------------------- CONTENT ROW  ------------------------->
+  <div class="row">
+      <div class="container-fluid content-container bg-light">
+          <div class="row justify-content-center">
+              <div class="col-md-6">
+                  <div class="card add-feedback-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-md-2">
+                                  <img src="../../assets/student-dashboad-add-feedback.png" class="img-fluid">
+                              </div>
+                              <div class="col mt-3 mr-5">
+                                  <h4>Write Your Feedback</h4>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-body">
+                        <!-- FROM BEGINS ------------------------->
+                        <form [formGroup]="AddFeedbackForm" (ngSubmit)="submitForm()">
+                          <div class="mb-3">
+                            <label for="s_id" class="form-label">Student ID</label>
+                            <input type="number" class="form-control" id="s_id" formControlName="s_id" disabled placeholder >
+
+                            
+                            </div>
+                          
+                          <div class="mb-3">
+                            <label for="s_name" class="form-label">Student Name</label>
+                            <input type="text" class="form-control" id="s_name" formControlName="s_name" disabled placeholder>
+                               
+                          </div>
+                       
+                            <div class="mb-3">
+                              <label for="e_id" class="form-label">Exam ID</label>
+                              <select class="custom-select"  formControlName="e_id">
+
+                                <option value="" disabled>Choose your Exam</option>
+                                <option *ngFor="let e of exams" [value]="e.Exam_id">{{e.Exam_id}}-{{e.Course_name}}</option> 
+                             </select>
+                                <div
+                                      *ngIf="!e_id?.valid && (e_id?.dirty ||e_id?.touched)">
+                                    <div [hidden]="!e_id.errors.required"  class="text-danger">
+                                        *Exam ID is required
+                                      </div>
+                                      </div>
+                            </div>
+                            
+                          <div class="mb-3">
+                              <label for="Feedback1">Comments</label>
+                              <textarea class="form-control" placeholder="Add your comments here" id="Feedback1" formControlName="Feedback1" style="height: 100px"></textarea>
+                                <div
+                                      *ngIf="!Feedback1?.valid && (Feedback1?.dirty ||Feedback1?.touched)">
+                                    <div [hidden]="!Feedback1.errors.required"  class="text-danger">
+                                        *Comments is required
+                                      </div>
+                                      </div>
+
+                          </div>  
+                          <!--<button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Submit</button> -->
+                           <button type="button" class="btn btn-primary" [disabled]="!AddFeedbackForm.valid" (click)="submitForm()">Submit</button>
+                        </form>
+                          <!-- FROM ENDS -->
+          
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+<!--------------------------------- MODAL  ------------------------------------->
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal">
+Launch demo modal
+</button> -->
+
+<!----------------------------------------------------- SUCCESS MODAL ------------------------------------------------>
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalTitle">SUCCESS!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- MODAL BODY -->
+      <div class="modal-body">
+        <div class="row">
+            <div class="col">
+                <img src="../../assets/register-success.png/" class="img-fluid"> Feedback Received!
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------------------------------ ERROR MODAL -------------------------------------->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModalTitle">Error!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- MODAL BODY -->
+      <div class="modal-body">
+        <div class="row">
+            <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Could Not Save Feedback
+            </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <div class="text-muted">NOTE: This Error occures when you have entered a wrong student ID or you might be 
+              trying to give a feedback for an exam that you have not appeared for</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>

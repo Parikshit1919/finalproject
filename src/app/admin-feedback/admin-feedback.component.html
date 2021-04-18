@@ -1,0 +1,48 @@
+<div class="container-fluid ">
+    <!--------------------- HEADING ROW  ---------------------->
+    <div class="row heading-row shadow-sm bg-light">
+        <div class="col-md-1 img-col">
+            <img src="../../assets/admin-dashboard-feedback.png" >
+        </div>
+        <div class="col-md-6">
+            <h3>Feeback Dashboard</h3>
+            <h6 class="text-muted ">Find All The Student Feedbacks Here!</h6>
+        </div>
+    <!----------------------HORIZONTAL BREAK  ----------------->
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <!----------------------- CONTENT ROW  ------------------------->
+    <div class="row">
+        <div class="container-fluid content-container bg-light">
+            <h4>Student Feedback List</h4>
+            <!-- TABLE BEGIN -->
+            <table class="table table-striped course-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Exam ID</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Feedback</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let feedback of feedbacks">
+                    <td scope="row">{{feedback.s_id}}</td>
+                    <td>{{feedback.s_name}}</td>
+                    <td>{{feedback.e_id}}</td>
+                    <td>{{feedback.Course_name}}</td>
+                    <td>{{feedback.level}}</td>
+                    <td>{{feedback.feedback}}</td>
+                  </tr>
+              
+                </tbody>
+              </table>
+        </div>
+    </div>
+    </div>
+</div>

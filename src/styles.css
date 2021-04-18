@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color:rgb(231, 231, 231);
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container
+{
+    color: black;
+     /* background-color:rgb(102, 102, 102); */
+    /* padding:1%; */
+    padding: 1%;
+    border-radius: 3px;
+}
+
+.footer-container form button 
+{
+    color: black;
+    border: 1px solid black;
+    
+}

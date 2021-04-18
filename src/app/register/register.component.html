@@ -1,0 +1,258 @@
+<div class="container register-container ">
+    
+    <div class="card shadow-lg" >
+        <div class="row g-0">
+        <div class="col-md-5">
+             <img src="../../assets/register.jpg" class = "img-fluid" alt="...">
+
+        </div>
+        <!-------------------------------------START OF CARD BODY  ------------------------------------------------->
+        <div class="col-md-7">
+            <div class="card-body">
+            <h2 class="card-title">Register</h2>
+            <h4 class="card-subtitle">Create Your Account Today!</h4>
+            <!--------------------------------- FROM BEGINS HERE ------------------------------------------->
+            <form [formGroup]="studentForm" (ngSubmit)="onFormSubmit()">
+                <!---------------------- NAME INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="name" class="form-label ">Full Name</label>
+                    </div>
+                    <div class="col-md-7">
+                   
+                    <input type="text" class="form-control" id="name" placeholder="Ian Piper" formControlName="Fullname">
+                    <!-- VALIDATION -->
+                    <div
+                    *ngIf="!Fullname?.valid && (Fullname?.dirty ||Fullname?.touched)">
+                    <div [hidden]="!Fullname.errors.required" class="text-danger">
+                      *Name is required
+                    </div>
+                   
+                    </div>
+                    </div>
+                    
+                </div>
+                <!---------------------- EMAIL INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+                    <div class="col-md-7">
+                    <input type="text" class="form-control" id="email" placeholder="name@example.com" formControlName="Student_Email">
+                    <!-- VALIDATION -->
+                    <div *ngIf="!Student_Email.valid && (Student_Email.dirty ||Student_Email.touched)">
+                        <div [hidden]="!Student_Email.errors.required" class="text-danger"> 
+                          *Email is required
+                        </div>
+                        <div [hidden]="!Student_Email.errors.pattern" class="text-danger">
+                          *Invalid email id
+                        </div>
+                      </div>
+                     
+                    
+                </div>
+                </div>
+                <!---------------------- PASSWORD INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="password" class="form-label">Password</label>
+                    </div>
+                    <div class="col-md-7">
+                    
+                    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="Student_Password" >
+                   <!-- VALIDATION -->
+                    <div
+                    *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
+                    <div [hidden]="!Student_Password.errors.required" class="text-danger">
+                      *Password is required
+                    </div>
+                    <div [hidden]="!Student_Password.errors.pattern" class="text-danger">
+                        *Password Must be at least 8 Characters long and should have at least one uppercase, one lowercase, one digit and one special character.
+                      </div>
+                    </div>
+                    </div>
+                </div>
+                <!---------------------- MOBILE NUMBER INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="mobile" class="form-label">Mobile</label>
+                    </div>
+                    <div class="col-md-7">
+                    
+                    <input type="number" class="form-control" id="mobile" placeholder="Mobile No." formControlName="Mobile">
+                    <!-- VALIDATION -->
+                    <div
+                    *ngIf="!Mobile?.valid && (Mobile?.dirty ||Mobile?.touched)">
+                    <div [hidden]="!Mobile.errors.required" class="text-danger" >
+                      *Mobile no is required
+                    </div>
+                    <div [hidden]="!Mobile.errors.pattern" class="text-danger">
+                       *Mobile no must be 10 digits only.
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <!---------------------- CITY INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="city" class="form-label">City</label>
+                    </div>
+                    <div class="col-md-7">
+                    
+                    <input type="text" class="form-control" id="city" placeholder="Eg. Mumbai" formControlName="City">
+                     <!-- VALIDATION -->
+                    <div
+                    *ngIf="!City?.valid && (City?.dirty ||City?.touched)">
+                    <div [hidden]="!City.errors.required" class="text-danger">
+                      *City is required
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <!---------------------- DATE OF BIRTH INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="dob" class="form-label">Date Of Birth</label>
+                    </div>
+                    <div class="col-md-7">
+                    
+                    <input type="date" class="form-control" id="dob" placeholder="" formControlName="DOB">
+                    <div
+                    *ngIf="!DOB?.valid && (DOB?.dirty ||DOB?.touched)">
+                    <div [hidden]="!DOB.errors.required" class="text-danger">
+                      *DOB is required
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <!---------------------- STATE INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="state" class="form-label">State</label>
+                    </div>
+                    <div class="col-md-7"> 
+                    <!-- <input type="text" class="form-control" id="state" placeholder="Eg. Maharashtra" formControlName="State">  -->
+                    <select class="custom-select"  formControlName="State">
+                        <option value="" disabled>Choose your State</option>
+                        <option *ngFor="let state of states">{{state}}</option> 
+                     </select>
+                    <!-- VALIDATION -->
+                    <div
+                    *ngIf="!State?.valid && (State?.dirty ||State?.touched)">
+                    <div [hidden]="!State.errors.required" class="text-danger">
+                     *State is required
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <!---------------------- QUALIFICATION INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="qualification" class="form-label">Qualification</label>
+                    </div>
+                    <div class="col-md-7">     
+                    <input type="text" class="form-control" id="qualification" placeholder="Eg. BTech" formControlName="Qualification">
+                     <!-- VALIDATION -->
+                    <div
+                    *ngIf="!Qualification?.valid && (Qualification?.dirty ||Qualification?.touched)">
+                    <div [hidden]="!Qualification.errors.required" class="text-danger">
+                      *Qualification is required.
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <!---------------------- GRADUATION INPUT ------------------------->
+                <div class = "row">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label for="compleation" class="form-label">Graduation Year</label>
+                    </div>
+                    <div class="col-md-7">
+                    <input type="number" class="form-control" id="compleation" placeholder="Eg. 2020" formControlName="Year_of_completion">
+                     <!-- VALIDATION -->
+                    <div *ngIf="!Year_of_completion?.valid && (Year_of_completion?.dirty ||Year_of_completion?.touched)">
+                        <div [hidden]="!Year_of_completion.errors.required" class="text-danger">
+                        *Graduation Year is required.
+                        </div>
+                        <div [hidden]="!Year_of_completion.errors.min" class="text-danger">
+                            *Graduation Year cannot be Less than 2010
+                        </div>
+                        <div [hidden]="!Year_of_completion.errors.max" class="text-danger">
+                            *Graduation Year cannot Greater than 2021
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- captca -->
+                  <div class = "row">
+                    <div class="col-md-7">
+                     <ngx-recaptcha2 [siteKey]="siteKey" formControlName="recaptcha"></ngx-recaptcha2>
+                    </div>
+                </div>
+                <!---------------------------------------------------- SUBMIT BUTTON  --------------------------------------------->
+                <div class = "row">
+                    <div class="col-md-10">
+                        <input type="submit" [disabled]="!studentForm.valid"class="form-control submit-button" value="Register"> 
+                    </div>
+                </div>
+               
+            </form>
+            <!------------------------- FROM ENDS HERE ------------------------------------------->
+        </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- MODAL  ------------------------------------->
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal">
+  Launch demo modal
+</button> -->
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalTitle">SUCCESS!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="row">
+              <div class="col">
+                  <img src="../../assets/register-success.png/" class="img-fluid"> Thank you For Registering!
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" routerLink="/Login/Student" ><i class="fas fa-user-friends"></i> Login!</button>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!-- ERROR MODAL -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalTitle">Error!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="row">
+              <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> You Have Already Registered!
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>

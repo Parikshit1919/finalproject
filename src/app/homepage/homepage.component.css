@@ -1,0 +1,127 @@
+.main-container
+{
+    background-color:rgb(151, 233, 183);
+    margin-left:40px;
+    margin-right:40px;
+    Padding-top:20px;
+    padding-bottom:20px;
+    /* font-family: Arial, Helvetica, sans-serif;; */
+}
+.regilink
+{
+    margin-left:40px;
+    margin-right:1000px;
+    margin-top:20px;
+    Padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:rgb(224, 222, 222);
+}
+a
+{
+    text-decoration:none;
+ 
+}
+/*********************************************** BANNER STYLING *******************************************/
+
+#banner{
+    background-image:linear-gradient(to right,rgb(79, 142, 167),grey);
+    color:white;
+    padding-top: 5%;
+    /* padding-bottom: 5%; */
+}
+#banner .btn-primary
+{
+    box-shadow: none;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 25px;
+    background-image:linear-gradient(to right,rgb(39, 173, 226),rgb(100, 100, 100));
+}
+.banner-img img
+{
+    height:45vh;
+    margin-left: 2%;
+     /* margin-bottom: 20%;  */
+}
+
+.promo-title{
+    font-size: 60px;
+    font-weight: 600;
+    margin-top: 60px;
+}
+
+.bottom-img{
+    width: 100%;
+    height:150px;
+} 
+/******************************************************************* SERVICES STYLING ********************************/
+#services{
+    padding:65px 0;
+}
+.service-img{
+    width: 100px;
+    margin-top: 20px;
+}
+.service{
+    padding: 20px;
+}
+.service h4{
+    padding: 5px;
+    margin-top: 25px;
+    text-transform: uppercase;
+    
+}
+.title::before{
+    content: ' ';
+     background:rgb(79, 142, 167); 
+    
+    height: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(63px);
+}
+.title::after{
+    content: ' ';
+     background:rgb(79, 142, 167); 
+   
+    height: 10px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    transform: translateY(8px);
+}
+#services .btn-primary{
+    box-shadow: none;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 25px;
+    background-image:linear-gradient(to right,rgb(79, 142, 167),grey);
+}
+
+
+/***************************** WHY US *******************************/
+#why-us
+{
+    padding-top: 3%;
+    background-color: #fff;
+    padding-bottom: 9%;
+}
+#why-us img
+{
+    height: 40vh;
+    margin-top: -1%;
+}
+#why-us .btn-primary{
+    box-shadow: none;
+    font-size: 18px;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 25px;
+    background-image:linear-gradient(to right,rgb(79, 142, 167),grey);
+}

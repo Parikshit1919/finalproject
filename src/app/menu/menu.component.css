@@ -1,0 +1,22 @@
+.navbar
+{
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+ .navbar.active
+{
+    margin-top:-85px;
+} 
+.navbar ul li a
+{
+   color: black;
+   font-size: 17px;
+}
+
+.navbar ul li a:hover
+{
+   background-color:black;
+    color: white;
+    border-radius: 10px;
+    transition-delay: 80ms;
+}

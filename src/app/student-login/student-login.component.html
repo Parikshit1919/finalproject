@@ -1,0 +1,94 @@
+<div class="container login-container ">
+    
+        <div class="card shadow-lg" >
+            <div class="row g-0">
+            <div class="col-md-4">
+                 <img src="../../assets/login.png" class = "img-fluid" alt="...">
+                
+            </div>
+            <!-------------------------------------START OF CARD BODY  ------------------------------------------------->
+            <div class="col-md-7">
+                <div class="card-body">
+                <h2 class="card-title">Student Login</h2>
+                <h4 class="card-subtitle">Sign Into Your Account</h4>
+                <!--------------------------------- FROM BEGINS HERE ------------------------------------------->
+                <form [formGroup]="loginForm" (ngSubmit)=" submitForm()" novalidate>
+                    <div class = "row">
+                        <div class="col-md-2" style="padding-top:10px;">
+                            <label for="Student_Email" class="form-label">Email</label>
+                        </div>
+                        <div class="col-md-7">
+                       
+                        <input type="email" class="form-control" id="Student_Email" placeholder="name@example.com" formControlName="Student_Email">
+                       
+                        <div
+                         *ngIf="!Student_Email?.valid && (Student_Email?.dirty ||Student_Email?.touched)"  >
+                        <div [hidden]="!Student_Email.errors.required" class="text-danger">
+                         *Email is required
+                         </div>
+                          </div>
+                          </div>
+                        </div>
+                          <div class="row">
+                              <div class="col-md-2" style="padding-top: 10px;">
+                            <label for="Student_Password" class="form-label">Password</label>
+                        </div>
+                        <div class="col-md-7">
+                        <!--  -->
+                        <input type="password" class="form-control" id="Student_Password" placeholder="Password" formControlName="Student_Password">
+                        
+                        <div
+                         *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
+                        <div [hidden]="!Student_Password.errors.required"  class="text-danger">
+                            *Password is required
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class = "row">
+                        <div class="col-md-9">
+                            <button type="submit" [disabled]="!loginForm.valid" class="form-control submit-button" value="Login">Login</button> 
+                        </div>
+                    </div>
+                    <!------------------------------------------- BOTTOM TWO LINKS  ---------------------------------------->
+                    <div class = "row bottom-elements">
+                        <div class="col-md-5">
+                       <a routerLink = '../../ForgotPassword'>Forgot Password?</a>
+                        </div>
+                    </div>
+                    <div class = "row bottom-elements">
+                        <div class="col-md-12">
+                       <p>Dont Have An Account?<a routerLink = "../../Register"> Register Now!</a></p>
+                        </div>
+                    </div>
+                </form>
+                <!------------------------- FROM ENDS HERE ------------------------------------------->
+            </div>
+            </div>
+        </div>
+</div>
+
+<!------------------------------------------------- MODALS --------------------------------------------------->
+ <!-- ERROR MODAL -->
+ <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalTitle">Error!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <div class="row">
+              <div class="col"><img src="../../assets/admin-dashboard-courses-delete1.png" class="img-fluid"> Invalid Username Or Password
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>

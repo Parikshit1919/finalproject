@@ -1,0 +1,95 @@
+<div class="wrapper">
+    <!-------------------------- Sidebar  ----------------------------------------->
+    <nav id="sidebar" [ngClass]="{'active': sideNavService.hideSideMenu }">
+        <div class="sidebar-header text-center">
+            <img class="img-thumbnail" src="../../assets/login-person-admin.png">
+            <h6>Welcome Admin</h6>
+        </div>
+        <!------------------------SIDEBAR LIST ITEMS  ----------------------------------------->
+        <ul class="list-unstyled components">
+           <!----------------------------ANALYTICS LINK ------------------------------------------>
+            <li>
+            <a routerLink="Analytics" ><i class="fas fa-chart-line"></i> Analytics</a>
+            </li>
+          <!----------------------------MANAGE EXAMS LIST ------------------------------------------>
+            <li>   
+                    <a class="dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+                      aria-controls="collapseExample">
+                      <i class="fas fa-book"></i> Exams
+                    </a>
+                  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a routerLink="AddQuestions" >Add Questions</a>
+                        </li>
+                        <li>
+                            <a routerLink="AddExam" >Manage Exams</a>
+                        </li>
+                    </ul>
+                  </div>
+            </li>
+            <!----------------------------MANAGE COURSES LIST ------------------------------------------>
+            <li>   
+                <a class="dropdown-toggle" data-toggle="collapse" (click)="courseToggler()" [attr.aria-expanded]="!isCollapsed"
+                  aria-controls="collapseExample">
+                  <i class="fab fa-audible"></i> Manage Courses
+                </a>
+              <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed1">
+                <ul class="list-unstyled">
+                    <li>
+                        <a routerLink="AddCourses" >Add Courses</a>
+                    </li>
+                </ul>
+              </div>
+             </li>
+             <!----------------------------RESULTS LIST ------------------------------------------>
+             <li>   
+                <a class="dropdown-toggle" data-toggle="collapse" (click)="resultsToggler()" [attr.aria-expanded]="!isCollapsed"
+                  aria-controls="collapseExample">
+                  <i class="fas fa-trophy"></i> Results
+                </a>
+              <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed2">
+                <ul class="list-unstyled">
+                    <li>
+                        <a routerLink="ExamResults" >Filter By Exam</a>
+                    </li>
+                    <li>
+                        <a routerLink="StudentResults">Filter By Student</a>
+                    </li>
+                </ul>
+              </div>
+             </li>
+             <!----------------------------FEEDBACK LINK ------------------------------------------>
+            <li>
+                <a routerLink="Feedback" ><i class="far fa-comments"></i> Feedback</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!--------------------------------- NAVBAR CONTENT  ------------------------------------------------>
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!----------------------- DROPDOWN TOGGLE MENU  -------------------------------------->
+            <div class="dropdown">
+                <button class="btn btn-secondary " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-align-left"></i> Toggle Menus
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" type="button" (click)="sideNavService.toggleSideNav()" style="background-color:#fff;">Sidebar</a></li>
+                  <li><a class="dropdown-item" type="button" (click)="sideNavService.toggleMenu()" style="background-color:#fff;">Menu</a></li>
+                </ul>
+              </div>
+              <!--------------------------------------- LOGOUT BUTTON  ------------------------->
+            </ul>
+                <ul class="nav navbar-nav" style="float: right">
+                    <button type="button" class="btn btn-info pl-3 pr-3" (click)="logout()">
+                        <i class="fas fa-power-off"></i> Logout
+                    </button>
+                 </ul>
+        </nav>
+        <!-------- CONTENT  ------->
+        <router-outlet></router-outlet>
+    </div>
+   
+</div>

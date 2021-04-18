@@ -1,0 +1,64 @@
+/***************************** MAIN CONTINAER ********************************/
+.container-fluid
+{
+    padding-bottom: 50%;
+    margin-top:-2%;
+}
+/***************************** HEADING IMAGE ***********************/
+.img-col img 
+{
+   
+    height: 4vw;
+}
+.img-col
+{
+    /* background-color: white; */
+    margin-right: -2%;
+}
+/*****************************HEADING ROW **********************************/
+.heading-row
+{
+    border-radius: 15px;
+    padding:1%;
+  
+} 
+/* MAIN */
+.content-container
+{
+    margin-top:1%;
+    padding-bottom: 10%;
+}
+/* TABLE */
+.course-table
+{
+    border: 14px;
+}
+/* MODAL STYLING */
+#DeleteExamModal img
+{
+    height: 4vh;
+}
+#AddExamModal img 
+{
+    height:5vh;
+}
+
+/********************************************* MODAL STYING *****************************/
+#successModal img {
+    height:10vh;
+}
+#successModal .modal-body {
+    font-size:18px;
+}
+
+#errorModal .modal-body {
+    font-size:18px;
+}
+#errorModal img {
+    height:8vh;
+}
+
+#ModifyExamModal img 
+{
+    height:5vh;
+}

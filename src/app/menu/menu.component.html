@@ -1,0 +1,36 @@
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm" [ngClass]="{'active': sideNavService.hideMenu }">
+  <div class="container-fluid" >
+    <a class="navbar-brand"  href="#">
+      <img src="../../assets/Logos/logo1.png" alt="" width="190" height="55" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="Home" ><i class="fas fa-home"></i> Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink = "Register"><i class="fas fa-plus"></i> Register</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink = "Login/Admin" ><i class="fas fa-user-lock"></i> Admin</a></li>
+            <li><a class="dropdown-item" routerLink = "Login/Student"><i class="fas fa-user-friends"></i> Student</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="About"><i class="fas fa-bullhorn"></i> About Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+

@@ -1,0 +1,60 @@
+<div class="container-fluid ">
+    <!--------------------- HEADING ROW  ---------------------->
+    <div class="row heading-row shadow-sm bg-light">
+        <div class="col-md-1 img-col">
+            <img src="../../assets/admin-dashboard-StudentResults.png" >
+        </div>
+        <div class="col-md-6">
+            <h3>Student LeaderBoard</h3>
+            <h6 class="text-muted ">View Your Standing</h6>
+        </div>
+    <!----------------------HORIZONTAL BREAK  ----------------->
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <!----------------------- CONTENT ROW  ------------------------->
+    <div class="row">
+        <div class="container-fluid content-container bg-light">
+           <!-- TABLE ROW -->
+           <div class="row mt-4">
+            <div class="container-fluid content-container bg-light">
+                <h4>Exam Result List</h4>
+                <hr>
+                <!-- TABLE BEGIN -->
+                <mat-table [dataSource]="dataSource" matSort  >
+                    <ng-container matColumnDef="e_id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: rgb(248,249,250); border-bottom:15px;"><b>Exam ID</b></mat-header-cell>
+                        <mat-cell *matCellDef="let user" align="center">{{user.e_id}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Course_name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header><b>Course Name</b></mat-header-cell>
+                        <mat-cell *matCellDef="let user" align="center" >{{user.Course_name}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="level">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header><b>Level</b></mat-header-cell>
+                        <mat-cell *matCellDef="let user" align="center">{{user.level}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="s_id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header><b>Student ID</b></mat-header-cell>
+                        <mat-cell *matCellDef="let user">{{user.s_id}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Fullname">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header><b>Student Name</b></mat-header-cell>
+                        <mat-cell *matCellDef="let user">{{user.Fullname}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Result">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header><b>Result</b></mat-header-cell>
+                        <mat-cell *matCellDef="let user">{{user.Result}}</mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row;columns:displayedColumns"></mat-row>
+                </mat-table>
+            </div>
+         </div>
+         <!-- TABLE ROW ENDS-->
+        </div>
+    </div>
+    </div>
+</div>
