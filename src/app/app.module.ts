@@ -35,7 +35,7 @@ import {AuthGuard} from './Guards/auth.guard';
 import {StudentauthGuard} from './Guards/studentauth.guard';
 import { StudentExamSelectComponent } from './student-exam-select/student-exam-select.component';
 import { StudentExamComponent } from './student-exam/student-exam.component';
-
+import { CountdownModule } from 'ngx-countdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +76,8 @@ import { StudentExamComponent } from './student-exam/student-exam.component';
     FormsModule,
     MatTableModule,
     MatSortModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CountdownModule
   ],
   providers: [AuthGuard,StudentauthGuard],
   bootstrap: [AppComponent]

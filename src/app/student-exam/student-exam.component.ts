@@ -1,5 +1,5 @@
 import { Component, OnInit,ChangeDetectorRef  } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { StudentService } from '../services/student.service';
 import {Exam} from '../Models/exam';
 import {Question} from '../Models/questions';
@@ -29,7 +29,8 @@ export class StudentExamComponent implements OnInit {
   constructor(
     public StudentService: StudentService,
     public CourseService: AdminService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private router: Router,
   ) { }
  
 
@@ -83,19 +84,32 @@ export class StudentExamComponent implements OnInit {
 
     }
   }
+  //AUTO SUBMIT TEST
+  onTimerFinished(e:Event){
+    if (e["action"] == "done"){
+       console.log("AUTO SUBMIT");
+       let answer =new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')))  
+      this.answers.push(answer);
+       this.StudentService.submitExam(this.answers).subscribe((data:Answers[]) => {
+        console.log(data.toString());
+        this.score=data.toString()
+        this.onSuccess();
+      });
+     }
+   }
    /********************************** MODAL FUNCTIONS ******************************************************/
 
   //REFRESH PAGE METHOD
   refresh()
   {
-    location.reload();
+    this.router.navigateByUrl('/Login/Student/Dashboard/SelectExam')
   }
   //MODAL POPUP FOR SUCESSFULL REGISTRATION
   onSuccess()
   {
 
 
-    $('#successModal').modal('show'); 
+    $('#resultModal').modal('show'); 
     
   }
 
