@@ -26,10 +26,7 @@ export class StudentExamComponent implements OnInit {
   exam:Exam;                          // EXAM OBJECT
   score:string;
   modifiedFlag:boolean=false;
-  op_a:boolean=false;
-  op_b:boolean=false;
-  op_c:boolean=false;
-  op_d:boolean=false;
+
 
   constructor(
     public StudentService: StudentService,
@@ -117,6 +114,7 @@ export class StudentExamComponent implements OnInit {
     catch(e)
     {
       console.log("new Question No Previous data");
+      this.optionSelected="";
     }
       //CHANGE BUTTON TEXT FOR THE LAST QUESITON
       if(this.i==this.noOfQuestions)
