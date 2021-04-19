@@ -66,6 +66,44 @@
                       
                     </div>
                 </div>
+                <!-------------------------------------------------------------------INSTRUCTION MODAL--------------------------------->
+                <!-- Scrollable modal -->
+                <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="istructionModal" aria-hidden="true">               
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="InstructionModalTitle">INSTRUCTIONS</h5>  
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                            </button> 
+                         </div>
+                    <!--MODAL BODY-->
+                     <div class="modal-body">
+                         <div class="col">
+                        <div class="text-muted">
+                        <ul style="list-style-type:disc;">
+                            <li>On clicking Start Exam the timer will start.</li>
+                            <li>Test will be auto submitted once the time is up.</li>
+                            <li> No negative marking.</li>
+                            <li>Passing Cut-off for test is >=65% (Out of 100%).</li>
+                            <li>Once done click on Finish Test, the result will be displayed</li>
+                            <li>Navigation to other pages and keyboard use is restricted</li>
+                            <li>The test needs to be attempted in complete isolation to avoid any 
+                                interruptions by anyone around or in the background.</li>
+                            <li>Attempting the test from your phone/any other non-permissible device is restricted.</li>
+                            <li>The test needs to be attempted in a single seating and no 
+                                breaks are allowed during the test.</li>
+                        </ul>
+                        <h4 class="text-center" ><p class="text-primary">ALL THE BEST!</p></h4>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="refresh()">Start Exam</button>
+                </div>
+            </div>
+         </div>
+                </div>
                 <!------------------------------------------------------------------ ERROR MODAL -------------------------------------->
                         <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">

@@ -58,7 +58,14 @@ export class StudentExamSelectComponent implements OnInit {
   }
 
   /********************************** MODAL FUNCTIONS ******************************************************/
-
+  refresh(){
+    this.router.navigateByUrl('/Login/Student/Dashboard/Exam');
+  }
+  //MODAL POPUP FOR INSTRUCTION
+  onSuccess(){
+    $('#instructionModal').modal('show');
+    
+  }
   //MODAL POPUP FOR  ERROR
    onError()
    {
@@ -89,7 +96,8 @@ export class StudentExamSelectComponent implements OnInit {
       console.log(data);
       if(data.toString()=="valid")
       {
-        this.router.navigateByUrl('/Login/Student/Dashboard/Exam') //MAKE CHANGES HERE ONLY 
+        this.onSuccess();
+       
       }
       else
       {
