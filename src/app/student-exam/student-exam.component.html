@@ -11,7 +11,7 @@
                     <h5 *ngIf="this.exam">Level: {{exam.level}}</h5>
                 </div>
                 <div class="col-md-3">
-                    <h5>Time Left:   <countdown class="timer" [config]="{leftTime: 1000}" (event)="onTimerFinished($event)"> $!m!:$!s!</countdown></h5>
+                    <h5>Time Left:   <countdown class="timer" [config]="{leftTime: 5000}" (event)="onTimerFinished($event)"> $!m!:$!s!</countdown></h5>
                 </div> 
                 <div class="col-md-3">
                     <h5 *ngIf="this.questions">Total Question: {{questions.length}}</h5>

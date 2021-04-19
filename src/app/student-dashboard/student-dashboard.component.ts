@@ -32,13 +32,13 @@ export class StudentDashboardComponent implements OnInit {
       console.log(this.student.Fullname);
       this.student_name=this.student.Fullname;
     });
+     this.router.navigateByUrl('Login/Student/Dashboard/SelectExam');
   }
 
   //METHOD TO LOGOUT STUDENT
   logout() {  
     console.log('logout');  
-    // localStorage.setItem('s_id',"");
-    // localStorage.setItem('exam_id',"");
+   
     localStorage.clear();
     localStorage
     this.login.logout();  
