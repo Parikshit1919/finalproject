@@ -74,7 +74,7 @@ export class StudentExamSelectComponent implements OnInit {
     console.log("INSIDE SUBMIT",this.selected_exam);
     console.log("INSIDE SIBMIT",this.SearchExamForm.value)
     localStorage.setItem("exam_id",this.selected_exam.toString());
-    // this.router.navigateByUrl('/Login/Student/Dashboard/Exam')
+    this.router.navigateByUrl('/Login/Student/Dashboard/Exam')
   }
  
 }
