@@ -198,17 +198,27 @@ export class AdminAddQuestionsComponent implements OnInit {
 
 
    }
+   //METHOD TO UPLOAD EXCEL FILE
+   uploadFile() {
+    let formData = new FormData();
+    formData.append('upload', this.fileInput.nativeElement.files[0])
 
-  //  uploadFile() {
-  //   let formData = new FormData();
-  //   formData.append('upload', this.fileInput.nativeElement.files[0])
+    this.CourseService.UploadExcel(formData).subscribe(result => {
+      console.log(result);
+      if(result=="success")
+    {
+      this.onSuccess();
+      this.refresh();
+    }
 
-  //   this.CourseService.UploadExcel(formData).subscribe(result => {
-     
-  //     this.loadAllUser();
-  //   });
-  
-  // }
+    else
+    {
+      this.onError();
+    }
+    
+    });
+ 
+  }
  
  //CALL SERVICE ON METHOD CALL
 

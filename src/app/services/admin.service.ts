@@ -209,14 +209,18 @@ ModifyQuestion(Q_no):Observable<Question>
   console.log(req);
   return req;
 }
+//METHOD TO UPLOAD EXCEL
+UploadExcel(formData: FormData) {
+  let headers = new HttpHeaders();
 
-// UploadExcel(formData: FormData) {
+  headers.append('Content-Type', 'multipart/form-data');
+  headers.append('Accept', 'application/json');
 
-//   var req = this.httpClient.post<Question>(this.apiServer + '/UploadExcel/' ,JSON.stringify(Question), this.httpOptions);
-//   console.log(req);
-//   return req;
+  const httpOptions = { headers: headers };
 
-// }
+  return this.httpClient.post(this.apiServer + '/questionbyexcel', formData, httpOptions)
+}
+
 /*********************************************** Questions METHODS Ends ************************************/
 
 
