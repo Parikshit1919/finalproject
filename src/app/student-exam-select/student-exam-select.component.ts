@@ -89,7 +89,7 @@ export class StudentExamSelectComponent implements OnInit {
       console.log(data);
       if(data.toString()=="valid")
       {
-        this.router.navigateByUrl('/Login/Student/Dashboard/Exam')
+        this.router.navigateByUrl('/Login/Student/Dashboard/Exam') //MAKE CHANGES HERE ONLY 
       }
       else
       {

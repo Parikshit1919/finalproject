@@ -146,7 +146,7 @@ export class StudentExamComponent implements OnInit {
       if(question.id==this.question.Q_no)
       {
         console.log("PREVIOUS ANSWERED QUESTION DETECTED", question.id);
-        // this.answers[this.i]=new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')));
+        this.answers[this.i]=new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')));
         if(this.answers[this.i].answerSelected=="a")
         {
         this.optionSelected='a';
