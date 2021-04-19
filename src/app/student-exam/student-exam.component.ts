@@ -1,4 +1,4 @@
-import { Component, OnInit,ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef, HostListener  } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { StudentService } from '../services/student.service';
 import {Exam} from '../Models/exam';
@@ -14,7 +14,7 @@ declare var $ : any;
   styleUrls: ['./student-exam.component.css']
 })
 export class StudentExamComponent implements OnInit {
-
+  
   questions:Question[]=[];                   //STORE ALL AVAILABLE QUESTIONS FOR THE EXAM
   optionSelected:string;                    //TO STORE THE OPTION SLELCTED
   questionID:number;                        //QUESTION ID
@@ -24,10 +24,11 @@ export class StudentExamComponent implements OnInit {
   buttonText:string="Next Question";
   i:number =0;                         // USED TO INTERATE THROUGH THE TEST
   exam:Exam;                          // EXAM OBJECT
-  score:string;
-  modifiedFlag:boolean=false;
-
-
+  score:string;                       //SCORE OF EXAM
+  modifiedFlag:boolean=false;       //DETECT MODIFIED QUESTIONS
+  chances:number=2;                 //NO OF CHANCES BEFORE TEST AUTO SUBMITS
+  time:number;
+  config:any;
   constructor(
     public StudentService: StudentService,
     public CourseService: AdminService,
@@ -42,8 +43,10 @@ export class StudentExamComponent implements OnInit {
     this.CourseService.GetExamByID(localStorage.getItem("exam_id")).subscribe((data:Exam) => {
       this.exam=data;
       console.log(this.exam);
+      this.config = { leftTime: this.exam.time*60 };//SET TIMER 
       this.ref.detectChanges();
     });
+    
     //METHOD TO GET QUESTIONS
     this.CourseService.GetQuestionByID(localStorage.getItem("exam_id")).subscribe((data:Question[]) => {
       this.questions=data;
@@ -52,7 +55,18 @@ export class StudentExamComponent implements OnInit {
       this.question=this.questions[0];
       this.ref.detectChanges();
     });
+
+    //PREVENT REFRESH
+     window.addEventListener("keyup", disableF5);
+     window.addEventListener("keydown", disableF5);
+     function disableF5(e) {
+
+       if ((e.which || e.keyCode) == 116) e.preventDefault(); 
+
+      };
   }
+  
+  
    /********************************** EXAM FUNCTIONS ******************************************************/
   nextQuestion()
   {
@@ -146,7 +160,7 @@ export class StudentExamComponent implements OnInit {
       if(question.id==this.question.Q_no)
       {
         console.log("PREVIOUS ANSWERED QUESTION DETECTED", question.id);
-        // this.answers[this.i]=new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')));
+        
         if(this.answers[this.i].answerSelected=="a")
         {
         this.optionSelected='a';
@@ -185,7 +199,24 @@ export class StudentExamComponent implements OnInit {
       });
      }
    }
-
+/********************************** PROCTORING FUNCTIONS ******************************************************/
+   //FUNCTION TO DETECT CHANCES AND AUTO SUBMIT 
+   @HostListener('document:keypress', ['$event'])
+   handleKeyboardEvent(event: KeyboardEvent) { 
+     this.chances-=1;
+     alert(" KEY PRESS DETECTED YOU HAVE ONLY "+this.chances+" CHANCES REMAINING!");
+     if(this.chances==0)
+     {
+      console.log("SUBMITTING");
+      let answer =new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')))  
+      this.answers.push(answer);
+       this.StudentService.submitExam(this.answers).subscribe((data:Answers[]) => {
+        console.log(data.toString());
+        this.score=data.toString()
+        this.onSuccess();
+      });
+     }
+   }
    /********************************** MODAL FUNCTIONS ******************************************************/
 
   //REFRESH PAGE METHOD

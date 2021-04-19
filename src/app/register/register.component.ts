@@ -19,10 +19,9 @@ export class RegisterComponent implements OnInit {
   "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
   "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana",
   "Tripura", "Uttarakhand", "Uttar Pradesh","West Bengal"];
-
-
-
   massage:string; 
+
+
   //FORMS GROUP
   studentForm= new FormGroup({
     Fullname: new FormControl('',[Validators.required]),
@@ -36,8 +35,6 @@ export class RegisterComponent implements OnInit {
     Year_of_completion:new FormControl('',[Validators.required,Validators.min(2010),Validators.max(2021)]),
     recaptcha:new FormControl('',[Validators.required])
   })
-
-  
 
   constructor(private formBuilder: FormBuilder, public registration:AuthService,private router:Router) { }
    siteKey:string="6Ldl9ZcaAAAAAAvNdFyM-fTThxY3aVN8S13ns1By";
