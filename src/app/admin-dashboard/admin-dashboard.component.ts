@@ -29,6 +29,7 @@ export class AdminDashboardComponent implements OnInit {
   {
     this.id = localStorage.getItem('token');  
     this.name  = this.id.substring(0, this.id.lastIndexOf("@"));
+    this.router.navigateByUrl('Login/Admin/Dashboard/Analytics');
   }
 
   logout() {  
