@@ -217,6 +217,9 @@ export class StudentExamComponent implements OnInit {
       });
      }
    }
+   @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
+    event.returnValue = false;
+  }   
    /********************************** MODAL FUNCTIONS ******************************************************/
 
   //REFRESH PAGE METHOD
