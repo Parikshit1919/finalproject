@@ -73,6 +73,10 @@ export class StudentFeedbackComponent implements OnInit {
   
   /********************************** MODAL FUNCTIONS ******************************************************/
 
+  refresh()
+  {
+    location.reload();
+  }
   
   onSuccess()
   {

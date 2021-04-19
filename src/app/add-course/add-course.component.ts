@@ -66,7 +66,10 @@ export class AddCourseComponent implements OnInit {
   //REFRESH PAGE METHOD
   refresh()
   {
-    location.reload();
+      this. CourseService.GetCourse().subscribe((data: Courses[])=>{
+      this.courses = data;
+      console.log(data);
+  })
   }
   //MODAL POPUP FOR SUCESSFULL REGISTRATION
   onSuccess()

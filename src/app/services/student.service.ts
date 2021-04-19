@@ -11,7 +11,7 @@ import {Eligibility} from '../Models/eligibility';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiServer = "http://localhost:49910/api";
+  private apiServer = "http://localhost:50471/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

@@ -110,7 +110,16 @@ export class AdminAddExamComponent implements OnInit
   //REFRESH PAGE METHOD
   refresh()
   {
-    location.reload();
+    //GET ALL AVAIALBLE EXAMS
+     this. CourseService.GetExams().subscribe((data: Exam[])=>{
+      this.exams = data;
+      console.log(data);
+    })
+    //GET ALL AVAILABLE COURSES
+    this. CourseService.GetCourse().subscribe((data: Courses[])=>{
+      this.courses = data;
+      console.log(data);
+    })
   }
   //MODAL POPUP FOR SUCESSFULL REGISTRATION
   onSuccess()
