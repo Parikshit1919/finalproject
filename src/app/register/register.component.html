@@ -22,8 +22,7 @@
                    
                     <input type="text" class="form-control" id="name" placeholder="Ian Piper" formControlName="Fullname">
                     <!-- VALIDATION -->
-                    <div
-                    *ngIf="!Fullname?.valid && (Fullname?.dirty ||Fullname?.touched)">
+                    <div *ngIf="!Fullname?.valid && (Fullname?.dirty ||Fullname?.touched)">
                     <div [hidden]="!Fullname.errors.required" class="text-danger">
                       *Name is required
                     </div>
@@ -47,9 +46,7 @@
                         <div [hidden]="!Student_Email.errors.pattern" class="text-danger">
                           *Invalid email id
                         </div>
-                      </div>
-                     
-                    
+                    </div>
                 </div>
                 </div>
                 <!---------------------- PASSWORD INPUT ------------------------->
@@ -61,14 +58,13 @@
                     
                     <input type="password" class="form-control" id="password" placeholder="Password" formControlName="Student_Password" >
                    <!-- VALIDATION -->
-                    <div
-                    *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
-                    <div [hidden]="!Student_Password.errors.required" class="text-danger">
-                      *Password is required
-                    </div>
-                    <div [hidden]="!Student_Password.errors.pattern" class="text-danger">
-                        *Password Must be at least 8 Characters long and should have at least one uppercase, one lowercase, one digit and one special character.
+                    <div *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
+                      <div [hidden]="!Student_Password.errors.required" class="text-danger">
+                        *Password is required
                       </div>
+                      <div [hidden]="!Student_Password.errors.pattern" class="text-danger">
+                          *Password Must be at least 8 Characters long and should have at least one uppercase, one lowercase, one digit and one special character.
+                        </div>
                     </div>
                     </div>
                 </div>
@@ -81,14 +77,13 @@
                     
                     <input type="number" class="form-control" id="mobile" placeholder="Mobile No." formControlName="Mobile">
                     <!-- VALIDATION -->
-                    <div
-                    *ngIf="!Mobile?.valid && (Mobile?.dirty ||Mobile?.touched)">
-                    <div [hidden]="!Mobile.errors.required" class="text-danger" >
-                      *Mobile no is required
-                    </div>
-                    <div [hidden]="!Mobile.errors.pattern" class="text-danger">
-                       *Mobile no must be 10 digits only.
-                    </div>
+                    <div *ngIf="!Mobile?.valid && (Mobile?.dirty ||Mobile?.touched)">
+                      <div [hidden]="!Mobile.errors.required" class="text-danger" >
+                        *Mobile no is required
+                      </div>
+                      <div [hidden]="!Mobile.errors.pattern" class="text-danger">
+                        *Mobile no must be 10 digits only.
+                      </div>
                     </div>
                     </div>
                 </div>
@@ -101,11 +96,10 @@
                     
                     <input type="text" class="form-control" id="city" placeholder="Eg. Mumbai" formControlName="City">
                      <!-- VALIDATION -->
-                    <div
-                    *ngIf="!City?.valid && (City?.dirty ||City?.touched)">
-                    <div [hidden]="!City.errors.required" class="text-danger">
-                      *City is required
-                    </div>
+                    <div *ngIf="!City?.valid && (City?.dirty ||City?.touched)">
+                      <div [hidden]="!City.errors.required" class="text-danger">
+                        *City is required
+                      </div>
                     </div>
                     </div>
                 </div>
@@ -117,11 +111,10 @@
                     <div class="col-md-7">
                     
                     <input type="date" class="form-control" id="dob" placeholder="" formControlName="DOB">
-                    <div
-                    *ngIf="!DOB?.valid && (DOB?.dirty ||DOB?.touched)">
-                    <div [hidden]="!DOB.errors.required" class="text-danger">
-                      *DOB is required
-                    </div>
+                    <div *ngIf="!DOB?.valid && (DOB?.dirty ||DOB?.touched)">
+                      <div [hidden]="!DOB.errors.required" class="text-danger">
+                        *DOB is required
+                      </div>
                     </div>
                     </div>
                 </div>
@@ -137,11 +130,10 @@
                         <option *ngFor="let state of states">{{state}}</option> 
                      </select>
                     <!-- VALIDATION -->
-                    <div
-                    *ngIf="!State?.valid && (State?.dirty ||State?.touched)">
-                    <div [hidden]="!State.errors.required" class="text-danger">
-                     *State is required
-                    </div>
+                    <div *ngIf="!State?.valid && (State?.dirty ||State?.touched)">
+                      <div [hidden]="!State.errors.required" class="text-danger">
+                      *State is required
+                      </div>
                     </div>
                     </div>
                 </div>
@@ -153,11 +145,10 @@
                     <div class="col-md-7">     
                     <input type="text" class="form-control" id="qualification" placeholder="Eg. BTech" formControlName="Qualification">
                      <!-- VALIDATION -->
-                    <div
-                    *ngIf="!Qualification?.valid && (Qualification?.dirty ||Qualification?.touched)">
-                    <div [hidden]="!Qualification.errors.required" class="text-danger">
-                      *Qualification is required.
-                    </div>
+                    <div *ngIf="!Qualification?.valid && (Qualification?.dirty ||Qualification?.touched)">
+                      <div [hidden]="!Qualification.errors.required" class="text-danger">
+                        *Qualification is required.
+                      </div>
                     </div>
                     </div>
                 </div>
@@ -202,11 +193,6 @@
     </div>
 </div>
 <!--------------------------------- MODAL  ------------------------------------->
-<!-- Button trigger modal
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal">
-  Launch demo modal
-</button> -->
-
 
 <!-- SUCCESS MODAL -->
 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
@@ -233,7 +219,8 @@
       </div>
     </div>
   </div>
-  <!-- ERROR MODAL -->
+  
+  <!-------------------------------------- ERROR MODAL --------------------------------------------->
 <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">

@@ -63,6 +63,7 @@
                         <div class="modal-body">
 
                             <form [formGroup]="AddExamForm">
+                              <!------------ SELECT COURSE ----------->
                                 <div class="mb-3">
                                   <label for="Course_id" class="form-label">Select Course</label>
 
@@ -76,8 +77,8 @@
                                       *Course ID is required
                                     </div>
                                   </div>
-
                                 </div>
+                                 <!------------ EXAM TIME ----------->
                                 <div class="mb-3">
                                     <label for="Time" class="form-label">Exam Time</label>
                                     <input type="number" class="form-control" id="Time" placeholder="Select Exam Time" formControlName="Time">
@@ -94,8 +95,8 @@
                                           *Time Cannot Be Greater Than 180 Minutes
                                         </div>
                                       </div> 
-
                                   </div>
+                                <!------------ EXAM LEVEL ----------->
                                 <div class="mb-3">
                                     <label for="ExamLevel" class="form-label">Exam Level</label>
                                     <select class="custom-select" id ="ExamLevel" formControlName="Level">
@@ -110,7 +111,7 @@
                                         </div>
                                       </div> 
 
-                                </div>  
+                                    </div>  
                               </form>
                         </div>
                         <div class="modal-footer">
@@ -133,19 +134,17 @@
                     <!-------------------- MODAL BODY ----------------------->
                     <div class="modal-body">
                       <form [formGroup]="ModifyExamForm">
-
+                                <!--------------- COURSE ID --------------->
                                 <div class="mb-3">
                                   <label for="course_id" class="form-label">Course ID</label>
-
                                  <input type="text" class="form-control" formControlName="course_id" disabled>
-
                                 </div>
+                                <!--------------- EXAM ID --------------->
                                 <div class="mb-3">
                                   <label for="course_id" class="form-label">Exam ID</label>
-
                                  <input type="text" class="form-control" formControlName="exam_id" disabled>
-
                                 </div>
+                                <!--------------- EXAM TIME --------------->
                                 <div class="mb-3">
                                     <label for="time" class="form-label">Exam Time</label>
                                     <input type="number" class="form-control" id="time" placeholder="Select Exam Time" formControlName="time">
@@ -162,8 +161,8 @@
                                           *Time Cannot Be Greater Than 180 Minutes
                                         </div>
                                       </div> 
-
                                   </div>
+                               <!--------------- EXAM LEVEL ---------------> 
                                 <div class="mb-3">
                                     <label for="ExamLevel" class="form-label">Exam Level</label>
                                     <select class="custom-select" id ="ExamLevel" formControlName="level">
@@ -177,7 +176,6 @@
                                           *Level is required
                                         </div>
                                       </div> 
-
                                 </div>  
                      
                     <div class="modal-footer">
@@ -259,7 +257,7 @@
                     </div>
                   </div>
                 </div>
-
+                 <!---------------------------------------------- ERROR MODAL END ------------------------------------------------->
 
         </div>
     </div>

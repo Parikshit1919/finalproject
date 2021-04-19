@@ -52,14 +52,16 @@
                         <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/admin-dashboard-courses-add.png" class="img-fluid"> Add Courses</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <!-------------------- MODAL BODY ----------------------->
+                        
                         <div class="modal-body">
                             <form [formGroup]="AddCourseForm" (ngSubmit)="submitForm()">
                                 
                                 <div class="mb-3">
+                                  <!-------------------- COURSE NAME ----------------------->
                                   <label for="Course_name" class="form-label">Course Name</label>
                                   <input type="text" class="form-control" id="Course_name" placeholder="Enter Course Name" formControlName="Course_name" >
-                                        <div *ngIf="!Course_name?.valid && (Course_name?.dirty ||Course_name?.touched)">
+                                  <!-- VALIDATION -->
+                                  <div *ngIf="!Course_name?.valid && (Course_name?.dirty ||Course_name?.touched)">
                                           <div [hidden]="!Course_name.errors.required"  class="text-danger">
                                           *Course Name is required
                                         </div>
@@ -86,16 +88,17 @@
                     <!-------------------- MODAL BODY ----------------------->
                     <div class="modal-body">
                       <form [formGroup]="ModifyCourseForm">
-
+                        <!-------------------- COURSE ID ----------------------->
                         <div class="mb-3">
                           <label for="course_id" class="form-label">Course ID</label>
                           <input type="text" class="form-control" id="course_id" formControlName="course_id" disabled>
                           </div>
-                     
+                        <!-------------------- COURSE NAME ----------------------->
                         <div class="mb-3">
                           <label for="course_name" class="form-label">Course Name</label>
                           <input type="text" class="form-control" id="course_name" placeholder="Enter Course Name" formControlName="course_name" >
-                              <div *ngIf="!course_name?.valid && (course_name?.dirty ||course_name?.touched)">
+                          <!-- VALIDATION -->
+                          <div *ngIf="!course_name?.valid && (course_name?.dirty ||course_name?.touched)">
                                 <div [hidden]="!course_name.errors.required"  class="text-danger">
                                 *Course Name is required
                               </div>
@@ -181,7 +184,7 @@
                     </div>
                   </div>
                 </div>
-
+                <!------------------------------------------- ERROR MODAL ENDS ----------------------------------------------------->
         </div>
     </div>
     </div>

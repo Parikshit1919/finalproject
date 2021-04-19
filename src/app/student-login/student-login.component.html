@@ -14,37 +14,36 @@
                 <!--------------------------------- FROM BEGINS HERE ------------------------------------------->
                 <form [formGroup]="loginForm" (ngSubmit)=" submitForm()" novalidate>
                     <div class = "row">
+                      <!------------------- EMAIL ----------------------->
                         <div class="col-md-2" style="padding-top:10px;">
                             <label for="Student_Email" class="form-label">Email</label>
                         </div>
                         <div class="col-md-7">
-                       
                         <input type="email" class="form-control" id="Student_Email" placeholder="name@example.com" formControlName="Student_Email">
-                       
-                        <div
-                         *ngIf="!Student_Email?.valid && (Student_Email?.dirty ||Student_Email?.touched)"  >
-                        <div [hidden]="!Student_Email.errors.required" class="text-danger">
-                         *Email is required
-                         </div>
+                        <!-- VALIDATION -->
+                        <div *ngIf="!Student_Email?.valid && (Student_Email?.dirty ||Student_Email?.touched)"  >
+                            <div [hidden]="!Student_Email.errors.required" class="text-danger">
+                            *Email is required
+                            </div>
                           </div>
                           </div>
                         </div>
+                        <!------------------- PASSWORD ----------------------->
                           <div class="row">
                               <div class="col-md-2" style="padding-top: 10px;">
                             <label for="Student_Password" class="form-label">Password</label>
                         </div>
                         <div class="col-md-7">
-                        <!--  -->
                         <input type="password" class="form-control" id="Student_Password" placeholder="Password" formControlName="Student_Password">
-                        
-                        <div
-                         *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
+                        <!-- VALIDATION -->
+                        <div *ngIf="!Student_Password?.valid && (Student_Password?.dirty ||Student_Password?.touched)">
                         <div [hidden]="!Student_Password.errors.required"  class="text-danger">
                             *Password is required
                           </div>
                         </div>
                     </div>
                     </div>
+                    <!------------------- SUBMIT ----------------------->
                     <div class = "row">
                         <div class="col-md-9">
                             <button type="submit" [disabled]="!loginForm.valid" class="form-control submit-button" value="Login">Login</button> 

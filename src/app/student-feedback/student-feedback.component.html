@@ -33,19 +33,17 @@
                       <div class="card-body">
                         <!-- FROM BEGINS ------------------------->
                         <form [formGroup]="AddFeedbackForm" (ngSubmit)="submitForm()">
+                          <!---------------- STUDENT ID ---------------->
                           <div class="mb-3">
                             <label for="s_id" class="form-label">Student ID</label>
-                            <input type="number" class="form-control" id="s_id" formControlName="s_id" disabled placeholder >
-
-                            
+                            <input type="number" class="form-control" id="s_id" formControlName="s_id" disabled placeholder >    
                             </div>
-                          
+                            <!---------------- STUDENT NAME ---------------->
                           <div class="mb-3">
                             <label for="s_name" class="form-label">Student Name</label>
-                            <input type="text" class="form-control" id="s_name" formControlName="s_name" disabled placeholder>
-                               
+                            <input type="text" class="form-control" id="s_name" formControlName="s_name" disabled placeholder>  
                           </div>
-                       
+                            <!---------------- EXAM ID ---------------->
                             <div class="mb-3">
                               <label for="e_id" class="form-label">Exam ID</label>
                               <select class="custom-select"  formControlName="e_id">
@@ -59,20 +57,17 @@
                                         *Exam ID is required
                                       </div>
                                       </div>
-                            </div>
-                            
+                                </div>
+                          <!---------------- COMMENTS ---------------->
                           <div class="mb-3">
                               <label for="Feedback1">Comments</label>
                               <textarea class="form-control" placeholder="Add your comments here" id="Feedback1" formControlName="Feedback1" style="height: 100px"></textarea>
-                                <div
-                                      *ngIf="!Feedback1?.valid && (Feedback1?.dirty ||Feedback1?.touched)">
+                                <div *ngIf="!Feedback1?.valid && (Feedback1?.dirty ||Feedback1?.touched)">
                                     <div [hidden]="!Feedback1.errors.required"  class="text-danger">
                                         *Comments is required
                                       </div>
                                       </div>
-
                           </div>  
-                          <!--<button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Submit</button> -->
                            <button type="button" class="btn btn-primary" [disabled]="!AddFeedbackForm.valid" (click)="submitForm()">Submit</button>
                         </form>
                           <!-- FROM ENDS -->
@@ -86,11 +81,7 @@
   </div>
 </div>
 
-<!--------------------------------- MODAL  ------------------------------------->
-<!-- Button trigger modal
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal">
-Launch demo modal
-</button> -->
+<!------------------------------------------------------- MODALS  -------------------------------------------------------------->
 
 <!----------------------------------------------------- SUCCESS MODAL ------------------------------------------------>
 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
@@ -117,7 +108,7 @@ Launch demo modal
   </div>
 </div>
 
-<!------------------------------------------------------------------ ERROR MODAL -------------------------------------->
+<!------------------------------------------------------------------ ERROR MODAL ------------------------------------------------------>
 <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
