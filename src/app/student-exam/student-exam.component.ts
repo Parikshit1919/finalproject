@@ -1,12 +1,17 @@
-import { Component, OnInit,ChangeDetectorRef, HostListener  } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef  } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { StudentService } from '../services/student.service';
 import {Exam} from '../Models/exam';
 import {Question} from '../Models/questions';
 import { AdminService } from '../services/admin.service';
+import { TogglerService } from '../services/toggler.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CdkNoDataRow } from '@angular/cdk/table';
 import {Answers} from '../Models/answers';
+import { PlatformLocation } from '@angular/common';
+import { HostListener } from '@angular/core';
+
+
 declare var $ : any;
 @Component({
   selector: 'app-student-exam',
@@ -29,16 +34,32 @@ export class StudentExamComponent implements OnInit {
   chances:number=2;                 //NO OF CHANCES BEFORE TEST AUTO SUBMITS
   time:number;
   config:any;
+  keypress:number=0;
+
+
   constructor(
     public StudentService: StudentService,
     public CourseService: AdminService,
+    public TogglerService:TogglerService,
     private ref: ChangeDetectorRef,
     private router: Router,
-  ) { }
- 
+    location: PlatformLocation, 
+  ) 
+  { 
+    //Restricting to go back
+  
+    location.onPopState(() => {
+    this.router.navigateByUrl('Login/Student/Dashboard/Exam');
+    //history.forward();
+    
+    });
+        
+  }
 
   ngOnInit(): void 
   {
+    this.TogglerService.resetSideMenu();
+
     //METHOD TO GET EXAM DETAILS
     this.CourseService.GetExamByID(localStorage.getItem("exam_id")).subscribe((data:Exam) => {
       this.exam=data;
@@ -67,6 +88,13 @@ export class StudentExamComponent implements OnInit {
   }
   
   
+   
+  
+  
+
+
+
+ 
    /********************************** EXAM FUNCTIONS ******************************************************/
   nextQuestion()
   {
@@ -187,8 +215,10 @@ export class StudentExamComponent implements OnInit {
   }
 
   //AUTO SUBMIT TEST
-  onTimerFinished(e:Event){
-    if (e["action"] == "done"){
+  onTimerFinished(e:Event)
+  {
+    if (e["action"] == "done")
+    {
        console.log("AUTO SUBMIT");
        let answer =new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')))  
       this.answers.push(answer);
@@ -202,7 +232,8 @@ export class StudentExamComponent implements OnInit {
 /********************************** PROCTORING FUNCTIONS ******************************************************/
    //FUNCTION TO DETECT CHANCES AND AUTO SUBMIT 
    @HostListener('document:keypress', ['$event'])
-   handleKeyboardEvent(event: KeyboardEvent) { 
+   handleKeyboardEvent(event: KeyboardEvent) 
+   { 
      this.chances-=1;
      alert(" KEY PRESS DETECTED YOU HAVE ONLY "+this.chances+" CHANCES REMAINING!");
      if(this.chances==0)
@@ -217,23 +248,25 @@ export class StudentExamComponent implements OnInit {
       });
      }
    }
-   @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
-    event.returnValue = false;
-  }   
+  //  @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
+  //   event.returnValue = false;
+  // }   
+
+
+  
    /********************************** MODAL FUNCTIONS ******************************************************/
 
   //REFRESH PAGE METHOD
   refresh()
   {
+    
     this.router.navigateByUrl('/Login/Student/Dashboard/SelectExam')
   }
   //MODAL POPUP FOR SUCESSFULL REGISTRATION
   onSuccess()
   {
-
-
-    $('#resultModal').modal('show'); 
-    
+  
+    $('#resultModal').modal('show');   
   }
 
 }

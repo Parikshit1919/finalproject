@@ -9,6 +9,7 @@ import {Exam} from '../Models/exam';
 import { AdminService } from '../services/admin.service';
 import { Results } from '../Models/results';
 import {Students} from '../Models/students'
+import { TogglerService } from '../services/toggler.service';
 declare var $ : any;
 
 @Component({
@@ -27,7 +28,8 @@ export class StudentFeedbackComponent implements OnInit {
     public fb: FormBuilder,
     private router: Router,
     public StudentService: StudentService,
-    public CourseService: AdminService
+    public CourseService: AdminService,
+   
 
   ) { }
   AddFeedbackForm=new FormGroup({
@@ -56,7 +58,7 @@ export class StudentFeedbackComponent implements OnInit {
   // ngOnInit() {}
 
   ngOnInit() {
-  
+    
     this. CourseService.GetExams().subscribe((data: Exam[])=>{
       this.exams = data;
       console.log(data);
