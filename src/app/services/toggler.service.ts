@@ -23,5 +23,14 @@ export class TogglerService {
       this.hideMenu=false;
     }
   }
-  constructor() { }
+
+  //hiding side bar
+  resetSideMenu():void{
+    if(this.hideSideMenu === false)
+    {
+      this.hideSideMenu=true;
+    }
+  }
+
+    constructor() { }
 }

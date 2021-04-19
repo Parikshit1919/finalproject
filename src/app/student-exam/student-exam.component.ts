@@ -4,9 +4,14 @@ import { StudentService } from '../services/student.service';
 import {Exam} from '../Models/exam';
 import {Question} from '../Models/questions';
 import { AdminService } from '../services/admin.service';
+import { TogglerService } from '../services/toggler.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CdkNoDataRow } from '@angular/cdk/table';
 import {Answers} from '../Models/answers';
+import { PlatformLocation } from '@angular/common';
+import { HostListener } from '@angular/core';
+
+
 declare var $ : any;
 @Component({
   selector: 'app-student-exam',
@@ -26,18 +31,43 @@ export class StudentExamComponent implements OnInit {
   exam:Exam;                          // EXAM OBJECT
   score:string;
   modifiedFlag:boolean=false;
+  keypress:number=0;
 
 
   constructor(
     public StudentService: StudentService,
     public CourseService: AdminService,
+    public TogglerService:TogglerService,
     private ref: ChangeDetectorRef,
     private router: Router,
-  ) { }
- 
+    location: PlatformLocation, 
+  ) 
+  { 
+    //Restricting to go back
+  
+    location.onPopState(() => {
+    this.router.navigateByUrl('Login/Student/Dashboard/Exam');
+    //history.forward();
+    
+    });
+        
+  }
 
   ngOnInit(): void 
   {
+    this.TogglerService.resetSideMenu(); //hide sidebar
+   // Prevent Refresh (key)
+    // window.addEventListener("keyup", disableF5);
+    // window.addEventListener("keydown", disableF5); 
+    //  function disableF5(e) {
+    //     if ((e.which || e.keyCode) == 116)
+    //     //  ||((e.ctrlKey || e.keycode) == 82)) 
+    //      { 
+    //       alert("You cannot refresh");
+    //       e.preventDefault(); }
+    // };
+
+  
     //METHOD TO GET EXAM DETAILS
     this.CourseService.GetExamByID(localStorage.getItem("exam_id")).subscribe((data:Exam) => {
       this.exam=data;
@@ -52,7 +82,13 @@ export class StudentExamComponent implements OnInit {
       this.question=this.questions[0];
       this.ref.detectChanges();
     });
+   
+  
   }
+
+
+
+ 
    /********************************** EXAM FUNCTIONS ******************************************************/
   nextQuestion()
   {
@@ -174,7 +210,8 @@ export class StudentExamComponent implements OnInit {
 
   //AUTO SUBMIT TEST
   onTimerFinished(e:Event){
-    if (e["action"] == "done"){
+    if (e["action"] == "done")
+    {
        console.log("AUTO SUBMIT");
        let answer =new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')))  
       this.answers.push(answer);
@@ -186,6 +223,41 @@ export class StudentExamComponent implements OnInit {
      }
    }
 
+/********************************** Keyboard block  ******************************************************/
+
+  //Autosubmit if keyboard is used more than one time
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+  console.log(event);
+   event.returnValue = false;
+   event.preventDefault();
+   this.keypress++;
+   alert("Dont use Keyboard");
+     if (this.keypress===2)
+     {
+      alert("You used Keyboard"+ this.keypress + "time");
+      alert("You cannot continue");
+      console.log("AUTO SUBMIT");
+      let answer =new Answers(this.question.Q_no,this.optionSelected,parseInt(localStorage.getItem("exam_id")),parseInt(localStorage.getItem('s_id')))  
+      this.answers.push(answer);
+      this.StudentService.submitExam(this.answers).subscribe((data:Answers[]) => {
+      console.log(data.toString());
+      this.score=data.toString()
+      this.onSuccess();
+     });
+    }
+  }
+
+  @HostListener("window:beforeunload", ["$event"]) 
+  unloadHandler(event: Event) 
+  {
+    // console.log("Processing beforeunload...");
+   // event.returnValue = false;
+    this.router.navigateByUrl('/Login/Student/Dashboard/SelectExam');
+      // Do more processing...
+    
+}   
+  
    /********************************** MODAL FUNCTIONS ******************************************************/
 
   //REFRESH PAGE METHOD
@@ -196,10 +268,7 @@ export class StudentExamComponent implements OnInit {
   //MODAL POPUP FOR SUCESSFULL REGISTRATION
   onSuccess()
   {
-
-
-    $('#resultModal').modal('show'); 
-    
+    $('#resultModal').modal('show');   
   }
 
 }
