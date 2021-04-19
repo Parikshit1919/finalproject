@@ -11,7 +11,7 @@
                     <h6 *ngIf="this.exam">Level:{{exam.level}}</h6>
                 </div>
                 <div class="col-md-3">
-                    <h6>Time Left:</h6>
+                    <h6>Time Left:   <countdown class="timer" [config]="{leftTime: 10000}" (event)="onTimerFinished($event)">$!m!:$!s!</countdown></h6>
                 </div> 
                 <div class="col-md-3">
                     <h6 *ngIf="this.questions">Total Question:{{questions.length}}</h6>
@@ -25,13 +25,13 @@
                  <!----------------------  ----------------->
 
                 
-                                 <div class="row">
+                    <div class="row">
                     <div class="container-fluid content-container bg-light">
                         <div class="row">
                             <!-- FIND EXAM CARD -->
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header"><h5>Question no:{{question.Q_no}}</h5></div>
+                                    <div class="card-header"><h5>Question no:{{i+1}}</h5></div>
                                     <div class="card-body">
                                         <form >
                                         <div class="mb-3">
@@ -41,20 +41,20 @@
                                         <div class="mb-3">
                                             <label class=" btn btn-lg btn-muted btn-block">
                                                 <span class="btn-label" ></span>A
-                                                <input type="radio" name="option1"  [(ngModel)]="optionSelected" value="a"> &nbsp; {{question.Option1}}
+                                                <input type="radio" name="option1"  [(ngModel)]="optionSelected"  value="a"> &nbsp; {{question.Option1}}
                                               </label>
                                         </div>
                                        <div class="mb-3">
                                                 <label class=" btn btn-lg btn-muted btn-block">
                                                     <span class="btn-label"></span>B
-                                                    <input type="radio" name="option2"  [(ngModel)]="optionSelected"  value="b"> &nbsp;  {{question.Option2}}
+                                                    <input type="radio" name="option2"  [(ngModel)]="optionSelected"   value="b"> &nbsp;  {{question.Option2}}
                                                  </label>
                                              </div>
 
                                              <div class="mb-3">
                                                 <label class=" btn btn-lg btn-muted btn-block">
                                                     <span class="btn-label"></span>C
-                                                    <input type="radio" name="option3"  [(ngModel)]="optionSelected"  value="c"> &nbsp;  {{question.Option3}}
+                                                    <input type="radio" name="option3"  [(ngModel)]="optionSelected"   value="c"> &nbsp;  {{question.Option3}}
                                                  </label>
                                                  </div>
 
@@ -64,9 +64,18 @@
                                                         <input type="radio" name="option4"  [(ngModel)]="optionSelected"  value="d">&nbsp;  {{question.Option4}}                                          
                                                      </label>
                                                        </div> 
-
-                                                       <div class="modal-footer text-muted mb-3"><button class="btn btn-lg btn-primary " (click)="submitQuestion()">{{buttonText}} 
-                                                        <i class="fas fa-angle-right"></i></button></div>
+                                                   
+                                                       <div class="modal-footer text-muted mb-3">
+                                                        <!-- PREVIOUS QUESIONT BUTTON -->
+                                                        <button class="btn btn-lg btn-primary " *ngIf="i>0" (click)="previousQuestion()">Previous Question
+                                                            <i class="fas fa-angle-left"></i></button>
+                                                        <!-- NEXT QUESTION BUTTON -->
+                                                        <button class="btn btn-lg btn-primary " (click)="nextQuestion()">{{buttonText}} 
+                                                        <i class="fas fa-angle-right"></i></button>
+                                                            
+                                                       
+                                                    </div>
+                                                 
                                         </form>
                                         
                                     </div>
@@ -74,8 +83,8 @@
                             </div>
                         </div>
                     </div>
-        <!----------------------------------- SUCCESS MODAL ------------------------------------------------------------------->
-              <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true">
+        <!----------------------------------- RESULT MODAL ------------------------------------------------------------------->
+              <div class="modal fade" id="resultModal" data-bs-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="resultModal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">

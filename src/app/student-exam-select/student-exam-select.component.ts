@@ -5,6 +5,7 @@ import { StudentService } from '../services/student.service';
 import {Exam} from '../Models/exam';
 import {Question} from '../Models/questions';
 import { AdminService } from '../services/admin.service';
+import {Eligibility} from '../Models/eligibility';
 declare var $ : any;
 
 @Component({
@@ -32,6 +33,7 @@ export class StudentExamSelectComponent implements OnInit {
         console.log(data);
     })
     }
+  /********************************** SERACH EXAM FORM ******************************************************/
   
 
   SearchExamForm=new FormGroup({
@@ -55,7 +57,14 @@ export class StudentExamSelectComponent implements OnInit {
     return this.SearchExamForm.get('courseName');
   }
 
+  /********************************** MODAL FUNCTIONS ******************************************************/
 
+  //MODAL POPUP FOR  ERROR
+   onError()
+   {
+     $('#errorModal').modal('show'); 
+   }
+/********************************** FORM FUNCTIONS ******************************************************/
   Select(Exam_id)
  {   
      console.log(Exam_id);
@@ -66,15 +75,28 @@ export class StudentExamSelectComponent implements OnInit {
       this.SearchExamForm.controls['time'].setValue(res.time+' Mins');
       this.SearchExamForm.controls['level'].setValue(res.level);
       localStorage.setItem('course_id',res.Course_id);
+      localStorage.setItem('level',res.level.toString());
       console.log(res);
     });
   }
 
   submitForm(){
-    console.log("INSIDE SUBMIT",this.selected_exam);
-    console.log("INSIDE SIBMIT",this.SearchExamForm.value)
+    // console.log("INSIDE SUBMIT",this.selected_exam);
+    // console.log("INSIDE SIBMIT",this.SearchExamForm.value)
+    let eligibility = new Eligibility(parseInt(localStorage.getItem('exam_id')),parseInt(localStorage.getItem('s_id')),parseInt(localStorage.getItem('course_id')),
+    parseInt(localStorage.getItem('level')));
+    this. StudentService.checkEligible(eligibility).subscribe((data: Eligibility)=>{
+      console.log(data);
+      if(data.toString()=="valid")
+      {
+        this.router.navigateByUrl('/Login/Student/Dashboard/Exam')
+      }
+      else
+      {
+        this.onError();
+      }
+     })
     localStorage.setItem("exam_id",this.selected_exam.toString());
-    this.router.navigateByUrl('/Login/Student/Dashboard/Exam')
   }
  
 }

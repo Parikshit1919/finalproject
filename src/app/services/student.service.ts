@@ -6,6 +6,7 @@ import {Exam} from '../Models/exam';
 import { Results } from '../Models/results';
 import {Students} from '../Models/students'
 import { Answers } from '../Models/answers';
+import {Eligibility} from '../Models/eligibility';
 @Injectable({
   providedIn: 'root'
 })
@@ -53,6 +54,17 @@ GetResult(Student_Email):Observable<Results[]>{
   return req;
 }
 /*************************************************** EXAM METHODS *************************************/
+
+//METHOD TO CHECK ELIGIBLITY
+checkEligible(eligible):Observable<Eligibility>
+{
+  console.log(eligible);
+  var req = this.httpClient.post<Eligibility>(this.apiServer + '/Results/CheckEligible/',JSON.stringify(eligible),this.httpOptions);
+  console.log(req);
+  return req;
+}
+
+
  submitExam(answers):Observable<Answers[]>{
   
  

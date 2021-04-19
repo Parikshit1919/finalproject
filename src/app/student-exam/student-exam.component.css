@@ -78,10 +78,10 @@
   
   
   /********************************************* MODAL STYING *****************************/
-#successModal img {
+#resultModal img {
     height:10vh;
 }
-#successModal .modal-body {
+#resultModal .modal-body {
     font-size:18px;
 }
 
@@ -92,15 +92,3 @@
     height:8vh;
 }
 
-#DeleteCourseModal img
-{
-    height: 4vh;
-}
-#AddCourseModal img 
-{
-    height:5vh;
-}
-#ModifyCourseModal img 
-{
-    height:5vh;
-}
