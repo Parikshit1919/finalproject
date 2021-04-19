@@ -5,7 +5,7 @@ declare var $ : any;
 import { AuthService } from '../services/auth.service';
 
 
-import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';  
+import { NgForm, FormBuilder, FormGroup, Validators, FormControl, ValidatorFn } from '@angular/forms';  
 
 @Component({
   selector: 'app-register',
@@ -20,6 +20,8 @@ export class RegisterComponent implements OnInit {
   "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana",
   "Tripura", "Uttarakhand", "Uttar Pradesh","West Bengal"];
 
+
+
   massage:string; 
   //FORMS GROUP
   studentForm= new FormGroup({
@@ -33,9 +35,10 @@ export class RegisterComponent implements OnInit {
     Qualification:new FormControl('',[Validators.required]),
     Year_of_completion:new FormControl('',[Validators.required,Validators.min(2010),Validators.max(2021)]),
     recaptcha:new FormControl('',[Validators.required])
-   
-
   })
+
+  
+
   constructor(private formBuilder: FormBuilder, public registration:AuthService,private router:Router) { }
    siteKey:string="6Ldl9ZcaAAAAAAvNdFyM-fTThxY3aVN8S13ns1By";
 

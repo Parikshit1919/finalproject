@@ -38,8 +38,7 @@ export class StudentDashboardComponent implements OnInit {
   //METHOD TO LOGOUT STUDENT
   logout() {  
     console.log('logout');  
-    // localStorage.setItem('s_id',"");
-    // localStorage.setItem('exam_id',"");
+   
     localStorage.clear();
     localStorage
     this.login.logout();  
