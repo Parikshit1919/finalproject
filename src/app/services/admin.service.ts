@@ -9,6 +9,7 @@ import {Results} from '../Models/results';
 import {Analytics} from '../Models/analytics';
 import { Question } from '../Models/questions';
 import { Students } from '../Models/students';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +26,7 @@ export class AdminService {
 login(login):Observable<AdminLogin>
 {
   console.log("INSIDE SERVICE",login);
-  var req = this.httpClient.post<AdminLogin>(this.apiServer + '/AdminLogin/',JSON.stringify(login), this.httpOptions);
+  var req = this.httpClient.post<AdminLogin>(this.apiServer + '/AdminLogin/',JSON.stringify(login), this.httpOptions).pipe(catchError(this.errorHandler));
   console.log(req);
   return(req);
 }
@@ -34,7 +35,7 @@ login(login):Observable<AdminLogin>
 //METHOD TO GET COURSES
 GetCourse():Observable<Courses[]>
 {
-  var req =  this.httpClient.get<Courses[]>(this.apiServer + '/Courses/');
+  var req =  this.httpClient.get<Courses[]>(this.apiServer + '/Courses/').pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -42,7 +43,7 @@ GetCourse():Observable<Courses[]>
 GetCourseByID(courseID):Observable<Courses>
 {
   let params = new HttpParams().set('id', courseID);
-  var req = this.httpClient.get<Courses>(this.apiServer + '/CoursesByID/', { params: params });
+  var req = this.httpClient.get<Courses>(this.apiServer + '/CoursesByID/', { params: params }).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -51,7 +52,7 @@ GetCourseByID(courseID):Observable<Courses>
 ModifyCourse(course):Observable<Courses>
 {
   console.log(course);
-  var req = this.httpClient.put<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions);
+  var req = this.httpClient.put<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -59,7 +60,7 @@ ModifyCourse(course):Observable<Courses>
 //METHOD TO ADD COURSES
 AddCourse(course): Observable<Courses> 
 {
-  return this.httpClient.post<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions);
+  return this.httpClient.post<Courses>(this.apiServer + '/Courses/', JSON.stringify(course), this.httpOptions).pipe(catchError(this.errorHandler));
 }
 
 //METHOD TO DELETE COURSES
@@ -67,7 +68,7 @@ DeleteCourse(courseID):Observable<Courses>
 {
   console.log("INSIDE SERVICE",courseID);
   console.log("INSIDE SERVEE URL",this.apiServer + '/Courses/' +courseID);
-  var req = this.httpClient.delete<Courses>(this.apiServer + '/Courses/' +courseID);
+  var req = this.httpClient.delete<Courses>(this.apiServer + '/Courses/' +courseID).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -78,7 +79,7 @@ DeleteCourse(courseID):Observable<Courses>
   //METHOD TO GET ADD AVAILABLE EXAMS
 GetExams():Observable<Exam[]>
   {
-    var req = this.httpClient.get<Exam[]>(this.apiServer + '/AdminExam/');
+    var req = this.httpClient.get<Exam[]>(this.apiServer + '/AdminExam/').pipe(catchError(this.errorHandler));
     console.log(req);
     return req;
   }
@@ -86,14 +87,14 @@ GetExams():Observable<Exam[]>
 GetExamByID(examID):Observable<Exam>
 {
   let params = new HttpParams().set('id', examID);
-  var req = this.httpClient.get<Exam>(this.apiServer + '/ExamsByID/',{ params: params } );
+  var req = this.httpClient.get<Exam>(this.apiServer + '/ExamsByID/',{ params: params } ).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
 //METHOD TO MODIFY EXAM
 ModifyExam(exam):Observable<Exam>
 {
-  var req = this.httpClient.put<Exam>(this.apiServer + '/AdminExam/',JSON.stringify(exam), this.httpOptions );
+  var req = this.httpClient.put<Exam>(this.apiServer + '/AdminExam/',JSON.stringify(exam), this.httpOptions ).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -101,14 +102,14 @@ ModifyExam(exam):Observable<Exam>
 DeleteExam(ExamID):Observable<Exam>
 {
   console.log(this.apiServer + '/AdminExam/' +ExamID);
-  var req = this.httpClient.delete<Exam>(this.apiServer + '/AdminExam/' +ExamID);
+  var req = this.httpClient.delete<Exam>(this.apiServer + '/AdminExam/' +ExamID).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
 //METHOD TO ADD EXAM
 AddExam(Exam):Observable<Exam>
 {
-  var req = this.httpClient.post<Exam>(this.apiServer + '/AdminExam/' ,JSON.stringify(Exam), this.httpOptions);
+  var req = this.httpClient.post<Exam>(this.apiServer + '/AdminExam/' ,JSON.stringify(Exam), this.httpOptions).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -119,7 +120,7 @@ AddExam(Exam):Observable<Exam>
 //METHOD TO GET FEEDBACK
 GetFeedback():Observable<Feedback[]>
 {
-  var req = this.httpClient.get<Feedback[]>(this.apiServer + '/FeedBack/');
+  var req = this.httpClient.get<Feedback[]>(this.apiServer + '/FeedBack/').pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -128,13 +129,13 @@ GetFeedback():Observable<Feedback[]>
 
 GetAllResults():Observable<Results[]>
 {
-  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ViewAll');
+  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ViewAll').pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
 GetResult(e_id):Observable<Results[]>
 {
-  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/'+e_id);
+  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/'+e_id).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -142,7 +143,7 @@ GetResult(e_id):Observable<Results[]>
 
 GetResultsadminstudent():Observable<Results[]>
 {
-  var req=this.httpClient.get<Results[]>(this.apiServer+'/AdminExamResult/ViewAll/');
+  var req=this.httpClient.get<Results[]>(this.apiServer+'/AdminExamResult/ViewAll/').pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -151,14 +152,14 @@ GetResultsbystudent(id):Observable<Results[]>
 {
   
   let params = new HttpParams().set('id', id);
-  var req=this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ByStudent/',{ params: params });
+  var req=this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ByStudent/',{ params: params }).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
 /*********************************************** ANALYTICS METHODS ************************************/
 GetAnalytics():Observable<Analytics>
 {
-  var req = this.httpClient.get<Analytics>(this.apiServer + '/Analytics/');
+  var req = this.httpClient.get<Analytics>(this.apiServer + '/Analytics/').pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -174,13 +175,13 @@ logout() :void {
 
 AddQuestion(question): Observable<Question> 
 {
-  return this.httpClient.post<Question>(this.apiServer + '/Questions/', JSON.stringify(question), this.httpOptions);
+  return this.httpClient.post<Question>(this.apiServer + '/Questions/', JSON.stringify(question), this.httpOptions).pipe(catchError(this.errorHandler));
 }
 //View By Exam ID
 GetQuestionByID(Exam_id):Observable<Question[]>
 {
   let params = new HttpParams().set('id', Exam_id);
-  var req = this.httpClient.get<Question[]>(this.apiServer + '/Questions/'+ Exam_id, { params: params });
+  var req = this.httpClient.get<Question[]>(this.apiServer + '/Questions/'+ Exam_id, { params: params }).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -189,7 +190,7 @@ GetQuestionByID(Exam_id):Observable<Question[]>
 GetQuestionByQno(Q_no):Observable<Question>
 {
   let params = new HttpParams().set('id', Q_no);
-  var req = this.httpClient.get<Question>(this.apiServer + '/Questions/ByQuestionID', { params: params });
+  var req = this.httpClient.get<Question>(this.apiServer + '/Questions/ByQuestionID', { params: params }).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -198,14 +199,14 @@ DeleteQuestion(Q_no):Observable<Question>
 {
   console.log("INSIDE SERVICE",Q_no);
   console.log("INSIDE SERVEE URL",this.apiServer + '/Questions/' +Q_no);
-  var req = this.httpClient.delete<Question>(this.apiServer + '/Questions/' +Q_no);
+  var req = this.httpClient.delete<Question>(this.apiServer + '/Questions/' +Q_no).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
 //METHOD TO Update Questions
 ModifyQuestion(Q_no):Observable<Question>
 {
-  var req = this.httpClient.put<Question>(this.apiServer + '/Questions/',JSON.stringify(Q_no), this.httpOptions );
+  var req = this.httpClient.put<Question>(this.apiServer + '/Questions/',JSON.stringify(Q_no), this.httpOptions ).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -218,11 +219,22 @@ UploadExcel(formData: FormData) {
 
   const httpOptions = { headers: headers };
 
-  return this.httpClient.post(this.apiServer + '/questionbyexcel', formData, httpOptions)
+  return this.httpClient.post(this.apiServer + '/questionbyexcel', formData, httpOptions).pipe(catchError(this.errorHandler))
 }
 
-/*********************************************** Questions METHODS Ends ************************************/
+/*********************************************** ERROR HANDLING  ************************************/
 
-
+errorHandler(error) {
+  let errorMessage = '';
+  if(error.error instanceof ErrorEvent) {
+    // Get client-side error
+    errorMessage = error.error.message;
+  } else {
+    // Get server-side error
+    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+  }
+  console.log(errorMessage);
+  return throwError(errorMessage);
+}
 
 }

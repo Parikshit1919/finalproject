@@ -7,6 +7,7 @@ import { Results } from '../Models/results';
 import {Students} from '../Models/students'
 import { Answers } from '../Models/answers';
 import {Eligibility} from '../Models/eligibility';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,7 @@ GetStudent(Student_Email):Observable<Students>
 {
   
   let params = new HttpParams().set('email', Student_Email);
-  var req = this.httpClient.get<Students>(this.apiServer + '/Student/GetByEmail',{ params: params });
+  var req = this.httpClient.get<Students>(this.apiServer + '/Student/GetByEmail',{ params: params }).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -34,7 +35,7 @@ GetStudent(Student_Email):Observable<Students>
  //METHOD TO ADD Feedback
 SendFeedback(feedback): Observable<Feedback> 
 {
-  return this.httpClient.post<Feedback>(this.apiServer + '/Feedback/', JSON.stringify(feedback), this.httpOptions);
+  return this.httpClient.post<Feedback>(this.apiServer + '/Feedback/', JSON.stringify(feedback), this.httpOptions).pipe(catchError(this.errorHandler));
 }
 
 
@@ -49,7 +50,7 @@ GetAllResults():Observable<Results[]>{
 GetResult(Student_Email):Observable<Results[]>{
   
   let params = new HttpParams().set('email', Student_Email);
-  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ByEmail/',{ params: params });
+  var req = this.httpClient.get<Results[]>(this.apiServer + '/AdminExamResult/ByEmail/',{ params: params }).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -59,7 +60,7 @@ GetResult(Student_Email):Observable<Results[]>{
 checkEligible(eligible):Observable<Eligibility>
 {
   console.log(eligible);
-  var req = this.httpClient.post<Eligibility>(this.apiServer + '/Results/CheckEligible/',JSON.stringify(eligible),this.httpOptions);
+  var req = this.httpClient.post<Eligibility>(this.apiServer + '/Results/CheckEligible/',JSON.stringify(eligible),this.httpOptions).pipe(catchError(this.errorHandler));
   console.log(req);
   return req;
 }
@@ -69,8 +70,24 @@ checkEligible(eligible):Observable<Eligibility>
   
  
    console.log(answers);
-   var req = this.httpClient.post<Answers[]>(this.apiServer + '/Results/GetResults/',JSON.stringify(answers),this.httpOptions);
+   var req = this.httpClient.post<Answers[]>(this.apiServer + '/Results/GetResults/',JSON.stringify(answers),this.httpOptions).pipe(catchError(this.errorHandler));
    console.log(req);
    return req;
  }
+
+ /*********************************************** ERROR HANDLING  ************************************/
+
+errorHandler(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+  }
+
 }

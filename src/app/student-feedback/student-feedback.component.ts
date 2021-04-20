@@ -77,7 +77,8 @@ export class StudentFeedbackComponent implements OnInit {
 
   refresh()
   {
-    location.reload();
+     location.reload();
+   
   }
   
   onSuccess()
