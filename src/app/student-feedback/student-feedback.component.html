@@ -49,7 +49,7 @@
                               <select class="custom-select"  formControlName="e_id">
 
                                 <option value="" disabled>Choose your Exam</option>
-                                <option *ngFor="let e of exams" [value]="e.Exam_id">{{e.Exam_id}}-{{e.Course_name}}</option> 
+                                <option *ngFor="let e of exams" [value]="e.Exam_id">{{e.Exam_id}}-{{e.Course_name}} Level-{{e.level}}</option> 
                              </select>
                                 <div
                                       *ngIf="!e_id?.valid && (e_id?.dirty ||e_id?.touched)">
